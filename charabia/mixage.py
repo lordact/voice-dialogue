@@ -25,11 +25,25 @@ def reechantillonner(sig, pitch):
     return np.interp(pos, np.arange(len(sig)), sig)
 
 
+def reechantillonner_glisse(sig, p0, p1):
+    """Lecture à hauteur glissante : la vitesse dépend de la position dans le grain,
+    dp/dt = p0 + (p1-p0)·pos/L (même loi que le lecteur Godot, image par image)."""
+    if abs(p1 - p0) < 1e-6:
+        return reechantillonner(sig, p0)
+    L = len(sig) - 1
+    k = (p1 - p0) / L
+    T = np.log(p1 / p0) / k
+    t = np.arange(0, T)
+    pos = (p0 / k) * np.expm1(k * t)
+    return np.interp(pos, np.arange(len(sig)), sig)
+
+
 def rendre(evts, banque, fondu_fin=None):
     """Partition -> signal mono. fondu_fin (s) : interruption propre (le joueur passe la ligne)."""
     if not evts:
         return np.zeros(0)
-    morceaux = [(int(ev['t'] * SR), reechantillonner(grain(banque, ev['grain']), ev['pitch']) * 10 ** (ev['db'] / 20))
+    morceaux = [(int(ev['t'] * SR), reechantillonner_glisse(grain(banque, ev['grain']), ev['pitch'],
+                                                             ev.get('pitch_fin', ev['pitch'])) * 10 ** (ev['db'] / 20))
                 for ev in evts]
     n = max(a + len(s) for a, s in morceaux)
     out = np.zeros(n)

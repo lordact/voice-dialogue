@@ -1,32 +1,36 @@
 """Banque de grains par profil : syllabes (consonne + voyelle) et vocalises.
 
-Chaque syllabe est rendue à la hauteur de base du profil, en six formes :
-plat / monte / descend, en version normale et longue (fins de phrase). Le séquenceur
-les rejoue avec un `pitch_scale` (comme AudioStreamPlayer de Godot) pour dessiner la
-mélodie. Rendu déterministe : même profil -> mêmes fichiers.
+Style mélodieux : chaque syllabe est rendue à hauteur fixe (celle du profil), en trois
+longueurs (court, plat, long). La mélodie n'est plus « cuite » dans les grains : le lecteur
+fait glisser la hauteur pendant la lecture (pitch de début -> pitch de fin), ce qui lie
+les syllabes entre elles. Attaques et relâches plus douces pour enchaîner sans trou.
+Rendu déterministe : même profil -> mêmes fichiers.
 """
 import json, os, zlib, subprocess, tempfile, wave
 import numpy as np
-from noyau import SR, VOYELLES, Timbre, voyelle, consonne, timbre_depuis
+from dataclasses import replace
+from noyau import SR, VOYELLES, DIPHTONGUES, GLISSES, Timbre, voyelle, consonne, timbre_depuis
 import vocalises
 
-FORMES = {  # (rapport de fin de glissé, facteur de longueur)
-    'plat': (1.0, 1.0), 'monte': (1.12, 1.0), 'descend': (.89, 1.0),
-    'plat_long': (.98, 1.7), 'monte_long': (1.24, 1.7), 'descend_long': (.8, 1.75)}
+FORMES = {'court': .78, 'plat': 1.0, 'long': 1.85}  # facteur de longueur de la voyelle
 ASCII = {'é': 'ee'}
 
 
 RMS_REF = 10 ** (-16 / 20)
-DECALAGE_VOYELLE = {'a': 0, 'o': -1, 'on': -1.5, 'e': -1.5, 'ee': -1.5, 'eu': -2, 'i': -3, 'u': -3}
+DECALAGE_VOYELLE = {'a': 0, 'o': -1, 'on': -1.5, 'e': -1.5, 'ee': -1.5, 'eu': -2, 'i': -3, 'u': -3,
+                    'ai': -.5, 'oi': -1, 'ao': -.5, 'ei': -1.5, 'ou': -1.5}
 CIBLE_VOCALISE = {'rire': -2, 'rire_moqueur': -3, 'rire_nerveux': -6, 'soupir': -7, 'hmm_reflexion': -5,
                   'hmm_doute': -5, 'hmm_accord': -5, 'euh': -4, 'inspiration_surprise': -5, 'ooh': -2,
                   'oh_decu': -4, 'ah': -3, 'hein': -3, 'pfff': -7, 'grogne': -3, 'tss': -9,
                   'reniflement': -13, 'baillement': -5}
 
 
+CONSONNES_NOMS = ('ch', 'p', 'b', 't', 'd', 'k', 'm', 'n', 'l', 's', 'f', 'r', 'v', 'z', 'w', 'y')
+
+
 def _voyelle_de(nom):
     tete = nom.split('_')[0] if not nom.startswith('_') else nom[1:].split('_')[0]
-    for c in ('ch', 'p', 'b', 't', 'd', 'k', 'm', 'n', 'l', 's', 'f', 'r'):
+    for c in CONSONNES_NOMS:
         if tete.startswith(c) and tete[len(c):] in DECALAGE_VOYELLE:
             return tete[len(c):]
     return tete
@@ -66,12 +70,20 @@ class BanqueProfil:
     def _rendre(self):
         p, t = self.p, self.t
         brut_s, brut_v = {}, {}
+        legato = replace(t, attaque=max(t.attaque, .02), relache=max(t.relache, .05))
         for c in p['consonnes']:
             for v in p['voyelles']:
-                for forme, (ratio, k) in FORMES.items():
+                for forme, k in FORMES.items():
                     rng = np.random.default_rng(_graine(self.pid, c, v, forme))
                     cons = consonne(c, self.f0, rng, t)
-                    voy = voyelle(p['syllabe'] * k, self.f0, self.f0 * ratio, VOYELLES[v], rng, t)
+                    debut_v, fin_v = (v, None) if v not in DIPHTONGUES else DIPHTONGUES[v]
+                    glisse = (.45, 1.0)
+                    if c in GLISSES:  # « wa », « yo » : la voyelle part de u / i
+                        fin_v, debut_v, glisse = debut_v if fin_v is None else fin_v, GLISSES[c], (0.0, .3)
+                        if v in DIPHTONGUES:
+                            fin_v = DIPHTONGUES[v][0]
+                    voy = voyelle(p['syllabe'] * k, self.f0, self.f0, VOYELLES[debut_v], rng, legato,
+                                  formants_fin=VOYELLES[fin_v] if fin_v else None, glisse=glisse)
                     brut_s[nom_syllabe(c, v, forme)] = (np.concatenate([cons, voy]), len(cons) / SR)
         for typ, fn in vocalises.TYPES.items():
             brut_v[typ] = [fn(self.f0, t, np.random.default_rng(_graine(self.pid, typ, k)), p) for k in range(2)]

@@ -15,7 +15,7 @@
    },
    {
     "debut": 0.9,
-    "fin": 2.908,
+    "fin": 2.773,
     "qui": "origine",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -23,8 +23,8 @@
     "note": ""
    },
    {
-    "debut": 3.958,
-    "fin": 6.158,
+    "debut": 3.823,
+    "fin": 6.023,
     "qui": "",
     "texte": "Bored shopkeeper — commercant_blase",
     "emotion": "",
@@ -32,8 +32,8 @@
     "note": "ui"
    },
    {
-    "debut": 4.358,
-    "fin": 6.501,
+    "debut": 4.223,
+    "fin": 6.294,
     "qui": "commercant_blase",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -41,8 +41,8 @@
     "note": ""
    },
    {
-    "debut": 7.551,
-    "fin": 9.751,
+    "debut": 7.344,
+    "fin": 9.544,
     "qui": "",
     "texte": "Slow old regular — vieil_habitue",
     "emotion": "",
@@ -50,8 +50,8 @@
     "note": "ui"
    },
    {
-    "debut": 7.951,
-    "fin": 10.652,
+    "debut": 7.744,
+    "fin": 10.46,
     "qui": "vieil_habitue",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -59,8 +59,8 @@
     "note": ""
    },
    {
-    "debut": 11.702,
-    "fin": 13.902,
+    "debut": 11.51,
+    "fin": 13.71,
     "qui": "",
     "texte": "Overexcited teen — ado_surexcite",
     "emotion": "",
@@ -68,8 +68,8 @@
     "note": "ui"
    },
    {
-    "debut": 12.102,
-    "fin": 13.895,
+    "debut": 11.91,
+    "fin": 13.531,
     "qui": "ado_surexcite",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -77,8 +77,8 @@
     "note": ""
    },
    {
-    "debut": 14.945,
-    "fin": 17.145,
+    "debut": 14.581,
+    "fin": 16.781,
     "qui": "",
     "texte": "Quiet neighbour — voisin_discret",
     "emotion": "",
@@ -86,8 +86,8 @@
     "note": "ui"
    },
    {
-    "debut": 15.345,
-    "fin": 17.209,
+    "debut": 14.981,
+    "fin": 16.755,
     "qui": "voisin_discret",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -95,8 +95,8 @@
     "note": ""
    },
    {
-    "debut": 18.259,
-    "fin": 20.459,
+    "debut": 17.805,
+    "fin": 20.005,
     "qui": "",
     "texte": "Chatty stallholder — vendeuse_bavarde",
     "emotion": "",
@@ -104,8 +104,8 @@
     "note": "ui"
    },
    {
-    "debut": 18.659,
-    "fin": 20.728,
+    "debut": 18.205,
+    "fin": 20.09,
     "qui": "vendeuse_bavarde",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -113,8 +113,8 @@
     "note": ""
    },
    {
-    "debut": 21.778,
-    "fin": 23.978,
+    "debut": 21.14,
+    "fin": 23.34,
     "qui": "",
     "texte": "Methodical collector — collectionneur_methodique",
     "emotion": "",
@@ -122,8 +122,8 @@
     "note": "ui"
    },
    {
-    "debut": 22.178,
-    "fin": 24.17,
+    "debut": 21.54,
+    "fin": 23.35,
     "qui": "collectionneur_methodique",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -131,8 +131,8 @@
     "note": ""
    },
    {
-    "debut": 25.22,
-    "fin": 27.42,
+    "debut": 24.4,
+    "fin": 26.6,
     "qui": "",
     "texte": "Hurried professional — pro_presse",
     "emotion": "",
@@ -140,8 +140,8 @@
     "note": "ui"
    },
    {
-    "debut": 25.62,
-    "fin": 26.903,
+    "debut": 24.8,
+    "fin": 26.0,
     "qui": "pro_presse",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -149,8 +149,8 @@
     "note": ""
    },
    {
-    "debut": 27.953,
-    "fin": 30.153,
+    "debut": 26.993,
+    "fin": 29.193,
     "qui": "",
     "texte": "Warm parent — parent_chaleureux",
     "emotion": "",
@@ -158,8 +158,8 @@
     "note": "ui"
    },
    {
-    "debut": 28.353,
-    "fin": 30.53,
+    "debut": 27.393,
+    "fin": 29.442,
     "qui": "parent_chaleureux",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -167,8 +167,8 @@
     "note": ""
    },
    {
-    "debut": 31.58,
-    "fin": 33.78,
+    "debut": 30.492,
+    "fin": 32.692,
     "qui": "",
     "texte": "Nervous reseller — revendeur_nerveux",
     "emotion": "",
@@ -176,8 +176,8 @@
     "note": "ui"
    },
    {
-    "debut": 31.98,
-    "fin": 34.077,
+    "debut": 30.892,
+    "fin": 32.739,
     "qui": "revendeur_nerveux",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -185,8 +185,8 @@
     "note": ""
    },
    {
-    "debut": 35.127,
-    "fin": 37.327,
+    "debut": 33.789,
+    "fin": 35.989,
     "qui": "",
     "texte": "Sarcastic — sarcastique",
     "emotion": "",
@@ -194,8 +194,8 @@
     "note": "ui"
    },
    {
-    "debut": 35.527,
-    "fin": 37.623,
+    "debut": 34.189,
+    "fin": 36.235,
     "qui": "sarcastique",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -203,8 +203,8 @@
     "note": ""
    },
    {
-    "debut": 38.673,
-    "fin": 40.873,
+    "debut": 37.285,
+    "fin": 39.485,
     "qui": "",
     "texte": "Young child — enfant",
     "emotion": "",
@@ -212,8 +212,8 @@
     "note": "ui"
    },
    {
-    "debut": 39.073,
-    "fin": 40.783,
+    "debut": 37.685,
+    "fin": 39.306,
     "qui": "enfant",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -221,8 +221,8 @@
     "note": ""
    },
    {
-    "debut": 41.833,
-    "fin": 44.033,
+    "debut": 40.356,
+    "fin": 42.556,
     "qui": "",
     "texte": "Big gruff guy — grand_gaillard",
     "emotion": "",
@@ -230,8 +230,8 @@
     "note": "ui"
    },
    {
-    "debut": 42.233,
-    "fin": 44.526,
+    "debut": 40.756,
+    "fin": 42.867,
     "qui": "grand_gaillard",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -239,8 +239,8 @@
     "note": ""
    },
    {
-    "debut": 45.576,
-    "fin": 47.776,
+    "debut": 43.917,
+    "fin": 46.117,
     "qui": "",
     "texte": "Refined elderly lady — dame_distinguee",
     "emotion": "",
@@ -248,8 +248,8 @@
     "note": "ui"
    },
    {
-    "debut": 45.976,
-    "fin": 48.348,
+    "debut": 44.317,
+    "fin": 46.632,
     "qui": "dame_distinguee",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -257,8 +257,8 @@
     "note": ""
    },
    {
-    "debut": 49.398,
-    "fin": 51.598,
+    "debut": 47.682,
+    "fin": 49.882,
     "qui": "",
     "texte": "Confident dealer — revendeur_assure",
     "emotion": "",
@@ -266,8 +266,8 @@
     "note": "ui"
    },
    {
-    "debut": 49.798,
-    "fin": 51.807,
+    "debut": 48.082,
+    "fin": 49.956,
     "qui": "revendeur_assure",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -275,8 +275,8 @@
     "note": ""
    },
    {
-    "debut": 52.857,
-    "fin": 55.057,
+    "debut": 51.006,
+    "fin": 53.206,
     "qui": "",
     "texte": "Formal official — agent_officiel",
     "emotion": "",
@@ -284,8 +284,8 @@
     "note": "ui"
    },
    {
-    "debut": 53.257,
-    "fin": 55.21,
+    "debut": 51.406,
+    "fin": 53.105,
     "qui": "agent_officiel",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -293,8 +293,8 @@
     "note": ""
    },
    {
-    "debut": 56.26,
-    "fin": 58.46,
+    "debut": 54.155,
+    "fin": 56.355,
     "qui": "",
     "texte": "Dreamy artist — reveuse_artiste",
     "emotion": "",
@@ -302,8 +302,8 @@
     "note": "ui"
    },
    {
-    "debut": 56.66,
-    "fin": 59.121,
+    "debut": 54.555,
+    "fin": 56.948,
     "qui": "reveuse_artiste",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -311,8 +311,8 @@
     "note": ""
    },
    {
-    "debut": 60.171,
-    "fin": 62.371,
+    "debut": 57.998,
+    "fin": 60.198,
     "qui": "",
     "texte": "Jovial cook — cuisinier_jovial",
     "emotion": "",
@@ -320,8 +320,8 @@
     "note": "ui"
    },
    {
-    "debut": 60.571,
-    "fin": 62.319,
+    "debut": 58.398,
+    "fin": 60.134,
     "qui": "cuisinier_jovial",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "neutral",
@@ -329,7 +329,7 @@
     "note": ""
    }
   ],
-  "duree": 63.97
+  "duree": 61.78
  },
  {
   "cle": "passant",
@@ -346,8 +346,8 @@
     "note": ""
    },
    {
-    "debut": 1.914,
-    "fin": 3.904,
+    "debut": 1.812,
+    "fin": 3.802,
     "qui": "You",
     "texte": "Is Monday the busiest?",
     "emotion": "",
@@ -355,8 +355,8 @@
     "note": ""
    },
    {
-    "debut": 4.154,
-    "fin": 5.354,
+    "debut": 4.052,
+    "fin": 5.252,
     "qui": "Felix Romero",
     "texte": "Usually, yes.",
     "emotion": "neutral",
@@ -364,8 +364,8 @@
     "note": ""
    },
    {
-    "debut": 5.062,
-    "fin": 6.827,
+    "debut": 5.072,
+    "fin": 6.837,
     "qui": "You",
     "texte": "Any quieter time?",
     "emotion": "",
@@ -373,8 +373,8 @@
     "note": ""
    },
    {
-    "debut": 7.077,
-    "fin": 8.277,
+    "debut": 7.087,
+    "fin": 8.287,
     "qui": "Felix Romero",
     "texte": "Late afternoon, unless a holiday is coming.",
     "emotion": "curious",
@@ -382,8 +382,8 @@
     "note": ""
    },
    {
-    "debut": 8.503,
-    "fin": 10.358,
+    "debut": 8.414,
+    "fin": 10.269,
     "qui": "You",
     "texte": "I should get going.",
     "emotion": "",
@@ -391,8 +391,8 @@
     "note": ""
    },
    {
-    "debut": 10.608,
-    "fin": 11.808,
+    "debut": 10.519,
+    "fin": 11.719,
     "qui": "Felix Romero",
     "texte": "See you around.",
     "emotion": "goodbye",
@@ -400,7 +400,7 @@
     "note": ""
    }
   ],
-  "duree": 12.03
+  "duree": 11.97
  },
  {
   "cle": "opposes",
@@ -409,7 +409,7 @@
   "titres": [
    {
     "debut": 0.5,
-    "fin": 3.483,
+    "fin": 3.439,
     "qui": "Antonio Garcia",
     "texte": "Looks like rain, but my knees are not a reliable forecast.",
     "emotion": "tired",
@@ -417,8 +417,8 @@
     "note": ""
    },
    {
-    "debut": 4.033,
-    "fin": 6.068,
+    "debut": 3.989,
+    "fin": 6.024,
     "qui": "You",
     "texte": "Are they usually right?",
     "emotion": "",
@@ -426,8 +426,8 @@
     "note": ""
    },
    {
-    "debut": 6.318,
-    "fin": 7.822,
+    "debut": 6.274,
+    "fin": 7.761,
     "qui": "Antonio Garcia",
     "texte": "They are usually dramatic.",
     "emotion": "mocking",
@@ -435,8 +435,8 @@
     "note": ""
    },
    {
-    "debut": 8.972,
-    "fin": 10.911,
+    "debut": 8.911,
+    "fin": 10.517,
     "qui": "Ava Washington",
     "texte": "I found a wooden box under the bench and thought it was treasure.",
     "emotion": "delighted",
@@ -444,8 +444,8 @@
     "note": ""
    },
    {
-    "debut": 11.461,
-    "fin": 14.036,
+    "debut": 11.067,
+    "fin": 13.642,
     "qui": "You",
     "texte": "Was it filled with legendary socks?",
     "emotion": "",
@@ -453,8 +453,8 @@
     "note": ""
    },
    {
-    "debut": 14.286,
-    "fin": 16.387,
+    "debut": 13.892,
+    "fin": 15.092,
     "qui": "Ava Washington",
     "texte": "Worse. Gardening gloves.",
     "emotion": "disappointed",
@@ -462,7 +462,7 @@
     "note": ""
    }
   ],
-  "duree": 17.54
+  "duree": 15.92
  },
  {
   "cle": "parc",
@@ -471,7 +471,7 @@
   "titres": [
    {
     "debut": 0.5,
-    "fin": 2.651,
+    "fin": 2.648,
     "qui": "Rosa Garcia",
     "texte": "Looks like rain again. The clouds have a personal problem with this town.",
     "emotion": "mocking",
@@ -479,8 +479,8 @@
     "note": ""
    },
    {
-    "debut": 3.001,
-    "fin": 4.201,
+    "debut": 2.998,
+    "fin": 4.198,
     "qui": "Bob Foster",
     "texte": "Is it supposed to last?",
     "emotion": "curious",
@@ -488,8 +488,8 @@
     "note": ""
    },
    {
-    "debut": 4.033,
-    "fin": 5.301,
+    "debut": 3.919,
+    "fin": 5.464,
     "qui": "Rosa Garcia",
     "texte": "Forecast says until lunch, which means dinner.",
     "emotion": "mocking",
@@ -497,8 +497,8 @@
     "note": ""
    },
    {
-    "debut": 5.601,
-    "fin": 7.631,
+    "debut": 5.764,
+    "fin": 7.643,
     "qui": "Bob Foster",
     "texte": "Ha! At this point the ducks should pay property tax.",
     "emotion": "happy",
@@ -506,8 +506,8 @@
     "note": ""
    },
    {
-    "debut": 8.031,
-    "fin": 9.364,
+    "debut": 8.043,
+    "fin": 9.424,
     "qui": "Rosa Garcia",
     "texte": "Oh, this town never runs out.",
     "emotion": "tired",
@@ -515,7 +515,7 @@
     "note": ""
    }
   ],
-  "duree": 16.26
+  "duree": 16.32
  },
  {
   "cle": "negociation",
@@ -551,7 +551,7 @@
    },
    {
     "debut": 5.7,
-    "fin": 8.037,
+    "fin": 7.796,
     "qui": "Derek Moss",
     "texte": "I can't pay retail if I'm the one taking the risk.",
     "emotion": "wary",
@@ -559,8 +559,8 @@
     "note": ""
    },
    {
-    "debut": 8.587,
-    "fin": 10.307,
+    "debut": 8.346,
+    "fin": 10.066,
     "qui": "You",
     "texte": "I can do $12.00.",
     "emotion": "",
@@ -568,8 +568,8 @@
     "note": ""
    },
    {
-    "debut": 10.557,
-    "fin": 11.757,
+    "debut": 10.316,
+    "fin": 11.516,
     "qui": "Derek Moss",
     "texte": "You're not my first lowballer today.",
     "emotion": "furious",
@@ -577,8 +577,8 @@
     "note": ""
    },
    {
-    "debut": 11.825,
-    "fin": 13.41,
+    "debut": 11.584,
+    "fin": 13.169,
     "qui": "You",
     "texte": "Fine. $31.00.",
     "emotion": "",
@@ -586,8 +586,8 @@
     "note": ""
    },
    {
-    "debut": 13.66,
-    "fin": 15.86,
+    "debut": 13.419,
+    "fin": 15.619,
     "qui": "",
     "texte": "Counter-offer: $36.69",
     "emotion": "",
@@ -595,8 +595,8 @@
     "note": "ui"
    },
    {
-    "debut": 14.06,
-    "fin": 15.26,
+    "debut": 13.819,
+    "fin": 15.019,
     "qui": "Derek Moss",
     "texte": "Meet me in the middle.",
     "emotion": "wary",
@@ -604,8 +604,8 @@
     "note": ""
    },
    {
-    "debut": 15.159,
-    "fin": 16.834,
+    "debut": 14.899,
+    "fin": 16.574,
     "qui": "You",
     "texte": "Deal at $36.69.",
     "emotion": "",
@@ -613,8 +613,8 @@
     "note": ""
    },
    {
-    "debut": 17.084,
-    "fin": 18.284,
+    "debut": 16.824,
+    "fin": 18.024,
     "qui": "Derek Moss",
     "texte": "Pleasure doing business.",
     "emotion": "delighted",
@@ -622,7 +622,7 @@
     "note": ""
    }
   ],
-  "duree": 19.26
+  "duree": 19.08
  },
  {
   "cle": "negociation_rate",
@@ -675,8 +675,8 @@
     "note": ""
    },
    {
-    "debut": 9.28,
-    "fin": 10.595,
+    "debut": 9.337,
+    "fin": 10.652,
     "qui": "You",
     "texte": "$31.00?",
     "emotion": "",
@@ -684,8 +684,8 @@
     "note": ""
    },
    {
-    "debut": 10.845,
-    "fin": 13.045,
+    "debut": 10.902,
+    "fin": 13.102,
     "qui": "",
     "texte": "Counter-offer: $36.41",
     "emotion": "",
@@ -693,8 +693,8 @@
     "note": "ui"
    },
    {
-    "debut": 11.245,
-    "fin": 12.546,
+    "debut": 11.302,
+    "fin": 12.617,
     "qui": "Derek Moss",
     "texte": "Meet me in the middle.",
     "emotion": "wary",
@@ -702,8 +702,8 @@
     "note": ""
    },
    {
-    "debut": 13.096,
-    "fin": 14.996,
+    "debut": 13.167,
+    "fin": 15.067,
     "qui": "You",
     "texte": "$35.00, final offer.",
     "emotion": "",
@@ -711,8 +711,8 @@
     "note": ""
    },
    {
-    "debut": 15.246,
-    "fin": 16.446,
+    "debut": 15.317,
+    "fin": 16.517,
     "qui": "Derek Moss",
     "texte": "See you next market.",
     "emotion": "annoyed",
@@ -720,7 +720,7 @@
     "note": ""
    }
   ],
-  "duree": 16.9
+  "duree": 17.03
  },
  {
   "cle": "meme_replique",
@@ -737,8 +737,8 @@
     "note": ""
    },
    {
-    "debut": 1.718,
-    "fin": 2.918,
+    "debut": 1.728,
+    "fin": 2.928,
     "qui": "Felix Romero",
     "texte": "See you around.",
     "emotion": "goodbye",
@@ -746,8 +746,8 @@
     "note": ""
    },
    {
-    "debut": 2.939,
-    "fin": 4.139,
+    "debut": 2.959,
+    "fin": 4.159,
     "qui": "Brittany Price",
     "texte": "See you around.",
     "emotion": "mocking",
@@ -755,8 +755,8 @@
     "note": ""
    },
    {
-    "debut": 4.168,
-    "fin": 6.02,
+    "debut": 4.485,
+    "fin": 6.503,
     "qui": "Antonio Garcia",
     "texte": "See you around.",
     "emotion": "tired",
@@ -764,8 +764,8 @@
     "note": ""
    },
    {
-    "debut": 6.97,
-    "fin": 8.17,
+    "debut": 7.453,
+    "fin": 8.653,
     "qui": "Derek Moss",
     "texte": "See you around.",
     "emotion": "annoyed",
@@ -773,8 +773,8 @@
     "note": ""
    },
    {
-    "debut": 8.492,
-    "fin": 9.692,
+    "debut": 9.07,
+    "fin": 10.27,
     "qui": "Ava Washington",
     "texte": "See you around!",
     "emotion": "happy",
@@ -782,7 +782,7 @@
     "note": ""
    }
   ],
-  "duree": 10.55
+  "duree": 11.29
  },
  {
   "cle": "choix",
@@ -791,7 +791,7 @@
   "titres": [
    {
     "debut": 0.5,
-    "fin": 2.363,
+    "fin": 2.113,
     "qui": "Marcus Washington",
     "texte": "Someone ordered decaf with four shots of espresso.",
     "emotion": "mocking",
@@ -799,8 +799,8 @@
     "note": ""
    },
    {
-    "debut": 2.913,
-    "fin": 5.263,
+    "debut": 2.663,
+    "fin": 5.013,
     "qui": "You",
     "texte": "A philosophical contradiction.",
     "emotion": "",
@@ -808,8 +808,8 @@
     "note": ""
    },
    {
-    "debut": 5.513,
-    "fin": 6.713,
+    "debut": 5.263,
+    "fin": 6.463,
     "qui": "Marcus Washington",
     "texte": "I considered asking what they believed in.",
     "emotion": "happy",
@@ -817,8 +817,8 @@
     "note": ""
    },
    {
-    "debut": 7.048,
-    "fin": 9.443,
+    "debut": 6.678,
+    "fin": 9.073,
     "qui": "You",
     "texte": "You have to admit it was funny.",
     "emotion": "",
@@ -826,8 +826,8 @@
     "note": ""
    },
    {
-    "debut": 9.693,
-    "fin": 11.422,
+    "debut": 9.323,
+    "fin": 10.836,
     "qui": "Marcus Washington",
     "texte": "You really are committed to that bit, huh?",
     "emotion": "mocking",
@@ -835,8 +835,8 @@
     "note": ""
    },
    {
-    "debut": 11.972,
-    "fin": 14.172,
+    "debut": 11.386,
+    "fin": 13.586,
     "qui": "",
     "texte": "— replay, other choice —",
     "emotion": "",
@@ -844,8 +844,8 @@
     "note": "ui"
    },
    {
-    "debut": 12.972,
-    "fin": 14.238,
+    "debut": 12.386,
+    "fin": 13.586,
     "qui": "Marcus Washington",
     "texte": "Someone ordered decaf with four shots of espresso.",
     "emotion": "mocking",
@@ -853,8 +853,8 @@
     "note": ""
    },
    {
-    "debut": 14.788,
-    "fin": 16.913,
+    "debut": 13.979,
+    "fin": 16.104,
     "qui": "You",
     "texte": "What would you recommend?",
     "emotion": "",
@@ -862,8 +862,8 @@
     "note": ""
    },
    {
-    "debut": 17.163,
-    "fin": 18.383,
+    "debut": 16.354,
+    "fin": 17.817,
     "qui": "Marcus Washington",
     "texte": "Our house blend. Simple and reliable.",
     "emotion": "neutral",
@@ -871,8 +871,8 @@
     "note": ""
    },
    {
-    "debut": 19.733,
-    "fin": 22.398,
+    "debut": 19.167,
+    "fin": 21.832,
     "qui": "You",
     "texte": "I had a better joke, but I forgot it.",
     "emotion": "",
@@ -880,8 +880,8 @@
     "note": ""
    },
    {
-    "debut": 22.648,
-    "fin": 23.848,
+    "debut": 22.082,
+    "fin": 23.282,
     "qui": "Brittany Price",
     "texte": "Probably for the best.",
     "emotion": "mocking",
@@ -889,7 +889,7 @@
     "note": ""
    }
   ],
-  "duree": 24.87
+  "duree": 24.4
  },
  {
   "cle": "melange",
@@ -898,7 +898,7 @@
   "titres": [
    {
     "debut": 0.5,
-    "fin": 1.813,
+    "fin": 1.7,
     "qui": "Paige Turner",
     "texte": "I’m not sure I want to sell the whole pile.",
     "emotion": "embarrassed",
@@ -906,8 +906,8 @@
     "note": ""
    },
    {
-    "debut": 2.363,
-    "fin": 4.263,
+    "debut": 2.243,
+    "fin": 4.143,
     "qui": "You",
     "texte": "Would you sell some?",
     "emotion": "",
@@ -915,8 +915,8 @@
     "note": ""
    },
    {
-    "debut": 4.513,
-    "fin": 5.713,
+    "debut": 4.393,
+    "fin": 5.593,
     "qui": "Paige Turner",
     "texte": "Maybe the duplicates.",
     "emotion": "wary",
@@ -924,8 +924,8 @@
     "note": ""
    },
    {
-    "debut": 5.675,
-    "fin": 7.575,
+    "debut": 5.478,
+    "fin": 7.378,
     "qui": "You",
     "texte": "What about that one?",
     "emotion": "",
@@ -933,8 +933,8 @@
     "note": ""
    },
    {
-    "debut": 7.825,
-    "fin": 9.811,
+    "debut": 7.628,
+    "fin": 9.572,
     "qui": "Paige Turner",
     "texte": "I’m keeping that one. Childhood, you know?",
     "emotion": "sad",
@@ -942,8 +942,8 @@
     "note": ""
    },
    {
-    "debut": 10.361,
-    "fin": 12.981,
+    "debut": 10.122,
+    "fin": 12.742,
     "qui": "You",
     "texte": "That sounds like a lot to deal with.",
     "emotion": "",
@@ -951,8 +951,8 @@
     "note": ""
    },
    {
-    "debut": 13.231,
-    "fin": 14.431,
+    "debut": 12.992,
+    "fin": 14.192,
     "qui": "Paige Turner",
     "texte": "It has its moments.",
     "emotion": "happy",
@@ -960,7 +960,7 @@
     "note": ""
    }
   ],
-  "duree": 14.81
+  "duree": 14.62
  },
  {
   "cle": "brocante",
@@ -969,7 +969,7 @@
   "titres": [
    {
     "debut": 0.5,
-    "fin": 2.146,
+    "fin": 1.913,
     "qui": "Marlene Baxter",
     "texte": "Found these cards while clearing a closet.",
     "emotion": "happy",
@@ -977,8 +977,8 @@
     "note": ""
    },
    {
-    "debut": 1.546,
-    "fin": 3.923,
+    "debut": 1.313,
+    "fin": 3.938,
     "qui": "Wade Baxter",
     "texte": "I sell dishes and lamps. The cards are just part of the table.",
     "emotion": "tired",
@@ -986,8 +986,8 @@
     "note": ""
    },
    {
-    "debut": 5.523,
-    "fin": 7.599,
+    "debut": 5.538,
+    "fin": 7.397,
     "qui": "Colin Pierce",
     "texte": "You and I may grade that corner differently.",
     "emotion": "wary",
@@ -995,8 +995,8 @@
     "note": ""
    },
    {
-    "debut": 7.099,
-    "fin": 8.299,
+    "debut": 6.897,
+    "fin": 8.097,
     "qui": "Trevor Hayes",
     "texte": "I already scanned this lot last night.",
     "emotion": "embarrassed",
@@ -1004,8 +1004,8 @@
     "note": ""
    },
    {
-    "debut": 9.359,
-    "fin": 11.559,
+    "debut": 8.928,
+    "fin": 11.128,
     "qui": "",
     "texte": "Out of earshot (13 m): Dylan’s line is subtitled in the log, not voiced.",
     "emotion": "",
@@ -1013,8 +1013,8 @@
     "note": "ui"
    },
    {
-    "debut": 10.759,
-    "fin": 12.436,
+    "debut": 10.328,
+    "fin": 12.222,
     "qui": "Marlene Baxter",
     "texte": "Sorry about the dust. This box was in the attic.",
     "emotion": "embarrassed",
@@ -1022,8 +1022,8 @@
     "note": ""
    },
    {
-    "debut": 13.436,
-    "fin": 15.606,
+    "debut": 13.222,
+    "fin": 15.392,
     "qui": "You",
     "texte": "Do you have anything else?",
     "emotion": "",
@@ -1031,8 +1031,8 @@
     "note": ""
    },
    {
-    "debut": 15.856,
-    "fin": 17.056,
+    "debut": 15.642,
+    "fin": 16.842,
     "qui": "Marlene Baxter",
     "texte": "There is more to it, but I cannot tell the whole story in one breath.",
     "emotion": "happy",
@@ -1040,8 +1040,8 @@
     "note": "interrupted"
    },
    {
-    "debut": 17.566,
-    "fin": 19.286,
+    "debut": 17.352,
+    "fin": 19.072,
     "qui": "You",
     "texte": "[skips the line]",
     "emotion": "",
@@ -1049,8 +1049,8 @@
     "note": ""
    },
    {
-    "debut": 19.536,
-    "fin": 20.736,
+    "debut": 19.322,
+    "fin": 20.522,
     "qui": "Marlene Baxter",
     "texte": "Sure thing.",
     "emotion": "neutral",
@@ -1058,6 +1058,6 @@
     "note": ""
    }
   ],
-  "duree": 20.99
+  "duree": 20.9
  }
 ]

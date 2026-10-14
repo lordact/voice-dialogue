@@ -37,6 +37,7 @@ godot --headless --path . --script res://godot/tests/banc_charabia.gd
 
 ## Résultats (14 octobre 2026, Godot 4.4.1 headless, Linux)
 
-- Tests Python 32/32 ; parité Python/Godot 23/23 ; cas limites Godot 16/16.
-- Séquenceur GDScript 0,31 ms par réplique ; 34 µs par grain déclenché ; 12 voix en continu 0,08 ms/image (p99 0,24 ms).
+- v2 « mélodieuse » : legato, glissés de hauteur, arcs mélodiques, gamme pentatonique, vibrato chanté.
+- Tests Python 35/35 ; parité Python/Godot 23/23 ; cas limites Godot 16/16.
+- Séquenceur GDScript 0,31 ms par réplique ; 34 µs par grain déclenché ; 12 voix en continu 0,12 ms/image avec glissés (p99 0,28 ms).
 - Non mesuré : coût du mixage C++ (pilote audio factice), rendu sur PC de jeu.

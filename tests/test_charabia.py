@@ -37,8 +37,8 @@ def dire(pid, texte, emotion='neutre', loc=None, intensite=.7, ident=1):
 
 
 def tetes(evts):
-    """Syllabes jouées sans leur forme mélodique : 'ta_monte_long' -> 'ta', '_u_plat' -> '_u'."""
-    return [re.sub(r'_(plat|monte|descend)(_long)?$', '', e['grain'][4:]) for e in evts if e['grain'].startswith('syl:')]
+    """Syllabes jouées sans leur longueur : 'ta_long' -> 'ta', '_u_plat' -> '_u'."""
+    return [re.sub(r'_(court|plat|long)$', '', e['grain'][4:]) for e in evts if e['grain'].startswith('syl:')]
 
 
 def test_origine():
@@ -63,7 +63,7 @@ def test_determinisme_et_motif():
     for emo in ('triste', 'joyeux', 'fatigue', 'ravi'):
         verifier(tetes(dire('vieil_habitue', 'They are usually dramatic.', emo)[0]) == base, 'motif conservé en %s' % emo)
     # colère, surprise : certaines consonnes se durcissent, mais voyelles et nombre de syllabes restent
-    voy = lambda l: [x.lstrip('pbtdkmnlsfrch_') for x in l]
+    voy = lambda l: [x.lstrip('pbtdkmnlsfrchwyvz_') for x in l]
     for emo in ('furieux', 'surpris', 'agace'):
         t = tetes(dire('vieil_habitue', 'They are usually dramatic.', emo)[0])
         verifier(len(t) == len(base) and voy(t) == voy(base), 'voyelles et rythme conservés en %s' % emo)
@@ -103,7 +103,14 @@ def test_interjections_et_chiffres():
     verifier(premiere['t'] >= .3, 'silence avant la somme (%.2f s)' % premiere['t'])
     ev, _ = dire('enfant', 'Is it real?', 'curieux')
     syl = [e for e in ev if e['grain'].startswith('syl:')]
-    verifier(syl[-1]['grain'].endswith('monte_long'), 'question : la fin monte')
+    verifier(syl[-1]['pitch_fin'] > syl[-1]['pitch'] * 1.2, 'question : la fin monte')
+    ev, _ = dire('vendeuse_bavarde', 'Found these cards while clearing a closet.', 'neutre')
+    syl = [e for e in ev if e['grain'].startswith('syl:')]
+    verifier(syl[-1]['pitch_fin'] < syl[-1]['pitch'], 'affirmation : la fin descend')
+    sauts = [abs(b['pitch'] / a['pitch_fin'] - 1) for a, b in zip(syl, syl[1:])]
+    verifier(max(sauts) < .2, 'legato : pas de saut de hauteur > 20 %% entre syllabes (%.2f)' % max(sauts))
+    chevauche = sum(b['t'] < a['t'] + sq._duree_grain(a, durees('vendeuse_bavarde')) for a, b in zip(syl, syl[1:]))
+    verifier(chevauche >= len(syl) // 2, 'legato : les syllabes d’un même mot se tuilent')
 
 
 def test_bibliotheque_v8():

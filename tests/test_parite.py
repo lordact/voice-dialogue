@@ -32,7 +32,7 @@ if __name__ == '__main__':
             ge = g['evenements']
             total += 1
             same = len(ge) == len(pe) and all(a['grain'] == b['grain'] and abs(a['t'] - b['t']) < 1e-9 and
-                                              abs(a['pitch'] - b['pitch']) < 1e-9 and abs(a['db'] - b['db']) < 1e-9
+                                              abs(a['pitch'] - b['pitch']) < 1e-9 and abs(a['pitch_fin'] - b['pitch_fin']) < 1e-9 and abs(a['db'] - b['db']) < 1e-9
                                               for a, b in zip(ge, pe))
             if not same:
                 ecarts += 1

@@ -160,7 +160,7 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 		var var_ := (int(loc.dernier_variant.get(typ, -1)) + 1) % prises.size()
 		loc.dernier_variant[typ] = var_
 		var pitch := loc.decalage_f0 * hauteur * av.entre(0.97, 1.03)
-		evts.append({"t": etat.t, "grain": "voc:%s:%d" % [typ, var_], "pitch": pitch, "db": vol + gain_db - 1})
+		evts.append({"t": etat.t, "grain": "voc:%s:%d" % [typ, var_], "pitch": pitch, "pitch_fin": pitch, "db": vol + gain_db - 1})
 		etat.t += float(prises[var_]) / pitch + av.entre(0.08, 0.16) * pauses
 		loc.dernieres_vocalises.append([typ, loc.repliques])
 		infos.vocalises.append(typ)
@@ -206,8 +206,11 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	var calme := not (emotion in ["furieux", "agace", "ravi", "joyeux", "surpris"])
 	var hesite := maxf(float(e.get("hesite", 0)) * k, float(p.get("tics", {}).get("euh", 0)) * (0.5 if calme else 0.1))
 	var pause_chiffre := float(p.get("pause_avant_chiffre", 0))
-	var formes_fin := {"montee": "monte_long", "exclamation": "descend_long", "suspendue": "plat_long",
-		"continuation": "monte", "chantee": "descend_long", "chute_montee": "monte_long"}
+	var musical := float(p.get("musical", 0.5))
+	var legato := float(p.get("legato", 0.035))
+	var amplitude := 4.0 * etendue
+	var sauts_fin := {"chute": -4.0, "montee": 6.0, "exclamation": -3.5, "suspendue": 0.0,
+		"continuation": 2.0, "chantee": -3.0, "chute_montee": 3.0}
 
 	for si in segs.size():
 		var mots: PackedStringArray = segs[si][0]
@@ -224,31 +227,34 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 		tailles.fill(1)
 		for _i in n - nb_mots:
 			tailles[int(am.reel() * nb_mots)] += 1
+		var accents := []
+		for taille in tailles:
+			accents.append(true)
+			for _k in int(taille) - 1:
+				accents.append(false)
 		var syl_nombre := -1
 		for i in mots.size():
 			if _re(NOMBRES).search(mots[i]):
 				syl_nombre = int(float(i) / maxi(1, mots.size()) * n)
 				break
+		# Mélodie en demi-tons : déclinaison, arc vers un sommet, accents, gamme pentatonique.
+		var sommet := am.entre(0.2, 0.6)
 		var cibles := []
 		for j in n:
 			var x := float(j) / maxi(1, n - 1)
-			var h: float
-			if forme_fin == "exclamation":
-				h = 1.15 - 0.2 * x
-			elif forme_fin == "montee":
-				h = 1 - 0.06 * x + (0.4 * (x - 0.65) / 0.35 if x > 0.65 else 0.0)
-			elif forme_fin in ["suspendue", "continuation"]:
-				h = 1.02 - 0.04 * x
-			else:
-				h = 1.05 - 0.16 * x
-			if forme_fin == "chantee" and n > 1 and j == n - 2:
-				h += 0.14
 			var phase := am.reel()
-			var micro := am.entre(0.96, 1.04)
+			var micro := am.entre(-1, 1)
+			var st := 1.0 - 2.5 * x + exp(-pow((x - sommet) / 0.3, 2)) * 1.0
+			if accents[j]:
+				st += 0.45
+			if forme_fin == "exclamation":
+				st += 0.9 * (1 - x)
+			if forme_fin == "chantee" and n > 1 and j == n - 2:
+				st += 0.8
 			if emotion in ["joyeux", "moqueur", "ravi"]:
-				h += 0.07 * sin(j * 1.9 + phase)
-			h *= micro
-			cibles.append(1 + (h - 1) * etendue)
+				st += 0.35 * sin(j * 1.9 + phase)
+			st = st * amplitude + micro * 0.8
+			cibles.append(st * (1 - musical) + pentatonique(st) * musical)
 		var j := 0
 		for wi in tailles.size():
 			var taille: int = tailles[wi]
@@ -257,39 +263,39 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 				var v := am.pondere(voyelles)
 				if float(e.dures) * k > av.reel():
 					c = dures[int(av.reel() * dures.size())]
+				var debut_st: float = cibles[j]
+				var fin_st: float
 				var forme: String
 				if j == n - 1:
-					forme = formes_fin.get(forme_fin, "descend_long")
-					if forme == "monte" and debit < 0.85:
-						forme = "monte_long"
+					forme = "long"
+					fin_st = debut_st + float(sauts_fin.get(forme_fin, -4.0)) * minf(1.5, etendue)
+					if forme_fin == "chute_montee":
+						debut_st -= 2.0
 				else:
-					var r: float = cibles[j + 1] / cibles[j]
-					forme = "monte" if r > 1.04 else "descend" if r < 0.96 else "plat"
-					if forme_fin == "chute_montee" and j == n - 2:
-						forme = "descend"
+					forme = "plat" if s == 0 else "court"
 					if debit < 0.85 and s == taille - 1:
-						forme += "_long"
-				var tete := (c if c != "" else "_") + ("ee" if v == "é" else v)
-				var nom := tete + "_" + forme
-				if not durees.syllabes.has(nom):
-					nom = tete + "_plat"
+						forme = "long"
+					fin_st = debut_st + 0.65 * (float(cibles[j + 1]) - debut_st)
+				var nom := (c if c != "" else "_") + ("ee" if v == "é" else v) + "_" + forme
 				var da: Array = durees.syllabes[nom]
-				var accent := float(p.accent) if s == 0 else 1.0
 				var gain := 1.5 if s == 0 else 0.0
 				if syl_nombre >= 0 and j == syl_nombre:
 					if pause_chiffre:
 						etat.t += pause_chiffre * av.entre(0.9, 1.1)
 					gain += 2.0
-					accent *= 1.04
+					debut_st += 1.0
 				if forme_fin == "exclamation" and s == 0:
 					gain += 1.5
-				var pitch: float = f0 / float(p.f0) * cibles[j] * accent * av.entre(0.985, 1.015)
+				var base := f0 / float(p.f0) * av.entre(0.99, 1.01)
+				var pitch := base * pow(2.0, debut_st / 12.0)
+				var pitch_fin := base * pow(2.0, fin_st / 12.0)
 				if tremble:
 					pitch *= 1 + tremble * sin(etat.t * 31)
-				pitch = minf(1.9, maxf(0.55, pitch))
+				pitch = minf(2.2, maxf(0.5, pitch))
+				pitch_fin = minf(2.2, maxf(0.5, pitch_fin))
 				var debut := maxf(0.0, etat.t - float(da[1]) / pitch * 0.5)
-				evts.append({"t": debut, "grain": "syl:" + nom, "pitch": pitch, "db": vol + gain})
-				etat.t = debut + float(da[0]) / pitch - 0.008
+				evts.append({"t": debut, "grain": "syl:" + nom, "pitch": pitch, "pitch_fin": pitch_fin, "db": vol + gain})
+				etat.t = debut + duree_glissee(float(da[0]), pitch, pitch_fin) - legato
 				j += 1
 				infos.syllabes += 1
 			if wi < tailles.size() - 1:
@@ -314,10 +320,26 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	infos.duree = fin
 	return {"evenements": evts, "infos": infos}
 
+## Durée réelle d'un grain lu avec une hauteur qui glisse de p0 à p1.
+static func duree_glissee(longueur: float, p0: float, p1: float) -> float:
+	if absf(p1 - p0) < 1e-9:
+		return longueur / p0
+	return longueur * log(p1 / p0) / (p1 - p0)
+
+## Demi-ton le plus proche de la gamme pentatonique majeure (0 2 4 7 9).
+static func pentatonique(st: float) -> float:
+	var octave: float = floor(st / 12.0)
+	var reste: float = st - octave * 12.0
+	var meilleur := 0.0
+	for d in [0.0, 2.0, 4.0, 7.0, 9.0, 12.0]:
+		if absf(reste - d) < absf(reste - meilleur):
+			meilleur = d
+	return octave * 12.0 + meilleur
+
 static func duree_grain(ev: Dictionary, durees: Dictionary) -> float:
 	var g: String = ev.grain
 	if g.begins_with("syl:"):
-		return float(durees.syllabes[g.substr(4)][0]) / float(ev.pitch)
+		return duree_glissee(float(durees.syllabes[g.substr(4)][0]), float(ev.pitch), float(ev.pitch_fin))
 	var rest := g.substr(4)
 	var cut := rest.rfind(":")
 	return float(durees.vocalises[rest.substr(0, cut)][int(rest.substr(cut + 1))]) / float(ev.pitch)

@@ -7,8 +7,11 @@ RACINE = os.path.join(ICI, '..')
 from demo import DISTRIBUTION
 
 scenes = json.load(open(os.path.join(RACINE, 'demo', 'scenes.json'), encoding='utf-8'))
+v1 = {s['cle']: s['titres'] for s in json.load(open(os.path.join(RACINE, 'demo', 'scenes_v1.json'), encoding='utf-8'))}
 for s in scenes:
     s['nouveau'], s['ancien'] = s['cle'] + '_nouveau.mp3', s['cle'] + '_ancien.mp3'
+    if s['cle'] in v1:
+        s['v1'], s['titres_v1'] = s['cle'] + '_v1.mp3', v1[s['cle']]
 profils = json.load(open(os.path.join(RACINE, 'donnees', 'profils_voix.json'), encoding='utf-8'))['profils']
 habitants = {}
 for nom, ident, pid in DISTRIBUTION.values():
@@ -31,13 +34,13 @@ donnees = {
         ['Cartes hors métier', '≈ 1', 'Les sujets « cartes » restent chez des rôles légitimes ; une scène de bibliothécaire à vérifier.'],
     ],
     'perf': [
-        ['Séquenceur GDScript', '0,31 ms / réplique', 'Moyenne sur les 2 096 répliques V8 (p99 0,9 ms). Calculé une fois par réplique.'],
-        ['Déclenchement d’un grain', '34 µs', 'WAV importé en QOA. Version OGG mesurée d’abord : 1 ms par grain, abandonnée.'],
-        ['12 voix 3D en continu', '0,08 ms / image', 'p99 0,24 ms, max 0,34 ms (préchargement fait). Stress test, bien au-delà du budget du jeu.'],
+        ['Séquenceur GDScript', '0,33 ms / réplique', 'Moyenne sur les 2 096 répliques V8 (p99 0,9 ms). Calculé une fois par réplique.'],
+        ['Déclenchement d’un grain', '32 µs', 'WAV importé en QOA. Version OGG mesurée d’abord : 1 ms par grain, abandonnée.'],
+        ['12 voix 3D en continu', '0,12 ms / image', 'Glissés de hauteur compris (0,08 ms sans). p99 0,28 ms. Stress test, bien au-delà du budget du jeu.'],
         ['Préchargement', '0,6 s pour 13 profils', 'En tâche de fond, quand un habitant s’approche.'],
-        ['Banque', '18 × 276 grains', '16 Mo importés dans Godot ; régénérable à l’identique en 24 s (Python).'],
-        ['Parité Python / Godot', '23 / 23', 'Mêmes grains, mêmes instants, mêmes hauteurs (écart < 10⁻⁹).'],
-        ['Tests Python', '32 / 32', 'Dont les 10 voix d’origine reproduites (corrélation > 0,999) et 2 096 répliques V8 sans échec.'],
+        ['Banque', '18 × ~290 grains', '3 longueurs de syllabe au lieu de 6 formes ; régénérable à l’identique en ~25 s (Python).'],
+        ['Parité Python / Godot', '23 / 23', 'Mêmes grains, mêmes instants, mêmes hauteurs de début et de fin de glissé (écart < 10⁻⁹).'],
+        ['Tests Python', '35 / 35', 'Dont les 10 voix d’origine reproduites (corrélation > 0,999) et 2 096 répliques V8 sans échec.'],
         ['Cas limites Godot', '16 / 16', 'Profil inconnu, banque absente, émotion inconnue, réplique coupée, redite, PNJ retiré de la scène, sauvegarde/reprise, textes vides.'],
     ],
 }

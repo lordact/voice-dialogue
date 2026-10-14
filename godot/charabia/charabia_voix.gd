@@ -18,6 +18,7 @@ var _t := 0.0
 var _duree := 0.0
 var _parle := false
 var _fondu: Tween
+var _glisses := []                # grains en cours dont la hauteur glisse : [id, p0, p1, longueur, position]
 var cout_usec := 0                # temps passé à calculer la dernière partition
 static var cout_lecture_usec := 0 # temps cumulé de toutes les voix dans _process (mesure)
 static var cout_play_usec := 0    # dont : appels play_stream
@@ -72,6 +73,7 @@ func dire(texte: String, emotion: String = "neutre", intensite: float = 0.7) -> 
 	_duree = float(part.infos.duree)
 	_i = 0
 	_t = 0.0
+	_glisses.clear()
 	if _fondu and _fondu.is_valid():
 		_fondu.kill()
 	lecteur.volume_db = 0.0
@@ -88,6 +90,7 @@ func arreter(fondu: float = 0.06) -> void:
 		return
 	_parle = false
 	_evts = []
+	_glisses.clear()
 	if _fondu and _fondu.is_valid():
 		_fondu.kill()
 	_fondu = create_tween()
@@ -98,6 +101,7 @@ func arreter(fondu: float = 0.06) -> void:
 func _couper_net() -> void:
 	_parle = false
 	_evts = []
+	_glisses.clear()
 	if lecteur.is_inside_tree():
 		lecteur.stop()
 
@@ -122,10 +126,25 @@ func _avancer(delta: float) -> void:
 		var s := banque.flux(ev.grain)
 		if s and _lecture:
 			var a := Time.get_ticks_usec()
-			_lecture.play_stream(s, 0.0, float(ev.db) - 6.0, float(ev.pitch))
+			var id := _lecture.play_stream(s, 0.0, float(ev.db) - 6.0, float(ev.pitch))
 			cout_play_usec += Time.get_ticks_usec() - a
 			nb_grains += 1
+			var p1 := float(ev.get("pitch_fin", ev.pitch))
+			if absf(p1 - float(ev.pitch)) > 0.001 and id != AudioStreamPlaybackPolyphonic.INVALID_ID:
+				_glisses.append([id, float(ev.pitch), p1, s.get_length(), 0.0])
 		_i += 1
-	if _i >= _evts.size() and _t >= _duree:
+	# Glissé de hauteur : la vitesse de lecture suit la position dans le grain
+	# (même loi que charabia/mixage.py, intégrée ici image par image).
+	var k := 0
+	while k < _glisses.size():
+		var g: Array = _glisses[k]
+		var p: float = g[1] + (g[2] - g[1]) * clampf(g[4] / g[3], 0.0, 1.0)
+		g[4] += p * delta
+		if g[4] >= g[3] or not _lecture:
+			_glisses.remove_at(k)
+			continue
+		_lecture.set_stream_pitch_scale(g[0], g[1] + (g[2] - g[1]) * clampf(g[4] / g[3], 0.0, 1.0))
+		k += 1
+	if _i >= _evts.size() and _t >= _duree and _glisses.is_empty():
 		_parle = false
 		fini.emit()

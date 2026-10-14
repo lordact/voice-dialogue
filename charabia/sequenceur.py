@@ -176,7 +176,7 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
         var = (loc.dernier_variant.get(typ, -1) + 1) % len(durees['vocalises'][typ])  # alterne les prises
         loc.dernier_variant[typ] = var
         pitch = loc.decalage_f0 * hauteur * av.entre(.97, 1.03)
-        evts.append({'t': t, 'grain': 'voc:%s:%d' % (typ, var), 'pitch': pitch, 'db': vol + gain_db - 1})
+        evts.append({'t': t, 'grain': 'voc:%s:%d' % (typ, var), 'pitch': pitch, 'pitch_fin': pitch, 'db': vol + gain_db - 1})
         t += durees['vocalises'][typ][var] / pitch + av.entre(.08, .16) * pauses
         loc.dernieres_vocalises.append((typ, loc.repliques))
         infos['vocalises'].append(typ)
@@ -211,6 +211,10 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
     hesite = max(e.get('hesite', 0) * k, p.get('tics', {}).get('euh', 0) * (.5 if calme else .1))
     pause_chiffre = p.get('pause_avant_chiffre', 0)
 
+    musical = p.get('musical', .5)
+    legato = p.get('legato', .035)
+    amplitude = 4.0 * etendue                         # hauteur de l'arc mélodique, en demi-tons
+
     for si, ((mots, ponct), n) in enumerate(zip(segs, budget)):
         dernier_seg = si == len(segs) - 1
         forme_fin = {'?': 'montee', '!': 'exclamation', '…': 'suspendue', ',': 'continuation'}.get(ponct, 'chute')
@@ -221,28 +225,30 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
         tailles = [1] * nb_mots
         for _ in range(n - nb_mots):
             tailles[int(am.reel() * nb_mots)] += 1
-        # Position du premier nombre (silence avant la somme, syllabe appuyée).
+        accents = []
+        for taille in tailles:
+            accents += [True] + [False] * (taille - 1)
         idx_nombre = next((i for i, m in enumerate(mots) if NOMBRES.match(m)), None)
         syl_nombre = None if idx_nombre is None else int(idx_nombre / max(1, len(mots)) * n)
-        # Hauteurs cibles.
+        # Mélodie en demi-tons : une déclinaison douce, un arc qui monte vers un sommet (placé
+        # par le motif) puis redescend, les syllabes accentuées un peu plus haut, puis une
+        # attraction vers la gamme pentatonique : c'est ce qui rend la phrase « chantante ».
+        sommet = am.entre(.2, .6)
         cibles = []
         for j in range(n):
             x = j / max(1, n - 1)
+            phase, micro = am.reel(), am.entre(-1, 1)        # tirés quelle que soit l'émotion
+            st = 1.0 - 2.5 * x + math.exp(-((x - sommet) / .3) ** 2) * 1.0
+            if accents[j]:
+                st += .45
             if forme_fin == 'exclamation':
-                h = 1.15 - .2 * x
-            elif forme_fin == 'montee':
-                h = 1 - .06 * x + (.4 * (x - .65) / .35 if x > .65 else 0)
-            elif forme_fin in ('suspendue', 'continuation'):
-                h = 1.02 - .04 * x
-            else:
-                h = 1.05 - .16 * x
+                st += .9 * (1 - x)
             if forme_fin == 'chantee' and n > 1 and j == n - 2:
-                h += .14
-            phase, micro = am.reel(), am.entre(.96, 1.04)   # tirés quelle que soit l'émotion
+                st += .8
             if emotion in ('joyeux', 'moqueur', 'ravi'):
-                h += .07 * math.sin(j * 1.9 + phase)
-            h *= micro                                      # mélodie propre à la réplique
-            cibles.append(1 + (h - 1) * etendue)
+                st += .35 * math.sin(j * 1.9 + phase)
+            st = st * amplitude + micro * .8
+            cibles.append(st * (1 - musical) + pentatonique(st) * musical)
         j = 0
         for wi, taille in enumerate(tailles):
             for s in range(taille):
@@ -251,39 +257,38 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
                 if e['dures'] * k > av.reel():
                     c = dures[int(av.reel() * len(dures))]
                 dernier = j == n - 1
+                debut_st = cibles[j]
                 if dernier:
-                    forme = {'montee': 'monte_long', 'exclamation': 'descend_long', 'suspendue': 'plat_long',
-                             'continuation': 'monte', 'chantee': 'descend_long', 'chute_montee': 'monte_long'
-                             }.get(forme_fin, 'descend_long')
-                    if forme == 'monte' and debit < .85:
-                        forme = 'monte_long'
+                    forme = 'long'
+                    fin_st = debut_st + {'chute': -4.0, 'montee': 6.0, 'exclamation': -3.5, 'suspendue': 0.0,
+                                         'continuation': 2.0, 'chantee': -3.0, 'chute_montee': 3.0}.get(forme_fin, -4.0) * min(1.5, etendue)
+                    if forme_fin == 'chute_montee':
+                        debut_st -= 2.0
                 else:
-                    r = cibles[j + 1] / cibles[j]
-                    forme = 'monte' if r > 1.04 else 'descend' if r < .96 else 'plat'
-                    if forme_fin == 'chute_montee' and j == n - 2:
-                        forme = 'descend'
+                    forme = 'plat' if s == 0 else 'court'
                     if debit < .85 and s == taille - 1:   # fatigue, tristesse : on traîne en fin de mot
-                        forme += '_long'
+                        forme = 'long'
+                    fin_st = debut_st + .65 * (cibles[j + 1] - debut_st)   # glisse vers la syllabe suivante
                 nom = '%s%s_%s' % (c or '_', {'é': 'ee'}.get(v, v), forme)
-                if nom not in durees['syllabes']:
-                    nom = '%s%s_plat' % (c or '_', {'é': 'ee'}.get(v, v))
                 dur, attaque = durees['syllabes'][nom]
-                accent = p['accent'] if s == 0 else 1.0
                 gain = 1.5 if s == 0 else 0.0
                 if syl_nombre is not None and j == syl_nombre:
                     if pause_chiffre:
                         t += pause_chiffre * av.entre(.9, 1.1)
                     gain += 2.0
-                    accent *= 1.04
+                    debut_st += 1.0
                 if forme_fin == 'exclamation' and s == 0:
                     gain += 1.5
-                pitch = f0 / p['f0'] * cibles[j] * accent * av.entre(.985, 1.015)
+                base = f0 / p['f0'] * av.entre(.99, 1.01)
+                pitch = base * 2 ** (debut_st / 12)
+                pitch_fin = base * 2 ** (fin_st / 12)
                 if tremble:
                     pitch *= 1 + tremble * math.sin(t * 31)
-                pitch = min(1.9, max(.55, pitch))
+                pitch = min(2.2, max(.5, pitch))
+                pitch_fin = min(2.2, max(.5, pitch_fin))
                 debut = max(0.0, t - attaque / pitch * .5)  # aligne grossièrement l'attaque de voyelle
-                evts.append({'t': debut, 'grain': 'syl:' + nom, 'pitch': pitch, 'db': vol + gain})
-                t = debut + dur / pitch - .008
+                evts.append({'t': debut, 'grain': 'syl:' + nom, 'pitch': pitch, 'pitch_fin': pitch_fin, 'db': vol + gain})
+                t = debut + duree_glissee(dur, pitch, pitch_fin) - legato
                 j += 1
                 infos['syllabes'] += 1
             if wi < len(tailles) - 1:
@@ -308,9 +313,25 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
     return evts, infos
 
 
+def duree_glissee(longueur, p0, p1):
+    """Durée réelle d'un grain de `longueur` s lu avec une hauteur qui glisse de p0 à p1
+    (la vitesse de lecture suit la position dans le grain : dp/dt = p0 + (p1-p0)·pos/L)."""
+    if abs(p1 - p0) < 1e-9:
+        return longueur / p0
+    return longueur * math.log(p1 / p0) / (p1 - p0)
+
+
+def pentatonique(st):
+    """Demi-ton le plus proche de la gamme pentatonique majeure (0 2 4 7 9) autour de la base."""
+    octave = math.floor(st / 12)
+    reste = st - octave * 12
+    meilleur = min((0, 2, 4, 7, 9, 12), key=lambda d: abs(reste - d))
+    return octave * 12 + meilleur
+
+
 def _duree_grain(ev, durees):
     kind, rest = ev['grain'].split(':', 1)
     if kind == 'syl':
-        return durees['syllabes'][rest][0] / ev['pitch']
+        return duree_glissee(durees['syllabes'][rest][0], ev['pitch'], ev['pitch_fin'])
     typ, var = rest.rsplit(':', 1)
     return durees['vocalises'][typ][int(var)] / ev['pitch']

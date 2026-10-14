@@ -1,0 +1,1063 @@
+[
+ {
+  "cle": "palette",
+  "titre": "Voice palette — 17 profiles + original, same line",
+  "description": "Chaque profil dit la même réplique V2 (neutre). « origine » = réglage des voix actuelles, rejoué par le nouveau moteur.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.7,
+    "qui": "",
+    "texte": "Original village voice — origine",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 0.9,
+    "fin": 2.908,
+    "qui": "origine",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 3.958,
+    "fin": 6.158,
+    "qui": "",
+    "texte": "Bored shopkeeper — commercant_blase",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 4.358,
+    "fin": 6.501,
+    "qui": "commercant_blase",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 7.551,
+    "fin": 9.751,
+    "qui": "",
+    "texte": "Slow old regular — vieil_habitue",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 7.951,
+    "fin": 10.652,
+    "qui": "vieil_habitue",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 11.702,
+    "fin": 13.902,
+    "qui": "",
+    "texte": "Overexcited teen — ado_surexcite",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 12.102,
+    "fin": 13.895,
+    "qui": "ado_surexcite",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 14.945,
+    "fin": 17.145,
+    "qui": "",
+    "texte": "Quiet neighbour — voisin_discret",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 15.345,
+    "fin": 17.209,
+    "qui": "voisin_discret",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 18.259,
+    "fin": 20.459,
+    "qui": "",
+    "texte": "Chatty stallholder — vendeuse_bavarde",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 18.659,
+    "fin": 20.728,
+    "qui": "vendeuse_bavarde",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 21.778,
+    "fin": 23.978,
+    "qui": "",
+    "texte": "Methodical collector — collectionneur_methodique",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 22.178,
+    "fin": 24.17,
+    "qui": "collectionneur_methodique",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 25.22,
+    "fin": 27.42,
+    "qui": "",
+    "texte": "Hurried professional — pro_presse",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 25.62,
+    "fin": 26.903,
+    "qui": "pro_presse",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 27.953,
+    "fin": 30.153,
+    "qui": "",
+    "texte": "Warm parent — parent_chaleureux",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 28.353,
+    "fin": 30.53,
+    "qui": "parent_chaleureux",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 31.58,
+    "fin": 33.78,
+    "qui": "",
+    "texte": "Nervous reseller — revendeur_nerveux",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 31.98,
+    "fin": 34.077,
+    "qui": "revendeur_nerveux",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 35.127,
+    "fin": 37.327,
+    "qui": "",
+    "texte": "Sarcastic — sarcastique",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 35.527,
+    "fin": 37.623,
+    "qui": "sarcastique",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 38.673,
+    "fin": 40.873,
+    "qui": "",
+    "texte": "Young child — enfant",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 39.073,
+    "fin": 40.783,
+    "qui": "enfant",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 41.833,
+    "fin": 44.033,
+    "qui": "",
+    "texte": "Big gruff guy — grand_gaillard",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 42.233,
+    "fin": 44.526,
+    "qui": "grand_gaillard",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 45.576,
+    "fin": 47.776,
+    "qui": "",
+    "texte": "Refined elderly lady — dame_distinguee",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 45.976,
+    "fin": 48.348,
+    "qui": "dame_distinguee",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 49.398,
+    "fin": 51.598,
+    "qui": "",
+    "texte": "Confident dealer — revendeur_assure",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 49.798,
+    "fin": 51.807,
+    "qui": "revendeur_assure",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 52.857,
+    "fin": 55.057,
+    "qui": "",
+    "texte": "Formal official — agent_officiel",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 53.257,
+    "fin": 55.21,
+    "qui": "agent_officiel",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 56.26,
+    "fin": 58.46,
+    "qui": "",
+    "texte": "Dreamy artist — reveuse_artiste",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 56.66,
+    "fin": 59.121,
+    "qui": "reveuse_artiste",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 60.171,
+    "fin": 62.371,
+    "qui": "",
+    "texte": "Jovial cook — cuisinier_jovial",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 60.571,
+    "fin": 62.319,
+    "qui": "cuisinier_jovial",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 63.97
+ },
+ {
+  "cle": "passant",
+  "titre": "Neutral passer-by — Felix the mail carrier",
+  "description": "Felix passe en disant bonjour, le joueur l’arrête. Lignes V3 « postal_worker.busy_monday ».",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 1.7,
+    "qui": "Felix Romero",
+    "texte": "Monday mornings bring everyone’s weekend parcels.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 1.914,
+    "fin": 3.904,
+    "qui": "You",
+    "texte": "Is Monday the busiest?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 4.154,
+    "fin": 5.354,
+    "qui": "Felix Romero",
+    "texte": "Usually, yes.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 5.062,
+    "fin": 6.827,
+    "qui": "You",
+    "texte": "Any quieter time?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 7.077,
+    "fin": 8.277,
+    "qui": "Felix Romero",
+    "texte": "Late afternoon, unless a holiday is coming.",
+    "emotion": "curious",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 8.503,
+    "fin": 10.358,
+    "qui": "You",
+    "texte": "I should get going.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 10.608,
+    "fin": 11.808,
+    "qui": "Felix Romero",
+    "texte": "See you around.",
+    "emotion": "goodbye",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 12.03
+ },
+ {
+  "cle": "opposes",
+  "titre": "Opposite timbres — Antonio (78) and Ava (9)",
+  "description": "Scènes V3 « park_regular.weather » et V6 « v6_041 ».",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 3.483,
+    "qui": "Antonio Garcia",
+    "texte": "Looks like rain, but my knees are not a reliable forecast.",
+    "emotion": "tired",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 4.033,
+    "fin": 6.068,
+    "qui": "You",
+    "texte": "Are they usually right?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 6.318,
+    "fin": 7.822,
+    "qui": "Antonio Garcia",
+    "texte": "They are usually dramatic.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 8.972,
+    "fin": 10.911,
+    "qui": "Ava Washington",
+    "texte": "I found a wooden box under the bench and thought it was treasure.",
+    "emotion": "delighted",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 11.461,
+    "fin": 14.036,
+    "qui": "You",
+    "texte": "Was it filled with legendary socks?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 14.286,
+    "fin": 16.387,
+    "qui": "Ava Washington",
+    "texte": "Worse. Gardening gloves.",
+    "emotion": "disappointed",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 17.54
+ },
+ {
+  "cle": "parc",
+  "titre": "Park chatter between residents — Rosa and Bob",
+  "description": "Conversation entre PNJ reprise d’une scène V2, entendue en passant (distance 9 m → 5 m → 10 m), puis chacun reprend sa routine : 6 s de silence.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.651,
+    "qui": "Rosa Garcia",
+    "texte": "Looks like rain again. The clouds have a personal problem with this town.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 3.001,
+    "fin": 4.201,
+    "qui": "Bob Foster",
+    "texte": "Is it supposed to last?",
+    "emotion": "curious",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 4.033,
+    "fin": 5.301,
+    "qui": "Rosa Garcia",
+    "texte": "Forecast says until lunch, which means dinner.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 5.601,
+    "fin": 7.631,
+    "qui": "Bob Foster",
+    "texte": "Ha! At this point the ducks should pay property tax.",
+    "emotion": "happy",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 8.031,
+    "fin": 9.364,
+    "qui": "Rosa Garcia",
+    "texte": "Oh, this town never runs out.",
+    "emotion": "tired",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 16.26
+ },
+ {
+  "cle": "negociation",
+  "titre": "Negotiation — Derek Moss, reseller (accepted)",
+  "description": "Lot et prix calculés par addons/economy (profil « reseller »), répliques = lignes du profil. La voix suit le résultat (lowball → furieux, counter → méfiant, accept → ravi), elle ne décide rien.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.06,
+    "qui": "Derek Moss",
+    "texte": "I know what the market is. I also know what sells.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 2.61,
+    "fin": 5.05,
+    "qui": "You",
+    "texte": "What are you asking for the lot?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 5.3,
+    "fin": 7.5,
+    "qui": "",
+    "texte": "Lot of 10 cards — asking $38.79",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 5.7,
+    "fin": 8.037,
+    "qui": "Derek Moss",
+    "texte": "I can't pay retail if I'm the one taking the risk.",
+    "emotion": "wary",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 8.587,
+    "fin": 10.307,
+    "qui": "You",
+    "texte": "I can do $12.00.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 10.557,
+    "fin": 11.757,
+    "qui": "Derek Moss",
+    "texte": "You're not my first lowballer today.",
+    "emotion": "furious",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 11.825,
+    "fin": 13.41,
+    "qui": "You",
+    "texte": "Fine. $31.00.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 13.66,
+    "fin": 15.86,
+    "qui": "",
+    "texte": "Counter-offer: $36.69",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 14.06,
+    "fin": 15.26,
+    "qui": "Derek Moss",
+    "texte": "Meet me in the middle.",
+    "emotion": "wary",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 15.159,
+    "fin": 16.834,
+    "qui": "You",
+    "texte": "Deal at $36.69.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 17.084,
+    "fin": 18.284,
+    "qui": "Derek Moss",
+    "texte": "Pleasure doing business.",
+    "emotion": "delighted",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 19.26
+ },
+ {
+  "cle": "negociation_rate",
+  "titre": "Negotiation — Derek walks away",
+  "description": "Même vendeur, autre suite réelle Economy : lowball → refuse → counter → départ (patience épuisée).",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.06,
+    "qui": "Derek Moss",
+    "texte": "I know what the market is. I also know what sells.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 2.61,
+    "fin": 4.33,
+    "qui": "You",
+    "texte": "I can do $12.00.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 4.58,
+    "fin": 5.78,
+    "qui": "Derek Moss",
+    "texte": "You're not my first lowballer today.",
+    "emotion": "furious",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 6.215,
+    "fin": 7.8,
+    "qui": "You",
+    "texte": "Okay, $24.00?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 8.05,
+    "fin": 9.25,
+    "qui": "Derek Moss",
+    "texte": "I'd lose money on that.",
+    "emotion": "annoyed",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 9.28,
+    "fin": 10.595,
+    "qui": "You",
+    "texte": "$31.00?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 10.845,
+    "fin": 13.045,
+    "qui": "",
+    "texte": "Counter-offer: $36.41",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 11.245,
+    "fin": 12.546,
+    "qui": "Derek Moss",
+    "texte": "Meet me in the middle.",
+    "emotion": "wary",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 13.096,
+    "fin": 14.996,
+    "qui": "You",
+    "texte": "$35.00, final offer.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 15.246,
+    "fin": 16.446,
+    "qui": "Derek Moss",
+    "texte": "See you next market.",
+    "emotion": "annoyed",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 16.9
+ },
+ {
+  "cle": "meme_replique",
+  "titre": "Same line, different voices and moods — “See you around.”",
+  "description": "Même motif (graine = texte exact), réalisé par 6 voix ; Felix la dit deux fois : même motif, petites variations.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 1.7,
+    "qui": "Felix Romero",
+    "texte": "See you around.",
+    "emotion": "goodbye",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 1.718,
+    "fin": 2.918,
+    "qui": "Felix Romero",
+    "texte": "See you around.",
+    "emotion": "goodbye",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 2.939,
+    "fin": 4.139,
+    "qui": "Brittany Price",
+    "texte": "See you around.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 4.168,
+    "fin": 6.02,
+    "qui": "Antonio Garcia",
+    "texte": "See you around.",
+    "emotion": "tired",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 6.97,
+    "fin": 8.17,
+    "qui": "Derek Moss",
+    "texte": "See you around.",
+    "emotion": "annoyed",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 8.492,
+    "fin": 9.692,
+    "qui": "Ava Washington",
+    "texte": "See you around!",
+    "emotion": "happy",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 10.55
+ },
+ {
+  "cle": "choix",
+  "titre": "Reacting to the player’s choices — Marcus and Brittany at the café",
+  "description": "Deux branches V4 « cafe_coffee » (blague absurde / question pratique), puis une blague qui tombe à plat chez Brittany (V2).",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.363,
+    "qui": "Marcus Washington",
+    "texte": "Someone ordered decaf with four shots of espresso.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 2.913,
+    "fin": 5.263,
+    "qui": "You",
+    "texte": "A philosophical contradiction.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 5.513,
+    "fin": 6.713,
+    "qui": "Marcus Washington",
+    "texte": "I considered asking what they believed in.",
+    "emotion": "happy",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 7.048,
+    "fin": 9.443,
+    "qui": "You",
+    "texte": "You have to admit it was funny.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 9.693,
+    "fin": 11.422,
+    "qui": "Marcus Washington",
+    "texte": "You really are committed to that bit, huh?",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 11.972,
+    "fin": 14.172,
+    "qui": "",
+    "texte": "— replay, other choice —",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 12.972,
+    "fin": 14.238,
+    "qui": "Marcus Washington",
+    "texte": "Someone ordered decaf with four shots of espresso.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 14.788,
+    "fin": 16.913,
+    "qui": "You",
+    "texte": "What would you recommend?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 17.163,
+    "fin": 18.383,
+    "qui": "Marcus Washington",
+    "texte": "Our house blend. Simple and reliable.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 19.733,
+    "fin": 22.398,
+    "qui": "You",
+    "texte": "I had a better joke, but I forgot it.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 22.648,
+    "fin": 23.848,
+    "qui": "Brittany Price",
+    "texte": "Probably for the best.",
+    "emotion": "mocking",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 24.87
+ },
+ {
+  "cle": "melange",
+  "titre": "Mixed feelings — Paige hesitates to sell",
+  "description": "Gêne → méfiance → tristesse → petit rire : V3 « casual_seller.no_sale » et la ligne Economy « keep » du profil nostalgique.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 1.813,
+    "qui": "Paige Turner",
+    "texte": "I’m not sure I want to sell the whole pile.",
+    "emotion": "embarrassed",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 2.363,
+    "fin": 4.263,
+    "qui": "You",
+    "texte": "Would you sell some?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 4.513,
+    "fin": 5.713,
+    "qui": "Paige Turner",
+    "texte": "Maybe the duplicates.",
+    "emotion": "wary",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 5.675,
+    "fin": 7.575,
+    "qui": "You",
+    "texte": "What about that one?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 7.825,
+    "fin": 9.811,
+    "qui": "Paige Turner",
+    "texte": "I’m keeping that one. Childhood, you know?",
+    "emotion": "sad",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 10.361,
+    "fin": 12.981,
+    "qui": "You",
+    "texte": "That sounds like a lot to deal with.",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 13.231,
+    "fin": 14.431,
+    "qui": "Paige Turner",
+    "texte": "It has its moments.",
+    "emotion": "happy",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 14.81
+ },
+ {
+  "cle": "brocante",
+  "titre": "Flea market — several stalls, distance, voice budget, skipped line",
+  "description": "Vendeurs à 3, 4, 6 et 9 m ; un 5e à 13 m n’est pas joué (au-delà de 11 m, comme dans le jeu). Deux voix se chevauchent au plus (règle du futur directeur d’ambiance, posée ici à la main). À la fin, le joueur passe une longue réplique : fondu de 60 ms.",
+  "titres": [
+   {
+    "debut": 0.5,
+    "fin": 2.146,
+    "qui": "Marlene Baxter",
+    "texte": "Found these cards while clearing a closet.",
+    "emotion": "happy",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 1.546,
+    "fin": 3.923,
+    "qui": "Wade Baxter",
+    "texte": "I sell dishes and lamps. The cards are just part of the table.",
+    "emotion": "tired",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 5.523,
+    "fin": 7.599,
+    "qui": "Colin Pierce",
+    "texte": "You and I may grade that corner differently.",
+    "emotion": "wary",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 7.099,
+    "fin": 8.299,
+    "qui": "Trevor Hayes",
+    "texte": "I already scanned this lot last night.",
+    "emotion": "embarrassed",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 9.359,
+    "fin": 11.559,
+    "qui": "",
+    "texte": "Out of earshot (13 m): Dylan’s line is subtitled in the log, not voiced.",
+    "emotion": "",
+    "joueur": false,
+    "note": "ui"
+   },
+   {
+    "debut": 10.759,
+    "fin": 12.436,
+    "qui": "Marlene Baxter",
+    "texte": "Sorry about the dust. This box was in the attic.",
+    "emotion": "embarrassed",
+    "joueur": false,
+    "note": ""
+   },
+   {
+    "debut": 13.436,
+    "fin": 15.606,
+    "qui": "You",
+    "texte": "Do you have anything else?",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 15.856,
+    "fin": 17.056,
+    "qui": "Marlene Baxter",
+    "texte": "There is more to it, but I cannot tell the whole story in one breath.",
+    "emotion": "happy",
+    "joueur": false,
+    "note": "interrupted"
+   },
+   {
+    "debut": 17.566,
+    "fin": 19.286,
+    "qui": "You",
+    "texte": "[skips the line]",
+    "emotion": "",
+    "joueur": true,
+    "note": ""
+   },
+   {
+    "debut": 19.536,
+    "fin": 20.736,
+    "qui": "Marlene Baxter",
+    "texte": "Sure thing.",
+    "emotion": "neutral",
+    "joueur": false,
+    "note": ""
+   }
+  ],
+  "duree": 20.99
+ }
+]

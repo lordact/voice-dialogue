@@ -18,6 +18,10 @@ SR = 44100
 VOYELLES = {'a': (800, 1250), 'e': (480, 1850), 'i': (320, 2300), 'o': (520, 900),
             'u': (360, 820), 'é': (420, 2000), 'eu': (480, 1450), 'on': (430, 1000)}
 CONSONNES = ['p', 't', 'k', 'b', 'd', 'm', 'n', 'l', 's', 'ch', 'f', 'r', '']
+# Style mélodieux : diphtongues (la voyelle glisse vers une seconde dans sa seconde moitié) et
+# glissés d'attaque w/y. Séparés de VOYELLES pour ne pas changer la reproduction des voix d'origine.
+DIPHTONGUES = {'ai': ('a', 'i'), 'oi': ('o', 'i'), 'ao': ('a', 'u'), 'ei': ('é', 'i'), 'ou': ('o', 'u')}
+GLISSES = {'w': 'u', 'y': 'i'}
 
 
 @dataclass(frozen=True)
@@ -34,6 +38,8 @@ class Timbre:
     attaque: float = .012
     relache: float = .035
     brillance: float = .15    # gain du troisième formant
+    chant: float = 0.0        # vibrato « chanté » ajouté sur les voyelles tenues (style mélodieux)
+    chant_retard: float = .12 # il s'installe après ce délai (s), comme chez un chanteur
 
 
 def resonateur(x, f, bw):
@@ -43,8 +49,9 @@ def resonateur(x, f, bw):
     return lfilter([1 - r], [1, -c1, -c2], x)
 
 
-def resonateur_glissant(x, f_debut, f_fin, bw, bloc=256):
-    """Formant dont la fréquence glisse (diphtongues, soupirs) : coefficients mis à jour par bloc."""
+def resonateur_glissant(x, f_debut, f_fin, bw, bloc=256, debut=0.0, fin=1.0):
+    """Formant dont la fréquence glisse (diphtongues, soupirs, w/y) : coefficients mis à jour par
+    bloc. Le glissé a lieu entre les fractions `debut` et `fin` de la durée."""
     if abs(f_fin - f_debut) < 1:
         return resonateur(x, f_debut, bw)
     y = np.empty_like(x)
@@ -52,7 +59,9 @@ def resonateur_glissant(x, f_debut, f_fin, bw, bloc=256):
     n = len(x)
     for a in range(0, n, bloc):
         b = min(n, a + bloc)
-        f = f_debut + (f_fin - f_debut) * (a + b) / 2 / max(1, n)
+        pos = (a + b) / 2 / max(1, n)
+        u = min(1.0, max(0.0, (pos - debut) / max(1e-6, fin - debut)))
+        f = f_debut + (f_fin - f_debut) * u
         r = np.exp(-np.pi * bw / SR)
         c1, c2 = 2 * r * np.cos(2 * np.pi * f / SR), -r * r
         y[a:b], zi = lfilter([1 - r], [1, -c1, -c2], x[a:b], zi=zi)
@@ -79,7 +88,7 @@ def source(f0, rng, t: Timbre, n_bruit=None):
 
 
 def voyelle(duree, f0_debut, f0_fin, formants, rng, t: Timbre = Timbre(), contour=None,
-            formants_fin=None, enveloppe=None):
+            formants_fin=None, enveloppe=None, glisse=(0.0, 1.0)):
     """Voyelle de l'original, avec en plus : courbe de hauteur libre, formants glissants,
     enveloppe libre. Sans ces options et avec Timbre(), sortie identique à l'ancien script."""
     n = int(duree * SR)
@@ -90,6 +99,10 @@ def voyelle(duree, f0_debut, f0_fin, formants, rng, t: Timbre = Timbre(), contou
     else:
         f0 = courbe(contour, n) * f0_debut
     f0 = f0 * (1 + t.vibrato * np.sin(np.linspace(0, 2 * np.pi * t.vib_freq * duree, n)))
+    if t.chant:
+        tt = np.arange(n) / SR
+        rampe = np.clip((tt - t.chant_retard) / .15, 0, 1)
+        f0 = f0 * (1 + t.chant * rampe * np.sin(2 * np.pi * t.vib_freq * tt))
     src = source(f0, rng, t)
     f1, f2 = formants[0] * t.formant, formants[1] * t.formant
     bw1, bw2, bw3 = 90 * t.largeur, 140 * t.largeur, 250 * t.largeur
@@ -97,7 +110,8 @@ def voyelle(duree, f0_debut, f0_fin, formants, rng, t: Timbre = Timbre(), contou
         sig = resonateur(src, f1, bw1) + resonateur(src, f2, bw2) * .55 * (1 - .5 * t.nasal)
     else:
         g1, g2 = formants_fin[0] * t.formant, formants_fin[1] * t.formant
-        sig = resonateur_glissant(src, f1, g1, bw1) + resonateur_glissant(src, f2, g2, bw2) * .55 * (1 - .5 * t.nasal)
+        sig = resonateur_glissant(src, f1, g1, bw1, debut=glisse[0], fin=glisse[1]) + \
+            resonateur_glissant(src, f2, g2, bw2, debut=glisse[0], fin=glisse[1]) * .55 * (1 - .5 * t.nasal)
     sig = sig + resonateur(src, 2900 * t.formant, bw3) * t.brillance
     if t.nasal:
         sig = sig + resonateur(src, 250, 100) * t.nasal * .8
@@ -114,9 +128,18 @@ def voyelle(duree, f0_debut, f0_fin, formants, rng, t: Timbre = Timbre(), contou
 
 
 def consonne(c, f0, rng, t: Timbre = Timbre()):
-    """Consonnes de l'original ; les fréquences suivent la taille du conduit vocal."""
-    if c == '':
+    """Consonnes de l'original ; les fréquences suivent la taille du conduit vocal.
+    Ajouts du style mélodieux : v et z (fricatives voisées) ; w et y sont des glissés de
+    voyelle (rendus par la voyelle elle-même, voir banque.py)."""
+    if c in ('', 'w', 'y'):
         return np.zeros(0)
+    if c in ('v', 'z'):
+        n = int(.05 * SR)
+        env = np.sin(np.linspace(0, np.pi, n))
+        bruit = resonateur(rng.normal(0, 1, n), (2200 if c == 'v' else 5000) * t.formant, 1800) * .22
+        phase = np.cumsum(np.full(n, f0) / SR)
+        hum = resonateur(np.sin(2 * np.pi * phase) + .3 * np.sin(4 * np.pi * phase), 400 * t.formant, 250) * .5
+        return (bruit + hum) * env
     k = t.formant
     if c in 'ptkbd':
         n = int(.018 * SR)
