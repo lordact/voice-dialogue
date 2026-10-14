@@ -11,8 +11,9 @@ import numpy as np
 from dataclasses import replace
 from noyau import SR, VOYELLES, DIPHTONGUES, GLISSES, Timbre, voyelle, consonne, timbre_depuis
 import vocalises
+import phonetique
 
-FORMES = {'court': .78, 'plat': 1.0, 'long': 1.85}  # facteur de longueur de la voyelle
+FORMES = {'court': .74, 'plat': 1.0, 'long': 1.75}  # facteur de longueur de la voyelle
 ASCII = {'é': 'ee'}
 
 
@@ -70,21 +71,15 @@ class BanqueProfil:
     def _rendre(self):
         p, t = self.p, self.t
         brut_s, brut_v = {}, {}
-        legato = replace(t, attaque=max(t.attaque, .02), relache=max(t.relache, .05))
-        for c in p['consonnes']:
-            for v in p['voyelles']:
-                for forme, k in FORMES.items():
-                    rng = np.random.default_rng(_graine(self.pid, c, v, forme))
-                    cons = consonne(c, self.f0, rng, t)
-                    debut_v, fin_v = (v, None) if v not in DIPHTONGUES else DIPHTONGUES[v]
-                    glisse = (.45, 1.0)
-                    if c in GLISSES:  # « wa », « yo » : la voyelle part de u / i
-                        fin_v, debut_v, glisse = debut_v if fin_v is None else fin_v, GLISSES[c], (0.0, .3)
-                        if v in DIPHTONGUES:
-                            fin_v = DIPHTONGUES[v][0]
-                    voy = voyelle(p['syllabe'] * k, self.f0, self.f0, VOYELLES[debut_v], rng, legato,
-                                  formants_fin=VOYELLES[fin_v] if fin_v else None, glisse=glisse)
-                    brut_s[nom_syllabe(c, v, forme)] = (np.concatenate([cons, voy]), len(cons) / SR)
+        # Syllabaire « parlé » (phonetique.py) : attaque + voyelle + coda, coarticulées.
+        # court = syllabe inaccentuée (réduite), plat = accentuée, long = fin de phrase.
+        self.inventaire = phonetique.inventaire(self.pid, p)
+        for syl in self.inventaire:
+            for forme, k in FORMES.items():
+                rng = np.random.default_rng(_graine(self.pid, syl['nom'], forme))
+                sig, att = phonetique.syllabe(syl['attaque'], syl['voyelle'], syl['coda'], p['syllabe'] * k,
+                                              self.f0, t, rng, reduite=(forme == 'court'))
+                brut_s[syl['nom'] + '_' + forme] = (sig, att)
         for typ, fn in vocalises.TYPES.items():
             brut_v[typ] = [fn(self.f0, t, np.random.default_rng(_graine(self.pid, typ, k)), p) for k in range(2)]
         # Sonie : chaque grain est calé sur une cible (les voyelles ouvertes restent un peu plus
@@ -93,7 +88,9 @@ class BanqueProfil:
         self.syllabes = {}
         for nom, (s, a) in brut_s.items():
             debut = int(a * SR)
-            cible = RMS_REF * 10 ** (DECALAGE_VOYELLE.get(_voyelle_de(nom), -2) / 20)
+            v = nom.rsplit('_', 1)[0].split('-')[0]
+            v = next((x for x in sorted(DECALAGE_VOYELLE, key=len, reverse=True) if v.endswith(x)), 'a')
+            cible = RMS_REF * 10 ** ((DECALAGE_VOYELLE[v] - (2.5 if nom.endswith('_court') else 0)) / 20)
             self.syllabes[nom] = (_caler(s, cible, debut), a)
         self.vocalises = {k: [_caler(s, RMS_REF * 10 ** (CIBLE_VOCALISE.get(k, -4) / 20)) for s in l]
                           for k, l in brut_v.items()}
@@ -103,7 +100,8 @@ class BanqueProfil:
         WAV par défaut : Godot l'importe en QOA, et jouer un grain ne coûte presque rien.
         (En OGG, chaque grain instancie un décodeur Vorbis : ~1 ms par grain, mesuré.)"""
         os.makedirs(dossier, exist_ok=True)
-        index = {'profil': self.pid, 'f0': self.f0, 'sr': sr_sortie, 'format': format_, 'syllabes': {}, 'vocalises': {}}
+        index = {'profil': self.pid, 'f0': self.f0, 'sr': sr_sortie, 'format': format_, 'syllabes': {}, 'vocalises': {},
+                 'inventaire': inventaire_compact(self.inventaire)}
         ecrire = (lambda c, s: ecrire_wav(c, _reechantillonner(s, sr_sortie), sr_sortie)) if format_ == 'wav' \
             else (lambda c, s: _ecrire_ogg(c, s, sr_sortie, qualite))
         for nom, (s, a) in self.syllabes.items():
@@ -115,6 +113,11 @@ class BanqueProfil:
             index['vocalises'][typ] = [round(len(s) / SR, 4) for s in l]
         json.dump(index, open(os.path.join(dossier, 'index.json'), 'w'), indent=1)
         return index
+
+
+def inventaire_compact(inv):
+    """[[nom, poids, particule, attaque dure], ...] : ce que le séquenceur (Python et Godot) lit."""
+    return [[x['nom'], x['poids'], x['particule'], x['dure']] for x in inv]
 
 
 def _reechantillonner(sig, sr):

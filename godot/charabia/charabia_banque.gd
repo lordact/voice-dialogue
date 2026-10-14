@@ -7,7 +7,7 @@ const RACINE := "res://banque/"
 static var _banques := {}
 
 var pid: String
-var durees := {"syllabes": {}, "vocalises": {}}
+var durees := {"syllabes": {}, "vocalises": {}, "inventaire": []}
 var _flux := {}
 var ok := false
 var extension := "wav"
@@ -33,6 +33,7 @@ func _init(profil_id: String) -> void:
 		durees.syllabes[nom] = [float(idx.syllabes[nom].duree), float(idx.syllabes[nom].attaque)]
 	for typ in idx.vocalises:
 		durees.vocalises[typ] = idx.vocalises[typ]
+	durees.inventaire = idx.get("inventaire", [])
 	extension = str(idx.get("format", "ogg"))
 	ok = true
 

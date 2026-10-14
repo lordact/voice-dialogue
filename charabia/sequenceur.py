@@ -159,9 +159,10 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
     loc.occurrences[motif] = occ + 1
     av = Alea(graine ^ fnv1a('%s#%d#%d' % (loc.pid, loc.ident, occ)) ^ (loc.repliques * 2654435761 & M32))
 
-    consonnes = list(p['consonnes'].items())
-    voyelles = list(p['voyelles'].items())
-    dures = [c for c in p['consonnes'] if c and c in 'ptkbd'] or ['t']
+    inv = durees['inventaire']                      # [[nom, poids, particule, attaque dure], ...]
+    pleines = [(x[0], x[1]) for x in inv if not x[2]]
+    particules = [(x[0], x[1]) for x in inv if x[2]] or pleines
+    syl_dures = [x[0] for x in inv if x[3]] or [pleines[0][0]]
 
     evts, t = [], 0.0
     infos = {'motif': motif, 'graine': graine, 'occurrence': occ, 'vocalises': [], 'syllabes': 0}
@@ -225,9 +226,16 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
         tailles = [1] * nb_mots
         for _ in range(n - nb_mots):
             tailles[int(am.reel() * nb_mots)] += 1
-        accents = []
+        # Structure des mots (fixée par le motif) : un mot sur trois environ, s'il n'a qu'une
+        # syllabe, est un petit mot-outil inaccentué ; sinon l'accent tombe sur la 1re syllabe,
+        # parfois sur la 2e. C'est cette alternance fort/faible qui donne le rythme de la parole.
+        accents, outils = [], []
         for taille in tailles:
-            accents += [True] + [False] * (taille - 1)
+            outil = taille == 1 and am.reel() < .4
+            place = 0 if am.reel() < .7 else 1
+            for s_ in range(taille):
+                accents.append(not outil and s_ == min(place, taille - 1))
+                outils.append(outil)
         idx_nombre = next((i for i, m in enumerate(mots) if NOMBRES.match(m)), None)
         syl_nombre = None if idx_nombre is None else int(idx_nombre / max(1, len(mots)) * n)
         # Mélodie en demi-tons : une déclinaison douce, un arc qui monte vers un sommet (placé
@@ -252,10 +260,9 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
         j = 0
         for wi, taille in enumerate(tailles):
             for s in range(taille):
-                c = am.pondere(consonnes)
-                v = am.pondere(voyelles)
-                if e['dures'] * k > av.reel():
-                    c = dures[int(av.reel() * len(dures))]
+                nom_syl = am.pondere(particules if outils[j] else pleines)
+                if e['dures'] * k > av.reel():          # colère : attaques plus dures
+                    nom_syl = syl_dures[int(av.reel() * len(syl_dures))]
                 dernier = j == n - 1
                 debut_st = cibles[j]
                 if dernier:
@@ -265,19 +272,19 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
                     if forme_fin == 'chute_montee':
                         debut_st -= 2.0
                 else:
-                    forme = 'plat' if s == 0 else 'court'
-                    if debit < .85 and s == taille - 1:   # fatigue, tristesse : on traîne en fin de mot
+                    forme = 'plat' if accents[j] else 'court'
+                    if debit < .85 and s == taille - 1 and not outils[j]:   # fatigue : on traîne en fin de mot
                         forme = 'long'
                     fin_st = debut_st + .65 * (cibles[j + 1] - debut_st)   # glisse vers la syllabe suivante
-                nom = '%s%s_%s' % (c or '_', {'é': 'ee'}.get(v, v), forme)
+                nom = nom_syl + '_' + forme
                 dur, attaque = durees['syllabes'][nom]
-                gain = 1.5 if s == 0 else 0.0
+                gain = 1.5 if accents[j] else 0.0
                 if syl_nombre is not None and j == syl_nombre:
                     if pause_chiffre:
                         t += pause_chiffre * av.entre(.9, 1.1)
                     gain += 2.0
                     debut_st += 1.0
-                if forme_fin == 'exclamation' and s == 0:
+                if forme_fin == 'exclamation' and accents[j]:
                     gain += 1.5
                 base = f0 / p['f0'] * av.entre(.99, 1.01)
                 pitch = base * 2 ** (debut_st / 12)

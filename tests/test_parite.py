@@ -8,7 +8,8 @@ import sequenceur as sq
 
 def durees_index(pid):
     idx = json.load(open(os.path.join(RACINE, 'banque', pid, 'index.json')))
-    return {'syllabes': {k: (v['duree'], v['attaque']) for k, v in idx['syllabes'].items()}, 'vocalises': idx['vocalises']}
+    return {'syllabes': {k: (v['duree'], v['attaque']) for k, v in idx['syllabes'].items()}, 'vocalises': idx['vocalises'],
+            'inventaire': idx['inventaire']}
 
 
 def partitions_python():

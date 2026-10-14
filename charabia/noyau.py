@@ -40,6 +40,9 @@ class Timbre:
     brillance: float = .15    # gain du troisième formant
     chant: float = 0.0        # vibrato « chanté » ajouté sur les voyelles tenues (style mélodieux)
     chant_retard: float = .12 # il s'installe après ce délai (s), comme chez un chanteur
+    jitter: float = 0.0       # micro-instabilité de hauteur (style parlé)
+    shimmer: float = 0.0      # micro-instabilité d'amplitude (style parlé)
+    pente: float = 0.0        # coupure (Hz) d'un passe-bas sur la source : adoucit le buzz (0 = son d'origine)
 
 
 def resonateur(x, f, bw):

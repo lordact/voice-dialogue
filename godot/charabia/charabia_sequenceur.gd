@@ -130,18 +130,20 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	loc.occurrences[motif] = occ + 1
 	var av := Alea.new(graine ^ fnv1a("%s#%d#%d" % [loc.pid, loc.ident, occ]) ^ ((loc.repliques * 2654435761) & M32))
 
-	var consonnes := []
-	for c in p.consonnes:
-		consonnes.append([c, p.consonnes[c]])
-	var voyelles := []
-	for v in p.voyelles:
-		voyelles.append([v, p.voyelles[v]])
-	var dures := []
-	for c in p.consonnes:
-		if c != "" and c in "ptkbd":
-			dures.append(c)
-	if dures.is_empty():
-		dures = ["t"]
+	var pleines := []
+	var particules := []
+	var syl_dures := []
+	for x in durees.inventaire:   # [nom, poids, particule, attaque dure]
+		if x[2]:
+			particules.append([x[0], x[1]])
+		else:
+			pleines.append([x[0], x[1]])
+		if x[3]:
+			syl_dures.append(x[0])
+	if particules.is_empty():
+		particules = pleines
+	if syl_dures.is_empty():
+		syl_dures = [pleines[0][0]]
 
 	var evts := []
 	var etat := {"t": 0.0}
@@ -228,10 +230,13 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 		for _i in n - nb_mots:
 			tailles[int(am.reel() * nb_mots)] += 1
 		var accents := []
+		var outils := []
 		for taille in tailles:
-			accents.append(true)
-			for _k in int(taille) - 1:
-				accents.append(false)
+			var outil: bool = int(taille) == 1 and am.reel() < 0.4
+			var place := 0 if am.reel() < 0.7 else 1
+			for s_ in int(taille):
+				accents.append(not outil and s_ == mini(place, int(taille) - 1))
+				outils.append(outil)
 		var syl_nombre := -1
 		for i in mots.size():
 			if _re(NOMBRES).search(mots[i]):
@@ -259,10 +264,9 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 		for wi in tailles.size():
 			var taille: int = tailles[wi]
 			for s in taille:
-				var c := am.pondere(consonnes)
-				var v := am.pondere(voyelles)
+				var nom_syl := am.pondere(particules if outils[j] else pleines)
 				if float(e.dures) * k > av.reel():
-					c = dures[int(av.reel() * dures.size())]
+					nom_syl = syl_dures[int(av.reel() * syl_dures.size())]
 				var debut_st: float = cibles[j]
 				var fin_st: float
 				var forme: String
@@ -272,19 +276,19 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 					if forme_fin == "chute_montee":
 						debut_st -= 2.0
 				else:
-					forme = "plat" if s == 0 else "court"
-					if debit < 0.85 and s == taille - 1:
+					forme = "plat" if accents[j] else "court"
+					if debit < 0.85 and s == taille - 1 and not outils[j]:
 						forme = "long"
 					fin_st = debut_st + 0.65 * (float(cibles[j + 1]) - debut_st)
-				var nom := (c if c != "" else "_") + ("ee" if v == "é" else v) + "_" + forme
+				var nom := nom_syl + "_" + forme
 				var da: Array = durees.syllabes[nom]
-				var gain := 1.5 if s == 0 else 0.0
+				var gain := 1.5 if accents[j] else 0.0
 				if syl_nombre >= 0 and j == syl_nombre:
 					if pause_chiffre:
 						etat.t += pause_chiffre * av.entre(0.9, 1.1)
 					gain += 2.0
 					debut_st += 1.0
-				if forme_fin == "exclamation" and s == 0:
+				if forme_fin == "exclamation" and accents[j]:
 					gain += 1.5
 				var base := f0 / float(p.f0) * av.entre(0.99, 1.01)
 				var pitch := base * pow(2.0, debut_st / 12.0)

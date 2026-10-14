@@ -7,7 +7,7 @@ RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 sys.path.insert(0, os.path.join(RACINE, 'charabia'))
 import noyau
 import sequenceur as sq
-from banque import BanqueProfil, charger_profils
+from banque import BanqueProfil, charger_profils, inventaire_compact
 
 PROFILS = charger_profils(os.path.join(RACINE, 'donnees', 'profils_voix.json'))
 EMOTIONS = json.load(open(os.path.join(RACINE, 'donnees', 'emotions.json'), encoding='utf-8'))['emotions']
@@ -27,7 +27,8 @@ def durees(pid):
     if pid not in _BANQUES:
         b = BanqueProfil(pid, PROFILS[pid])
         _BANQUES[pid] = {'syllabes': {k: (len(s) / noyau.SR, a) for k, (s, a) in b.syllabes.items()},
-                         'vocalises': {k: [len(x) / noyau.SR for x in l] for k, l in b.vocalises.items()}}
+                         'vocalises': {k: [len(x) / noyau.SR for x in l] for k, l in b.vocalises.items()},
+                'inventaire': inventaire_compact(b.inventaire)}
     return _BANQUES[pid]
 
 
@@ -62,11 +63,13 @@ def test_determinisme_et_motif():
     base = tetes(dire('vieil_habitue', 'They are usually dramatic.', 'neutre')[0])
     for emo in ('triste', 'joyeux', 'fatigue', 'ravi'):
         verifier(tetes(dire('vieil_habitue', 'They are usually dramatic.', emo)[0]) == base, 'motif conservé en %s' % emo)
-    # colère, surprise : certaines consonnes se durcissent, mais voyelles et nombre de syllabes restent
-    voy = lambda l: [x.lstrip('pbtdkmnlsfrchwyvz_') for x in l]
+    # colère, surprise : des syllabes à attaque dure remplacent certaines syllabes, mais le
+    # nombre de syllabes et le rythme fort / faible (formes court / plat / long) restent
+    formes = lambda ev: [e['grain'].rsplit('_', 1)[1] for e in ev if e['grain'].startswith('syl:')]
+    base_f = formes(dire('vieil_habitue', 'They are usually dramatic.', 'neutre')[0])
     for emo in ('furieux', 'surpris', 'agace'):
-        t = tetes(dire('vieil_habitue', 'They are usually dramatic.', emo)[0])
-        verifier(len(t) == len(base) and voy(t) == voy(base), 'voyelles et rythme conservés en %s' % emo)
+        f = formes(dire('vieil_habitue', 'They are usually dramatic.', emo)[0])
+        verifier(len(f) == len(base_f) and [x == 'court' for x in f] == [x == 'court' for x in base_f], 'rythme conservé en %s' % emo)
     verifier(tetes(dire('enfant', 'They are usually dramatic.')[0]) != base, 'autre profil, autres sons')
 
 

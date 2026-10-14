@@ -1,5 +1,5 @@
 {
- "note": "Profils vocaux du charabia. f0 en Hz ; syllabe = durée de voyelle (s) ; etendue multiplie l'amplitude mélodique ; densite = syllabes de charabia par syllabe anglaise ; consonnes/voyelles = inventaire pondéré (l'accent du personnage) ; rire = style de rire ; tics = probabilités d'hésitation. 'origine' reproduit le réglage des 10 voix d'origine. Style mélodieux (v2) : musical = attraction des hauteurs vers une gamme pentatonique (0..1) ; legato = recouvrement entre syllabes (s) ; timbre.chant = vibrato chanté sur les voyelles tenues ; w/y = glissés, ai/oi/ao/ei/ou = diphtongues. Registre v2.1 : toutes les voix entre ~165 Hz (médium) et ~315 Hz (enfant), plus de voix très graves.",
+ "note": "Profils vocaux du charabia. f0 en Hz ; syllabe = durée de voyelle (s) ; etendue multiplie l'amplitude mélodique ; densite = syllabes de charabia par syllabe anglaise ; consonnes/voyelles = inventaire pondéré (l'accent du personnage) ; rire = style de rire ; tics = probabilités d'hésitation. 'origine' reproduit le réglage des 10 voix d'origine. Style mélodieux (v2) : musical = attraction des hauteurs vers une gamme pentatonique (0..1) ; legato = recouvrement entre syllabes (s) ; timbre.chant = vibrato chanté sur les voyelles tenues ; w/y = glissés, ai/oi/ao/ei/ou = diphtongues. Registre v2.1 : toutes les voix entre ~165 Hz (médium) et ~315 Hz (enfant), plus de voix très graves. Syllabaire parlé (v3) : syllabes V/CV/CVC/CCV coarticulées (charabia/phonetique.py), groupes = fréquence des groupes de consonnes, codas = consonnes finales ; timbre.jitter/shimmer/pente = source moins « parfaite ».",
  "profils": {
   "origine": {
    "label_en": "Original village voice",
@@ -8,8 +8,8 @@
    "timbre": {},
    "syllabe": 0.12,
    "pause_mot": [
-    0.05,
-    0.12
+    0.0,
+    0.06
    ],
    "pause_phrase": [
     0.16,
@@ -54,12 +54,15 @@
     "vibrato": 0.006,
     "nasal": 0.25,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.149,
    "pause_mot": [
-    0.042,
-    0.09
+    0.0,
+    0.045
    ],
    "pause_phrase": [
     0.25,
@@ -112,12 +115,15 @@
     "souffle": 0.05,
     "largeur": 1.25,
     "carre": 0.163,
-    "chant": 0.03
+    "chant": 0.03,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.171,
    "pause_mot": [
-    0.054,
-    0.12
+    0.01,
+    0.096
    ],
    "pause_phrase": [
     0.32,
@@ -167,12 +173,15 @@
     "carre": 0.195,
     "vibrato": 0.008,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.097,
    "pause_mot": [
-    0.018,
-    0.042
+    0.0,
+    0.021
    ],
    "pause_phrase": [
     0.1,
@@ -223,12 +232,15 @@
     "souffle": 0.09,
     "largeur": 1.3,
     "brillance": 0.08,
-    "chant": 0.022
+    "chant": 0.022,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.121,
    "pause_mot": [
-    0.036,
-    0.078
+    0.0,
+    0.039
    ],
    "pause_phrase": [
     0.22,
@@ -277,12 +289,15 @@
     "carre": 0.182,
     "vibrato": 0.014,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.105,
    "pause_mot": [
-    0.018,
-    0.042
+    0.0,
+    0.021
    ],
    "pause_phrase": [
     0.1,
@@ -332,12 +347,15 @@
     "vibrato": 0.005,
     "brillance": 0.2,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.127,
    "pause_mot": [
-    0.036,
-    0.054
+    0.0,
+    0.027
    ],
    "pause_phrase": [
     0.22,
@@ -385,12 +403,15 @@
     "carre": 0.176,
     "vibrato": 0.004,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.09,
    "pause_mot": [
-    0.012,
-    0.03
+    0.0,
+    0.015
    ],
    "pause_phrase": [
     0.08,
@@ -441,12 +462,15 @@
     "souffle": 0.035,
     "vibrato": 0.015,
     "largeur": 1.1,
-    "chant": 0.022
+    "chant": 0.022,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.138,
    "pause_mot": [
-    0.03,
-    0.066
+    0.0,
+    0.033
    ],
    "pause_phrase": [
     0.2,
@@ -496,12 +520,15 @@
     "vib_freq": 7.0,
     "souffle": 0.04,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.099,
    "pause_mot": [
-    0.012,
-    0.096
+    0.01,
+    0.077
    ],
    "pause_phrase": [
     0.12,
@@ -551,12 +578,15 @@
     "carre": 0.156,
     "vibrato": 0.008,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.132,
    "pause_mot": [
-    0.03,
-    0.072
+    0.0,
+    0.036
    ],
    "pause_phrase": [
     0.2,
@@ -607,12 +637,15 @@
     "vibrato": 0.01,
     "souffle": 0.03,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.11,
    "pause_mot": [
-    0.024,
-    0.06
+    0.0,
+    0.03
    ],
    "pause_phrase": [
     0.14,
@@ -662,12 +695,15 @@
     "brillance": 0.12,
     "raucite": 0.08,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.143,
    "pause_mot": [
-    0.036,
-    0.072
+    0.0,
+    0.036
    ],
    "pause_phrase": [
     0.22,
@@ -720,12 +756,15 @@
     "souffle": 0.04,
     "largeur": 1.15,
     "carre": 0.163,
-    "chant": 0.035
+    "chant": 0.035,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.154,
    "pause_mot": [
-    0.042,
-    0.084
+    0.0,
+    0.042
    ],
    "pause_phrase": [
     0.26,
@@ -775,12 +814,15 @@
     "vibrato": 0.004,
     "brillance": 0.18,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.132,
    "pause_mot": [
-    0.036,
-    0.06
+    0.0,
+    0.03
    ],
    "pause_phrase": [
     0.24,
@@ -831,12 +873,15 @@
     "vibrato": 0.003,
     "brillance": 0.18,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.123,
    "pause_mot": [
-    0.042,
-    0.048
+    0.0,
+    0.024
    ],
    "pause_phrase": [
     0.24,
@@ -888,12 +933,15 @@
     "souffle": 0.08,
     "vibrato": 0.018,
     "largeur": 1.2,
-    "chant": 0.022
+    "chant": 0.022,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.149,
    "pause_mot": [
-    0.036,
-    0.096
+    0.01,
+    0.077
    ],
    "pause_phrase": [
     0.24,
@@ -943,12 +991,15 @@
     "carre": 0.195,
     "vibrato": 0.012,
     "chant": 0.022,
-    "largeur": 1.1
+    "largeur": 1.1,
+    "jitter": 0.005,
+    "shimmer": 0.05,
+    "pente": 1600
    },
    "syllabe": 0.121,
    "pause_mot": [
-    0.024,
-    0.054
+    0.0,
+    0.027
    ],
    "pause_phrase": [
     0.16,

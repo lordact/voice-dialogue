@@ -10,7 +10,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(__file__))
 from noyau import SR
-from banque import BanqueProfil, charger_profils
+from banque import BanqueProfil, charger_profils, inventaire_compact
 import sequenceur as sq
 import mixage
 
@@ -68,7 +68,8 @@ class Studio:
             b = BanqueProfil(pid, self.profils[pid])
             self.banques[pid] = b
             self.durees[pid] = {'syllabes': {k: (len(s) / SR, a) for k, (s, a) in b.syllabes.items()},
-                                'vocalises': {k: [len(x) / SR for x in l] for k, l in b.vocalises.items()}}
+                                'vocalises': {k: [len(x) / SR for x in l] for k, l in b.vocalises.items()},
+                'inventaire': inventaire_compact(b.inventaire)}
         return self.banques[pid]
 
     def locuteur(self, qui):
