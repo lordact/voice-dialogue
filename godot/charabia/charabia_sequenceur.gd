@@ -103,6 +103,50 @@ static func segments(texte: String) -> Array:
 		out.append([mots, fin])
 	return out
 
+## Comme segments(), avec le rang de chaque mot dans le texte (pour le sous-titre mot à mot).
+static func segments_mots(texte: String) -> Array:
+	var jetons := []
+	for m in _re("\\S+").search_all(texte.replace("...", "…")):
+		jetons.append(m.get_string())
+	var out := []
+	var cour := []
+	for i in jetons.size():
+		var mot := normaliser(jetons[i]).replace(" ", "")
+		if not mot.is_empty():
+			cour.append([i, mot])
+		var m := _re("[.!?,;:…—]+$").search(jetons[i])
+		if m or i == jetons.size() - 1:
+			var p := m.get_string() if m else ""
+			if not cour.is_empty():
+				var fin := "?" if "?" in p else "!" if "!" in p else "…" if "…" in p else "." if ("." in p or p.is_empty()) else ","
+				out.append([cour, fin])
+			cour = []
+	return out
+
+static func nb_jetons(texte: String) -> int:
+	return _re("\\S+").search_all(texte.replace("...", "…")).size()
+
+const MOTS_OUTILS := ["a", "an", "the", "to", "of", "in", "on", "at", "it", "i", "you", "is", "and", "or", "but", "my",
+	"your", "me", "we", "he", "she", "they", "be", "for", "that", "this", "so", "do", "if", "as", "by",
+	"with", "was", "are", "am", "can", "its", "it's", "i'm", "his", "her", "our", "them", "him", "us",
+	"from", "just", "some", "what", "there", "than", "then", "not", "no", "up", "out", "all", "got",
+	"get", "one", "have", "has", "had", "will", "don't", "i'll", "you're", "that's"]
+
+static func moyennes(durees: Dictionary) -> Dictionary:
+	if not durees.has("_moyennes"):
+		var somme := {"court": 0.0, "plat": 0.0, "long": 0.0}
+		var nb := {"court": 0, "plat": 0, "long": 0}
+		for nom in durees.syllabes:
+			var forme: String = nom.substr(nom.rfind("_") + 1)
+			if somme.has(forme):
+				somme[forme] += float(durees.syllabes[nom][0])
+				nb[forme] += 1
+		var m := {}
+		for f in somme:
+			m[f] = somme[f] / maxi(1, nb[f])
+		durees["_moyennes"] = m
+	return durees["_moyennes"]
+
 static func _ajuster(val: float, neutre: float, k: float) -> float:
 	return neutre + (val - neutre) * k
 
@@ -120,9 +164,9 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	var vol := float(p.get("volume_db", 0)) + float(e.volume_db) * k
 	var f0 := float(p.f0) * loc.decalage_f0 * hauteur
 
-	var it := interjection(texte, emotion)
-	var voc_tete: String = it[0]
-	var reste: String = it[1]
+	var inter := interjection(texte, emotion)
+	var voc_tete: String = inter[0]
+	var reste: String = inter[1]
 	var motif := normaliser(texte)
 	var graine := fnv1a(motif)
 	var am := Alea.new(graine)
@@ -187,21 +231,43 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	if not avant.is_empty():
 		vocalise.call(avant)
 
-	var segs := segments(reste)
+	# Rythme calé sur le sous-titre anglais (voir charabia/sequenceur.py).
+	var decalage := nb_jetons(texte) - nb_jetons(reste)
+	var segs := segments_mots(reste)
 	if segs.is_empty() and avant.is_empty():
-		segs = [[PackedStringArray(["mm"]), "."]]
-	var budget := []
-	var total := 0
+		segs = [[[[-1, "mm"]], "."]]
+	var lecture := float(reste.strip_edges().length()) / (float(p.get("lecture", 15.0)) * debit)
+	lecture = minf(9.0, maxf(0.45, lecture))
+	infos.lecture = lecture
+	infos.mots = []
+	for i in decalage:
+		infos.mots.append([i, 0.0])
+	var moy := moyennes(durees)
+	var legato := float(p.get("legato", 0.035))
+	var estimation := 0.0
+	var plans := []
 	for sg in segs:
-		var n_eng := 0
-		for m in sg[0]:
-			n_eng += syllabes_anglais(m)
-		var b := maxi(1, arrondi(n_eng * float(p.densite)))
-		budget.append(b)
-		total += b
-	if total > 16:
-		for i in budget.size():
-			budget[i] = maxi(1, arrondi(budget[i] * 16.0 / total))
+		var pm := []
+		for gm in sg[0]:
+			var mot: String = gm[1]
+			var outil := mot in MOTS_OUTILS
+			var n_w := 1 if outil else mini(4, maxi(1, syllabes_anglais(mot)))
+			pm.append([int(gm[0]), mot, outil, n_w])
+			if outil:
+				estimation += float(moy.court) - legato
+			else:
+				estimation += float(moy.plat) + (n_w - 1) * float(moy.court) - n_w * legato
+		plans.append([pm, sg[1]])
+	estimation /= 1.1
+	estimation += (segs.size() - 1) * (float(p.pause_phrase[0]) + float(p.pause_phrase[1])) / 2
+	var lecture_neutre := minf(9.0, maxf(0.45, float(reste.strip_edges().length()) / float(p.get("lecture", 15.0))))
+	var rapport: float = lecture_neutre / maxf(0.05, estimation)
+	if rapport < 0.85 or rapport > 1.15:
+		for pl in plans:
+			for w in pl[0]:
+				if not w[2]:
+					var f := maxf(rapport, 0.5) if rapport < 0.85 else minf(rapport, 1.6)
+					w[3] = maxi(1, mini(5, arrondi(int(w[3]) * f)))
 
 	var fin_emotion = e.get("fin")
 	var tremble := float(e.get("tremble", 0)) * k
@@ -209,40 +275,36 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	var hesite := maxf(float(e.get("hesite", 0)) * k, float(p.get("tics", {}).get("euh", 0)) * (0.5 if calme else 0.1))
 	var pause_chiffre := float(p.get("pause_avant_chiffre", 0))
 	var musical := float(p.get("musical", 0.5))
-	var legato := float(p.get("legato", 0.035))
 	var amplitude := 4.0 * etendue
 	var sauts_fin := {"chute": -3.0, "montee": 6.0, "exclamation": -3.5, "suspendue": 0.0,
 		"continuation": 2.0, "chantee": -2.5, "chute_montee": 3.0}
 
-	for si in segs.size():
-		var mots: PackedStringArray = segs[si][0]
-		var ponct: String = segs[si][1]
-		var n: int = budget[si]
-		var dernier_seg := si == segs.size() - 1
+	var items := []
+	for si in plans.size():
+		var pm: Array = plans[si][0]
+		var ponct: String = plans[si][1]
+		var dernier_seg := si == plans.size() - 1
 		var forme_fin: String = {"?": "montee", "!": "exclamation", "…": "suspendue", ",": "continuation"}.get(ponct, "chute")
 		if dernier_seg and fin_emotion != null and ponct != "?":
 			if forme_fin != "exclamation" or fin_emotion in ["chute", "chantee"]:
 				forme_fin = fin_emotion
-		var nb_mots := maxi(1, mini(n, arrondi(n / 2.2 + am.reel() * 0.8 - 0.2)))
-		var tailles := []
-		tailles.resize(nb_mots)
-		tailles.fill(1)
-		for _i in n - nb_mots:
-			tailles[int(am.reel() * nb_mots)] += 1
 		var accents := []
 		var outils := []
-		for taille in tailles:
-			var outil: bool = int(taille) == 1 and am.reel() < 0.4
+		var mot_de := []
+		var premier := []
+		var taille_de := []
+		var chiffre := []
+		for w in pm:
 			var place := 0 if am.reel() < 0.7 else 1
-			for s_ in int(taille):
-				accents.append(not outil and s_ == mini(place, int(taille) - 1))
-				outils.append(outil)
-		var syl_nombre := -1
-		for i in mots.size():
-			if _re(NOMBRES).search(mots[i]):
-				syl_nombre = int(float(i) / maxi(1, mots.size()) * n)
-				break
-		# Mélodie en demi-tons : déclinaison, arc vers un sommet, accents, gamme pentatonique.
+			for s_ in int(w[3]):
+				accents.append(not w[2] and s_ == mini(place, int(w[3]) - 1))
+				outils.append(w[2])
+				mot_de.append(w[0])
+				premier.append(s_ == 0)
+				taille_de.append(w[3])
+				chiffre.append(s_ == 0 and _re(NOMBRES).search(w[1]) != null)
+		var n := accents.size()
+		var syl_nombre := chiffre.find(true)
 		var sommet := am.entre(0.2, 0.6)
 		var cibles := []
 		for j in n:
@@ -260,54 +322,107 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 				st += 0.35 * sin(j * 1.9 + phase)
 			st = st * amplitude + micro * 0.8
 			cibles.append(st * (1 - musical) + pentatonique(st) * musical)
-		var j := 0
-		for wi in tailles.size():
-			var taille: int = tailles[wi]
-			for s in taille:
-				var nom_syl := am.pondere(particules if outils[j] else pleines)
-				if float(e.dures) * k > av.reel():
-					nom_syl = syl_dures[int(av.reel() * syl_dures.size())]
-				var debut_st: float = cibles[j]
-				var fin_st: float
-				var forme: String
-				if j == n - 1:
+		for j in n:
+			var nom_syl := am.pondere(particules if outils[j] else pleines)
+			if float(e.dures) * k > av.reel():
+				nom_syl = syl_dures[int(av.reel() * syl_dures.size())]
+			var fin_mot: bool = j == n - 1 or premier[j + 1]
+			var debut_st: float = cibles[j]
+			var fin_st: float
+			var forme: String
+			if j == n - 1:
+				forme = "long"
+				fin_st = debut_st + float(sauts_fin.get(forme_fin, -3.0)) * minf(1.5, etendue)
+				if forme_fin == "chute_montee":
+					debut_st -= 2.0
+			else:
+				forme = "plat" if accents[j] else "court"
+				if debit < 0.85 and fin_mot and not outils[j]:
 					forme = "long"
-					fin_st = debut_st + float(sauts_fin.get(forme_fin, -3.0)) * minf(1.5, etendue)
-					if forme_fin == "chute_montee":
-						debut_st -= 2.0
-				else:
-					forme = "plat" if accents[j] else "court"
-					if debit < 0.85 and s == taille - 1 and not outils[j]:
-						forme = "long"
-					fin_st = debut_st + 0.65 * (float(cibles[j + 1]) - debut_st)
-				var nom := nom_syl + "_" + forme
-				var da: Array = durees.syllabes[nom]
-				var gain := 1.5 if accents[j] else 0.0
-				if syl_nombre >= 0 and j == syl_nombre:
-					if pause_chiffre:
-						etat.t += pause_chiffre * av.entre(0.9, 1.1)
-					gain += 2.0
-					debut_st += 1.0
-				if forme_fin == "exclamation" and accents[j]:
-					gain += 1.5
-				var base := f0 / float(p.f0) * av.entre(0.99, 1.01)
-				var pitch := base * pow(2.0, debut_st / 12.0)
-				var pitch_fin := base * pow(2.0, fin_st / 12.0)
-				if tremble:
-					pitch *= 1 + tremble * sin(etat.t * 31)
-				pitch = minf(1.8, maxf(0.75, pitch))
-				pitch_fin = minf(1.8, maxf(0.75, pitch_fin))
-				var debut := maxf(0.0, etat.t - float(da[1]) / pitch * 0.5)
-				evts.append({"t": debut, "grain": "syl:" + nom, "pitch": pitch, "pitch_fin": pitch_fin, "db": vol + gain})
-				etat.t = debut + duree_glissee(float(da[0]), pitch, pitch_fin) - legato
-				j += 1
-				infos.syllabes += 1
-			if wi < tailles.size() - 1:
-				etat.t += av.entre(float(p.pause_mot[0]), float(p.pause_mot[1])) * pauses
-				if hesite and av.reel() < hesite * 0.35:
-					vocalise.call("euh", -3.0)
-		if not dernier_seg:
-			etat.t += av.entre(float(p.pause_phrase[0]), float(p.pause_phrase[1])) * pauses * {"…": 1.6, ",": 0.55}.get(ponct, 1.0)
+				fin_st = debut_st + 0.65 * (float(cibles[j + 1]) - debut_st)
+			var gain := 1.5 if accents[j] else 0.0
+			var nombre := syl_nombre >= 0 and j == syl_nombre
+			if nombre:
+				gain += 2.0
+				debut_st += 1.0
+			if forme_fin == "exclamation" and accents[j]:
+				gain += 1.5
+			var base := f0 / float(p.f0) * av.entre(0.99, 1.01)
+			var it := {"nom": nom_syl, "forme": forme, "pitch": minf(1.8, maxf(0.75, base * pow(2.0, debut_st / 12.0))),
+				"pitch_fin": minf(1.8, maxf(0.75, base * pow(2.0, fin_st / 12.0))), "gain": gain, "accent": accents[j],
+				"mot": mot_de[j], "premier": premier[j], "nombre": nombre, "pause": 0.0, "hesite": false,
+				"mots_syl": taille_de[j], "fin_mot": fin_mot, "fin_seg": false}
+			if fin_mot and j < n - 1:
+				it.pause = av.entre(float(p.pause_mot[0]), float(p.pause_mot[1])) * pauses
+				it.hesite = bool(hesite) and av.reel() < hesite * 0.35
+			if j == n - 1 and not dernier_seg:
+				it.pause = av.entre(float(p.pause_phrase[0]), float(p.pause_phrase[1])) * pauses * {"…": 1.6, ",": 0.55}.get(ponct, 1.0)
+				it.fin_seg = true
+			items.append(it)
+
+	var duree_item := func(it: Dictionary, forme: String) -> float:
+		return duree_glissee(float(durees.syllabes[it.nom + "_" + forme][0]), it.pitch, it.pitch_fin) - legato
+	var euh := 0.0
+	if durees.vocalises.has("euh"):
+		euh = float(durees.vocalises.euh[0]) / hauteur + 0.12 * pauses
+	var somme := 0.0
+	for it in items:
+		somme += duree_item.call(it, it.forme) + it.pause + (euh if it.hesite else 0.0) + (pause_chiffre if it.nombre else 0.0)
+	var marge: float = lecture - (etat.t + somme)
+	infos.marge_initiale = marge
+	if marge > 0:
+		var candidats := []
+		for i in items.size():
+			if items[i].accent and items[i].forme == "plat":
+				candidats.append(i)
+		candidats.sort_custom(func(a, b): return items[a].mots_syl > items[b].mots_syl or (items[a].mots_syl == items[b].mots_syl and a < b))
+		for i in candidats:
+			var gain_t: float = duree_item.call(items[i], "long") - duree_item.call(items[i], "plat")
+			if marge < gain_t * 0.5:
+				break
+			items[i].forme = "long"
+			marge -= gain_t
+		var mots_trous := []
+		var seg_trous := []
+		for i in items.size() - 1:
+			if items[i].fin_seg:
+				seg_trous.append(items[i])
+			elif items[i].fin_mot:
+				mots_trous.append(items[i])
+		if marge > 0 and not mots_trous.is_empty():
+			var ajout := minf(0.1, marge * 0.6 / mots_trous.size())
+			for it in mots_trous:
+				it.pause += ajout
+			marge -= ajout * mots_trous.size()
+		if marge > 0 and not seg_trous.is_empty():
+			var ajout2 := minf(0.45, marge / seg_trous.size())
+			for it in seg_trous:
+				it.pause += ajout2
+	elif marge < 0:
+		for it in items:
+			if it.fin_seg:
+				it.pause *= 0.6
+			else:
+				it.pause *= 0.2
+
+	for it in items:
+		if it.nombre and pause_chiffre:
+			etat.t += pause_chiffre
+		var nom: String = it.nom + "_" + it.forme
+		var da: Array = durees.syllabes[nom]
+		var pitch: float = it.pitch
+		var pitch_fin: float = it.pitch_fin
+		if tremble:
+			pitch = minf(1.8, maxf(0.75, pitch * (1 + tremble * sin(etat.t * 31))))
+		var debut := maxf(0.0, etat.t - float(da[1]) / pitch * 0.5)
+		if it.premier and int(it.mot) >= 0:
+			infos.mots.append([decalage + int(it.mot), debut])
+		evts.append({"t": debut, "grain": "syl:" + nom, "pitch": pitch, "pitch_fin": pitch_fin, "db": vol + it.gain})
+		etat.t = debut + duree_glissee(float(da[0]), pitch, pitch_fin) - legato
+		infos.syllabes += 1
+		etat.t += it.pause
+		if it.hesite:
+			vocalise.call("euh", -3.0)
 
 	var apres: String = tirer.call(e.apres)
 	if not apres.is_empty():

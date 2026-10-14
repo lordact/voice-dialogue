@@ -5,6 +5,9 @@ extends Node
 ## Aucun calcul audio en GDScript : on déclenche des grains OGG, le mixage reste en C++.
 
 signal fini
+## Émis au début de chaque mot du sous-titre (rang du mot, séparé par des espaces) :
+## l'interface peut révéler le texte en même temps que la voix.
+signal mot(rang: int)
 
 const POLYPHONIE := 6
 
@@ -18,6 +21,9 @@ var _t := 0.0
 var _duree := 0.0
 var _parle := false
 var _fondu: Tween
+var _mots := []
+var _imot := 0
+var lecture := 0.0               # temps de lecture visé pour la réplique en cours (s)
 var _glisses := []                # grains en cours dont la hauteur glisse : [id, p0, p1, longueur, position]
 var cout_usec := 0                # temps passé à calculer la dernière partition
 static var cout_lecture_usec := 0 # temps cumulé de toutes les voix dans _process (mesure)
@@ -71,6 +77,9 @@ func dire(texte: String, emotion: String = "neutre", intensite: float = 0.7) -> 
 	cout_usec = Time.get_ticks_usec() - t0
 	_evts = part.evenements
 	_duree = float(part.infos.duree)
+	_mots = part.infos.get("mots", [])
+	_imot = 0
+	lecture = float(part.infos.get("lecture", _duree))
 	_i = 0
 	_t = 0.0
 	_glisses.clear()
@@ -120,6 +129,9 @@ func _process(delta: float) -> void:
 
 func _avancer(delta: float) -> void:
 	_t += delta
+	while _imot < _mots.size() and float(_mots[_imot][1]) <= _t + 0.0005:
+		mot.emit(int(_mots[_imot][0]))
+		_imot += 1
 	# Lecture « à l'image près » : chaque grain part dès que son heure est passée.
 	while _i < _evts.size() and _evts[_i].t <= _t + 0.0005:
 		var ev: Dictionary = _evts[_i]

@@ -23,10 +23,17 @@ static func decalage_pour(id_habitant: int) -> float:
 	return 1 + (((id_habitant * 37) % 11) - 5) * 0.012
 
 func etat() -> Dictionary:
-	return {"repliques": repliques, "occurrences": occurrences}
+	return {"repliques": repliques, "occurrences": occurrences, "vocalises": dernieres_vocalises, "prises": dernier_variant}
 
 func restaurer(d: Dictionary) -> void:
 	repliques = int(d.get("repliques", 0))
 	occurrences = d.get("occurrences", {})
 	for k in occurrences:
 		occurrences[k] = int(occurrences[k])
+	dernieres_vocalises = []
+	for v in d.get("vocalises", []):
+		dernieres_vocalises.append([str(v[0]), int(v[1])])
+	dernier_variant = {}
+	var prises: Dictionary = d.get("prises", {})
+	for k in prises:
+		dernier_variant[k] = int(prises[k])

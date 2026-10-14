@@ -92,7 +92,9 @@ def test_longueur():
     court = dire('origine', 'Sure.')[1]
     long_ = dire('origine', 'Honestly, I could talk about this binder for hours, but the line behind you is getting longer and my coffee is getting colder by the minute.')[1]
     verifier(court['syllabes'] <= 2 and court['duree'] < 1.0, 'réplique courte, voix courte (%.2f s)' % court['duree'])
-    verifier(long_['syllabes'] <= 18 and long_['duree'] < 7.0, 'réplique longue plafonnée (%d syl, %.2f s)' % (long_['syllabes'], long_['duree']))
+    verifier(.7 < long_['duree'] / long_['lecture'] < 1.25, 'réplique longue : voix ≈ temps de lecture (%.2f / %.2f s)' % (long_['duree'], long_['lecture']))
+    debit = long_['syllabes'] / long_['duree']
+    verifier(4.0 < debit < 8.0, 'débit de parole naturel (%.1f syllabes/s)' % debit)
     verifier(long_['duree'] > court['duree'] * 3, 'réplique longue plus longue')
 
 
@@ -137,7 +139,7 @@ def test_bibliotheque_v8():
         vides += not ev
         pire = max(pire, inf['duree'])
     verifier(vides == 0, 'aucune réplique V8 muette (%d)' % vides)
-    verifier(pire < 8.0, 'durée maximale raisonnable sur %d répliques V8 (%.2f s)' % (len(lignes), pire))
+    verifier(pire < 11.0, 'durée maximale raisonnable sur %d répliques V8 (%.2f s)' % (len(lignes), pire))
     print('  %d répliques V8 uniques, pire durée %.2f s' % (len(lignes), pire))
 
 

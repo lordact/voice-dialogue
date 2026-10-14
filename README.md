@@ -40,6 +40,7 @@ godot --headless --path . --script res://godot/tests/banc_charabia.gd
 - v2 « mélodieuse » : legato, glissés de hauteur, arcs mélodiques, gamme pentatonique, vibrato chanté.
 - v2.1 : registre médium à médium-aigu (f0 de 165 à 315 Hz, notes jouées surtout entre ~155 et ~500 Hz).
 - v3 « syllabaire parlé » (`charabia/phonetique.py`) : syllabes V/CV/CVC/CCV coarticulées, accent par mot, syllabes réduites, mots-outils, source avec jitter/shimmer/pente.
+- v4 « calé sur la lecture » : un mot de charabia par mot anglais (longueur voisine), mots-outils rapides, pauses sur la ponctuation, durée ≈ temps de lecture (≈ 15 car./s) ; signal `mot(rang)` pour afficher le sous-titre mot à mot.
 - Tests Python 35/35 ; parité Python/Godot 23/23 ; cas limites Godot 16/16.
 - Séquenceur GDScript 0,31 ms par réplique ; 34 µs par grain déclenché ; 12 voix en continu 0,12 ms/image avec glissés (p99 0,28 ms).
 - Non mesuré : coût du mixage C++ (pilote audio factice), rendu sur PC de jeu.

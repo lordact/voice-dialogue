@@ -76,6 +76,8 @@ section.scenes { display: grid; gap: 22px; margin-top: 18px; }
 .box .emo { font: 400 .72rem var(--font-mono); text-transform: lowercase; letter-spacing: 0; padding: 1px 7px; border-radius: 999px; border: 1px solid rgba(244,241,220,.35); }
 .box .line { font-size: 1.12rem; color: var(--sub); }
 .box .line.you { color: var(--you); font-style: italic; }
+.box .line .mot { opacity: .3; transition: opacity .12s ease-out; }
+.box .line .mot.dit { opacity: 1; }
 .box .line.ui { color: var(--box-ink); font-family: var(--font-mono); font-size: .92rem; }
 .box .idle { color: rgba(244,241,220,.55); font-size: .92rem; }
 details.script summary { cursor: pointer; font-size: .88rem; color: var(--muted); }
@@ -105,15 +107,15 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
 
 <div class="wrap">
   <header>
-    <span class="eyebrow">Card Hustle · prototype vocal v3 « syllabaire parlé » · 14 octobre 2026</span>
+    <span class="eyebrow">Card Hustle · prototype vocal v4 « calé sur la lecture » · 14 octobre 2026</span>
     <h1>Laboratoire du charabia</h1>
-    <p class="lede">Version 2, plus mélodieuse, dans l'esprit des conversations des Sims : les syllabes s'enchaînent sans trou, la hauteur glisse de l'une à l'autre, chaque phrase dessine un arc qui monte puis retombe, les notes sont attirées vers une gamme pentatonique et les voyelles tenues vibrent un peu, comme chantées. La source sonore reste le synthétiseur des premières voix. <b>v2.1 :</b> voix remontées dans le médium et le médium-aigu. <b>v3 :</b> un vrai syllabaire parlé : syllabes fermées et groupes de consonnes (« tam », « bla », « tros »), gestes des consonnes (silence et souffle des p/t/k, murmure des m/n, r américain), voyelles qui glissent depuis la consonne, syllabes accentuées et syllabes réduites, petits mots-outils récurrents, et plus de trou entre les mots.</p>
+    <p class="lede">Version 2, plus mélodieuse, dans l'esprit des conversations des Sims : les syllabes s'enchaînent sans trou, la hauteur glisse de l'une à l'autre, chaque phrase dessine un arc qui monte puis retombe, les notes sont attirées vers une gamme pentatonique et les voyelles tenues vibrent un peu, comme chantées. La source sonore reste le synthétiseur des premières voix. <b>v2.1 :</b> voix remontées dans le médium et le médium-aigu. <b>v3 :</b> un vrai syllabaire parlé : syllabes fermées et groupes de consonnes (« tam », « bla », « tros »), gestes des consonnes (silence et souffle des p/t/k, murmure des m/n, r américain), voyelles qui glissent depuis la consonne, syllabes accentuées et syllabes réduites, petits mots-outils récurrents, et plus de trou entre les mots. <b>v4 :</b> le rythme suit le sous-titre anglais : chaque mot anglais devient un mot de charabia de longueur voisine, les petits mots (the, to, it…) deviennent des syllabes rapides, les pauses tombent sur la ponctuation, et la réplique dure à peu près le temps de la lire (≈ 15 caractères/s, selon le personnage et l'émotion).</p>
     <div class="facts">
       <span><b>10</b> scènes, 3 versions</span><span><b>17 + 1</b> profils</span><span><b>14</b> émotions</span>
       <span><b>2 096</b> répliques V8 testées</span><span>parité Python / Godot <b>23/23</b></span><span>Godot <b>0,08 ms</b>/image pour 12 voix</span>
     </div>
     <div class="howto">
-      <span><b>Comment écouter.</b> Casque conseillé. Les trois versions ont la même sonie et la bascule garde la position. <b>Parlé (v3)</b> = nouvelle version (syllabaire parlé) ; <b>Mélodieux (v2.1)</b> = la version précédente ; <b>Ancien</b> = le système actuel du jeu (10 phrases fixes).</span>
+      <span><b>Comment écouter.</b> Casque conseillé. Les trois versions ont la même sonie et la bascule garde la position. <b>Synchronisé (v4)</b> = nouvelle version : la voix dure le temps de lire le sous-titre et chaque mot s'allume quand il est « dit » ; <b>Parlé (v3)</b> = la version précédente ; <b>Ancien</b> = le système actuel du jeu (10 phrases fixes).</span>
       <span>Les répliques viennent de la bibliothèque V8 et du module Economy. Les sons des Sims n'ont pas été copiés : seule l'idée (phrasé chanté, legato, mélodie expressive) est reprise.</span>
     </div>
   </header>
@@ -252,7 +254,7 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
     var boutons = {};
     if (Object.keys(versions).length > 1) {
       var ab = el('div', 'ab'); ab.setAttribute('role', 'group'); ab.setAttribute('aria-label', 'Version');
-      [['new', 'Parlé (v3)', 'b-new'], ['v1', 'Mélodieux (v2.1)', 'b-v1'], ['old', 'Ancien', 'b-old']].forEach(function (b) {
+      [['new', 'Synchronisé (v4)', 'b-new'], ['v1', 'Parlé (v3)', 'b-v1'], ['old', 'Ancien', 'b-old']].forEach(function (b) {
         if (!versions[b[0]]) return;
         var bt = el('button', b[2], b[1]); bt.type = 'button'; bt.setAttribute('aria-pressed', b[0] === 'new' ? 'true' : 'false');
         bt.addEventListener('click', function () { switchTo(b[0]); });
@@ -297,10 +299,13 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
     var audio = new Audio(); audio.preload = 'none'; audio.src = versions['new'].src;
     var current = 'new', lastIdx = -2;
     players.push(audio);
+    var motsCourants = [];
     function show(t) {
+      motsCourants.forEach(function (sp) { sp.classList.toggle('dit', t >= +sp.dataset.t - 0.02); });
       var idx = -1;
       for (var i = titres.length - 1; i >= 0; i--) { var x = titres[i]; if (t >= x.debut && t <= x.fin + 0.25) { idx = i; break; } }
       if (idx === lastIdx) return; lastIdx = idx;
+      motsCourants = [];
       box.innerHTML = '';
       if (idx < 0) { box.appendChild(idle); }
       else {
@@ -311,11 +316,26 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
           if (x.note === 'interrupted') who.appendChild(el('span', 'emo', 'skipped by player'));
           box.appendChild(who);
         }
-        box.appendChild(el('div', 'line' + (x.joueur ? ' you' : x.note === 'ui' ? ' ui' : ''), x.texte));
+        var ligne = el('div', 'line' + (x.joueur ? ' you' : x.note === 'ui' ? ' ui' : ''));
+        motsCourants = [];
+        if (x.mots && current === 'new') {
+          // Sous-titre mot à mot : chaque mot s'allume quand la voix le prononce.
+          var jetons = x.texte.replace(/\.\.\./g, '…').split(/\s+/).filter(Boolean);
+          var debuts = {}; x.mots.forEach(function (m) { debuts[m[0]] = m[1]; });
+          var dernier = x.debut;
+          jetons.forEach(function (j, i) {
+            if (i in debuts) dernier = debuts[i];
+            var sp = el('span', 'mot', j + (i < jetons.length - 1 ? ' ' : ''));
+            sp.dataset.t = dernier; ligne.appendChild(sp); motsCourants.push(sp);
+          });
+        } else { ligne.textContent = x.texte; }
+        box.appendChild(ligne);
       }
       if (list) Array.prototype.forEach.call(list.children, function (li, i) { li.classList.toggle('cur', i === idx); });
+      motsCourants.forEach(function (sp) { sp.classList.toggle('dit', t >= +sp.dataset.t - 0.02); });
     }
     function tick() {
+      if (!audio.paused) requestAnimationFrame(tick);
       var d = audio.duration || sc.duree;
       headLine.style.left = (100 * audio.currentTime / d) + '%';
       time.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
@@ -327,7 +347,7 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
       var pr = audio.play(); if (pr && pr.catch) pr.catch(function () {});
     }
     play.addEventListener('click', function () { if (audio.paused) start(); else audio.pause(); });
-    audio.addEventListener('play', function () { play.textContent = '❚❚ Pause'; });
+    audio.addEventListener('play', function () { play.textContent = '❚❚ Pause'; requestAnimationFrame(tick); });
     audio.addEventListener('pause', function () { play.textContent = '▶ Écouter'; });
     audio.addEventListener('ended', function () { play.textContent = '▶ Réécouter'; });
     audio.addEventListener('timeupdate', tick);

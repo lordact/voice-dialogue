@@ -149,7 +149,7 @@ def construire(studio, etapes, ambiant=False, fond=None, fond_db=-30.0):
             duree = len(mono) / SR
             note = 'interrupted' if coupe_suivante is not None else ''
             lib = LIBELLES_EMOTION.get(emotion, emotion)
-            neuf.titre(t, t + max(duree, 1.2), nom, texte, lib, note=note)
+            neuf.titre(t, t + max(duree, infos.get('lecture', 0), 1.2), nom, texte, lib, note=note, mots=infos.get('mots'))
             vieux.titre(t, t + max(duree, 1.2), nom, texte, lib, note=note)
             t += duree + spatial.get('apres', .55)
             coupe_suivante = None

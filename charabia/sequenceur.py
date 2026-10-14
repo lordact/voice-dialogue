@@ -110,16 +110,49 @@ def interjection(texte, emotion):
 
 
 def segments(texte):
-    """Découpe en groupes de souffle : [(mots, ponctuation finale)]."""
-    morceaux = re.findall(r'([^.!?,;:…—]+)([.!?,;:…—]+|$)', texte.replace('...', '…'))
-    out = []
-    for corps, ponct in morceaux:
-        mots = normaliser(corps).split()
-        if mots:
-            p = ponct.strip()
-            fin = '?' if '?' in p else '!' if '!' in p else '…' if '…' in p else '.' if '.' in p or not p else ','
-            out.append((mots, fin))
+    """Découpe en groupes de souffle : [(mots, ponctuation finale)] (mots normalisés)."""
+    return [([m for _, m in mots], fin) for mots, fin in segments_mots(texte)]
+
+
+def segments_mots(texte):
+    """Comme segments(), mais garde pour chaque mot son rang dans le texte (mots séparés par des
+    espaces) : [([(rang, mot normalisé), ...], ponctuation finale)]. Le rang sert à afficher le
+    sous-titre mot à mot, en même temps que la voix."""
+    jetons = texte.replace('...', '…').split()
+    out, cour = [], []
+    for i, jeton in enumerate(jetons):
+        mot = normaliser(jeton).replace(' ', '')
+        if mot:
+            cour.append((i, mot))
+        m = re.search(r'[.!?,;:…—]+$', jeton)
+        if m or i == len(jetons) - 1:
+            p = m.group(0) if m else ''
+            if cour:
+                fin = '?' if '?' in p else '!' if '!' in p else '…' if '…' in p else '.' if '.' in p or not p else ','
+                out.append((cour, fin))
+            cour = []
     return out
+
+
+# Petits mots anglais qui, dans la voix, deviennent des syllabes-outils rapides et inaccentuées.
+MOTS_OUTILS = {'a', 'an', 'the', 'to', 'of', 'in', 'on', 'at', 'it', 'i', 'you', 'is', 'and', 'or', 'but', 'my',
+               'your', 'me', 'we', 'he', 'she', 'they', 'be', 'for', 'that', 'this', 'so', 'do', 'if', 'as', 'by',
+               'with', 'was', 'are', 'am', 'can', 'its', "it's", "i'm", 'his', 'her', 'our', 'them', 'him', 'us',
+               'from', 'just', 'some', 'what', 'there', 'than', 'then', 'not', 'no', 'up', 'out', 'all', 'got',
+               'get', 'one', 'have', 'has', 'had', 'will', "don't", "i'll", "you're", "that's"}
+
+
+def moyennes(durees):
+    """Durée moyenne d'une syllabe de chaque forme (court, plat, long) dans la banque ; mise en cache."""
+    if '_moyennes' not in durees:
+        somme, nb = {'court': 0.0, 'plat': 0.0, 'long': 0.0}, {'court': 0, 'plat': 0, 'long': 0}
+        for nom, da in durees['syllabes'].items():
+            forme = nom.rsplit('_', 1)[1]
+            if forme in somme:
+                somme[forme] += da[0]
+                nb[forme] += 1
+        durees['_moyennes'] = {f: somme[f] / max(1, nb[f]) for f in somme}
+    return durees['_moyennes']
 
 
 class Locuteur:
@@ -198,49 +231,70 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
     if avant:
         vocalise(avant)
 
-    # 2. Budget de syllabes : proportionnel à la longueur anglaise, plafonné.
-    segs = segments(reste) or ([(['mm'], '.')] if not avant else [])
-    eng = [sum(syllabes_anglais(m) for m in mots) for mots, _ in segs]
-    budget = [max(1, arrondi(n * p['densite'])) for n in eng]
-    total = sum(budget)
-    if total > 16:
-        budget = [max(1, arrondi(b * 16 / total)) for b in budget]
+    # 2. Rythme calé sur le sous-titre anglais.
+    #    Chaque mot anglais devient un mot de charabia d'à peu près autant de syllabes ; les petits
+    #    mots (the, to, it…) deviennent des syllabes-outils ; les pauses tombent sur la ponctuation.
+    #    La durée visée est le temps de lecture du sous-titre : on lit en même temps qu'il parle.
+    decalage = len(texte.replace('...', '…').split()) - len(reste.replace('...', '…').split())
+    segs = segments_mots(reste) or ([([(-1, 'mm')], '.')] if not avant else [])
+    lecture = len(reste.strip()) / (p.get('lecture', 15.0) * debit)
+    lecture = min(9.0, max(.45, lecture))
+    infos['lecture'] = lecture
+    infos['mots'] = [[i, 0.0] for i in range(decalage)]       # l'interjection est dite tout de suite
+    moy = moyennes(durees)
+    legato = p.get('legato', .035)
+    estimation, eng_total = 0.0, 0
+    plans = []
+    for mots, ponct in segs:
+        pm = []
+        for gi, mot in mots:
+            outil = mot in MOTS_OUTILS
+            n_w = 1 if outil else min(4, max(1, syllabes_anglais(mot)))
+            pm.append([gi, mot, outil, n_w])
+            estimation += (moy['court'] - legato) if outil else (moy['plat'] + (n_w - 1) * moy['court'] - n_w * legato)
+        plans.append((pm, ponct))
+    estimation /= 1.1   # la mélodie, en moyenne un peu au-dessus de la voix de base, raccourcit les grains
+    estimation += (len(segs) - 1) * sum(p['pause_phrase']) / 2
+    # Nombre de syllabes fixé au tempo neutre : l'émotion ne change pas la « signature » de la phrase,
+    # seulement la durée de ses syllabes et de ses silences (calage plus bas).
+    lecture_neutre = min(9.0, max(.45, len(reste.strip()) / p.get('lecture', 15.0)))
+    rapport = lecture_neutre / max(.05, estimation)
+    if rapport < .85 or rapport > 1.15:                 # trop long ou trop court : on ajuste le nombre de syllabes
+        for pm, _ in plans:
+            for w in pm:
+                if not w[2]:
+                    w[3] = max(1, min(5, arrondi(w[3] * (max(rapport, .5) if rapport < .85 else min(rapport, 1.6)))))
 
     fin_emotion = e.get('fin')
     tremble = e.get('tremble', 0) * k
     calme = emotion not in ('furieux', 'agace', 'ravi', 'joyeux', 'surpris')
     hesite = max(e.get('hesite', 0) * k, p.get('tics', {}).get('euh', 0) * (.5 if calme else .1))
     pause_chiffre = p.get('pause_avant_chiffre', 0)
-
     musical = p.get('musical', .5)
-    legato = p.get('legato', .035)
     amplitude = 4.0 * etendue                         # hauteur de l'arc mélodique, en demi-tons
+    sauts_fin = {'chute': -3.0, 'montee': 6.0, 'exclamation': -3.5, 'suspendue': 0.0,
+                 'continuation': 2.0, 'chantee': -2.5, 'chute_montee': 3.0}
 
-    for si, ((mots, ponct), n) in enumerate(zip(segs, budget)):
-        dernier_seg = si == len(segs) - 1
+    # 2a. Plan : syllabes, accents, mélodie, silences (sans les instants).
+    items = []
+    for si, (pm, ponct) in enumerate(plans):
+        dernier_seg = si == len(plans) - 1
         forme_fin = {'?': 'montee', '!': 'exclamation', '…': 'suspendue', ',': 'continuation'}.get(ponct, 'chute')
         if dernier_seg and fin_emotion and ponct != '?':
             forme_fin = fin_emotion if forme_fin != 'exclamation' or fin_emotion in ('chute', 'chantee') else forme_fin
-        # Découpage en « mots » de charabia (1 à 3 syllabes), fixé par le motif.
-        nb_mots = max(1, min(n, arrondi(n / 2.2 + am.reel() * .8 - .2)))
-        tailles = [1] * nb_mots
-        for _ in range(n - nb_mots):
-            tailles[int(am.reel() * nb_mots)] += 1
-        # Structure des mots (fixée par le motif) : un mot sur trois environ, s'il n'a qu'une
-        # syllabe, est un petit mot-outil inaccentué ; sinon l'accent tombe sur la 1re syllabe,
-        # parfois sur la 2e. C'est cette alternance fort/faible qui donne le rythme de la parole.
-        accents, outils = [], []
-        for taille in tailles:
-            outil = taille == 1 and am.reel() < .4
+        accents, outils, mot_de, premier, taille_de, chiffre = [], [], [], [], [], []
+        for w in pm:
             place = 0 if am.reel() < .7 else 1
-            for s_ in range(taille):
-                accents.append(not outil and s_ == min(place, taille - 1))
-                outils.append(outil)
-        idx_nombre = next((i for i, m in enumerate(mots) if NOMBRES.match(m)), None)
-        syl_nombre = None if idx_nombre is None else int(idx_nombre / max(1, len(mots)) * n)
-        # Mélodie en demi-tons : une déclinaison douce, un arc qui monte vers un sommet (placé
-        # par le motif) puis redescend, les syllabes accentuées un peu plus haut, puis une
-        # attraction vers la gamme pentatonique : c'est ce qui rend la phrase « chantante ».
+            for s_ in range(w[3]):
+                accents.append(not w[2] and s_ == min(place, w[3] - 1))
+                outils.append(w[2])
+                mot_de.append(w[0])
+                premier.append(s_ == 0)
+                taille_de.append(w[3])
+                chiffre.append(s_ == 0 and NOMBRES.match(w[1]) is not None)
+        n = len(accents)
+        syl_nombre = next((j for j in range(n) if chiffre[j]), None)
+        # Mélodie en demi-tons : déclinaison, arc vers un sommet, accents, gamme pentatonique.
         sommet = am.entre(.2, .6)
         cibles = []
         for j in range(n):
@@ -257,53 +311,98 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
                 st += .35 * math.sin(j * 1.9 + phase)
             st = st * amplitude + micro * .8
             cibles.append(st * (1 - musical) + pentatonique(st) * musical)
-        j = 0
-        for wi, taille in enumerate(tailles):
-            for s in range(taille):
-                nom_syl = am.pondere(particules if outils[j] else pleines)
-                if e['dures'] * k > av.reel():          # colère : attaques plus dures
-                    nom_syl = syl_dures[int(av.reel() * len(syl_dures))]
-                dernier = j == n - 1
-                debut_st = cibles[j]
-                if dernier:
+        for j in range(n):
+            nom_syl = am.pondere(particules if outils[j] else pleines)
+            if e['dures'] * k > av.reel():          # colère : attaques plus dures
+                nom_syl = syl_dures[int(av.reel() * len(syl_dures))]
+            fin_mot = j == n - 1 or premier[j + 1]
+            debut_st = cibles[j]
+            if j == n - 1:
+                forme = 'long'
+                fin_st = debut_st + sauts_fin.get(forme_fin, -3.0) * min(1.5, etendue)
+                if forme_fin == 'chute_montee':
+                    debut_st -= 2.0
+            else:
+                forme = 'plat' if accents[j] else 'court'
+                if debit < .85 and fin_mot and not outils[j]:   # fatigue : on traîne en fin de mot
                     forme = 'long'
-                    fin_st = debut_st + {'chute': -3.0, 'montee': 6.0, 'exclamation': -3.5, 'suspendue': 0.0,
-                                         'continuation': 2.0, 'chantee': -2.5, 'chute_montee': 3.0}.get(forme_fin, -3.0) * min(1.5, etendue)
-                    if forme_fin == 'chute_montee':
-                        debut_st -= 2.0
-                else:
-                    forme = 'plat' if accents[j] else 'court'
-                    if debit < .85 and s == taille - 1 and not outils[j]:   # fatigue : on traîne en fin de mot
-                        forme = 'long'
-                    fin_st = debut_st + .65 * (cibles[j + 1] - debut_st)   # glisse vers la syllabe suivante
-                nom = nom_syl + '_' + forme
-                dur, attaque = durees['syllabes'][nom]
-                gain = 1.5 if accents[j] else 0.0
-                if syl_nombre is not None and j == syl_nombre:
-                    if pause_chiffre:
-                        t += pause_chiffre * av.entre(.9, 1.1)
-                    gain += 2.0
-                    debut_st += 1.0
-                if forme_fin == 'exclamation' and accents[j]:
-                    gain += 1.5
-                base = f0 / p['f0'] * av.entre(.99, 1.01)
-                pitch = base * 2 ** (debut_st / 12)
-                pitch_fin = base * 2 ** (fin_st / 12)
-                if tremble:
-                    pitch *= 1 + tremble * math.sin(t * 31)
-                pitch = min(1.8, max(.75, pitch))
-                pitch_fin = min(1.8, max(.75, pitch_fin))
-                debut = max(0.0, t - attaque / pitch * .5)  # aligne grossièrement l'attaque de voyelle
-                evts.append({'t': debut, 'grain': 'syl:' + nom, 'pitch': pitch, 'pitch_fin': pitch_fin, 'db': vol + gain})
-                t = debut + duree_glissee(dur, pitch, pitch_fin) - legato
-                j += 1
-                infos['syllabes'] += 1
-            if wi < len(tailles) - 1:
-                t += av.entre(*p['pause_mot']) * pauses
-                if hesite and av.reel() < hesite * .35:
-                    vocalise('euh', -3)
-        if not dernier_seg:
-            t += av.entre(*p['pause_phrase']) * pauses * {'…': 1.6, ',': .55}.get(ponct, 1.0)
+                fin_st = debut_st + .65 * (cibles[j + 1] - debut_st)   # glisse vers la syllabe suivante
+            gain = 1.5 if accents[j] else 0.0
+            nombre = syl_nombre is not None and j == syl_nombre
+            if nombre:
+                gain += 2.0
+                debut_st += 1.0
+            if forme_fin == 'exclamation' and accents[j]:
+                gain += 1.5
+            base = f0 / p['f0'] * av.entre(.99, 1.01)
+            pitch = min(1.8, max(.75, base * 2 ** (debut_st / 12)))
+            pitch_fin = min(1.8, max(.75, base * 2 ** (fin_st / 12)))
+            it = {'nom': nom_syl, 'forme': forme, 'pitch': pitch, 'pitch_fin': pitch_fin, 'gain': gain,
+                  'accent': accents[j], 'mot': mot_de[j], 'premier': premier[j], 'nombre': nombre,
+                  'pause': 0.0, 'hesite': False, 'mots_syl': taille_de[j], 'fin_mot': fin_mot}
+            if fin_mot and j < n - 1:
+                it['pause'] = av.entre(*p['pause_mot']) * pauses
+                it['hesite'] = bool(hesite) and av.reel() < hesite * .35
+            if j == n - 1 and not dernier_seg:
+                it['pause'] = av.entre(*p['pause_phrase']) * pauses * {'…': 1.6, ',': .55}.get(ponct, 1.0)
+                it['fin_seg'] = True
+            items.append(it)
+
+    # 2b. Calage sur le temps de lecture : on allonge des syllabes accentuées et les silences si la
+    #     voix finirait trop tôt, on resserre les silences si elle finirait trop tard.
+    def duree_item(it, forme):
+        return duree_glissee(durees['syllabes'][it['nom'] + '_' + forme][0], it['pitch'], it['pitch_fin']) - legato
+
+    euh = durees['vocalises']['euh'][0] / hauteur + .12 * pauses if 'euh' in durees['vocalises'] else 0.0
+    naturel = t + sum(duree_item(it, it['forme']) + it['pause'] + (euh if it['hesite'] else 0.0)
+                      + (pause_chiffre if it['nombre'] else 0.0) for it in items)
+    marge = lecture - naturel
+    infos['marge_initiale'] = marge
+    if marge > 0:
+        candidats = sorted([i for i, it in enumerate(items) if it['accent'] and it['forme'] == 'plat'],
+                           key=lambda i: (-items[i]['mots_syl'], i))
+        for i in candidats:
+            gain_t = duree_item(items[i], 'long') - duree_item(items[i], 'plat')
+            if marge < gain_t * .5:
+                break
+            items[i]['forme'] = 'long'
+            marge -= gain_t
+        mots_trous = [it for it in items[:-1] if it['fin_mot'] and not it.get('fin_seg')]
+        seg_trous = [it for it in items[:-1] if it.get('fin_seg')]
+        if marge > 0 and mots_trous:
+            ajout = min(.1, marge * .6 / len(mots_trous))
+            for it in mots_trous:
+                it['pause'] += ajout
+            marge -= ajout * len(mots_trous)
+        if marge > 0 and seg_trous:
+            ajout = min(.45, marge / len(seg_trous))
+            for it in seg_trous:
+                it['pause'] += ajout
+    elif marge < 0:
+        for it in items:
+            if it.get('fin_seg'):
+                it['pause'] *= .6
+            else:
+                it['pause'] *= .2
+
+    # 2c. Réalisation : instants, événements, début de chaque mot (pour le sous-titre mot à mot).
+    for it in items:
+        if it['nombre'] and pause_chiffre:
+            t += pause_chiffre
+        nom = it['nom'] + '_' + it['forme']
+        dur, attaque = durees['syllabes'][nom]
+        pitch, pitch_fin = it['pitch'], it['pitch_fin']
+        if tremble:
+            pitch = min(1.8, max(.75, pitch * (1 + tremble * math.sin(t * 31))))
+        debut = max(0.0, t - attaque / pitch * .5)  # aligne grossièrement l'attaque de voyelle
+        if it['premier'] and it['mot'] >= 0:
+            infos['mots'].append([decalage + it['mot'], debut])
+        evts.append({'t': debut, 'grain': 'syl:' + nom, 'pitch': pitch, 'pitch_fin': pitch_fin, 'db': vol + it['gain']})
+        t = debut + duree_glissee(dur, pitch, pitch_fin) - legato
+        infos['syllabes'] += 1
+        t += it['pause']
+        if it['hesite']:
+            vocalise('euh', -3)
 
     # 3. Après la phrase : rire, reniflement, grognement...
     apres = tirer(e['apres'])

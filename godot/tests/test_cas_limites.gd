@@ -56,6 +56,13 @@ func _tests() -> void:
 	for t in ["", "...", "?!", "$36.69", "Hmm.", "Uh... uh...", "a" .repeat(400)]:
 		var p := CharabiaSequenceur.partition(t, loc, "neutre", E, ban.durees, 0.7)
 		verifier(not p.evenements.is_empty() and float(p.infos.duree) < 8.0, "texte limite « %s »" % t.left(12))
+	# Sous-titre mot à mot : un rang par mot, dans l'ordre, et la voix dure à peu près le temps de lecture.
+	var lp := CharabiaSequenceur.partition("Uh... I think these shiny ones are worth a lot?", loc, "embarrasse", E, ban.durees, 0.7)
+	var rangs := []
+	for m in lp.infos.mots:
+		rangs.append(int(m[0]))
+	verifier(rangs == range(10), "un instant par mot du sous-titre, dans l'ordre (%s)" % str(rangs))
+	verifier(absf(float(lp.infos.duree) / float(lp.infos.lecture) - 1.0) < 0.35, "voix ≈ temps de lecture (%.2f / %.2f s)" % [lp.infos.duree, lp.infos.lecture])
 	# Sauvegarde / reprise : la mémoire des motifs survit, la suite est identique.
 	var a := CharabiaLocuteur.new("enfant", CharabiaVoix.profils.enfant, 36)
 	var bb := CharabiaLocuteur.new("enfant", CharabiaVoix.profils.enfant, 36)

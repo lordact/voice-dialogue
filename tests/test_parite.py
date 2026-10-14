@@ -35,6 +35,8 @@ if __name__ == '__main__':
             same = len(ge) == len(pe) and all(a['grain'] == b['grain'] and abs(a['t'] - b['t']) < 1e-9 and
                                               abs(a['pitch'] - b['pitch']) < 1e-9 and abs(a['pitch_fin'] - b['pitch_fin']) < 1e-9 and abs(a['db'] - b['db']) < 1e-9
                                               for a, b in zip(ge, pe))
+            gm, pm = g['infos'].get('mots', []), pi.get('mots', [])
+            same = same and len(gm) == len(pm) and all(int(a[0]) == b[0] and abs(a[1] - b[1]) < 1e-9 for a, b in zip(gm, pm))
             if not same:
                 ecarts += 1
                 print('ÉCART', pi['motif'])

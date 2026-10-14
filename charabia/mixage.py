@@ -99,9 +99,12 @@ class Piste:
     def poser(self, t, stereo):
         self.sons.append((t, stereo))
 
-    def titre(self, debut, fin, qui, texte, emotion='', joueur=False, note=''):
-        self.titres.append({'debut': round(debut, 3), 'fin': round(fin, 3), 'qui': qui, 'texte': texte,
-                            'emotion': emotion, 'joueur': joueur, 'note': note})
+    def titre(self, debut, fin, qui, texte, emotion='', joueur=False, note='', mots=None):
+        d = {'debut': round(debut, 3), 'fin': round(fin, 3), 'qui': qui, 'texte': texte,
+             'emotion': emotion, 'joueur': joueur, 'note': note}
+        if mots:
+            d['mots'] = [[int(r), round(debut + m, 3)] for r, m in mots]   # rang du mot, instant absolu
+        self.titres.append(d)
 
     def mixer(self, fond=None, fond_db=-30.0):
         n = max(max(int(t * SR) + len(s) for t, s in self.sons), int(self.fin * SR)) + int(.6 * SR)
