@@ -1,0 +1,818 @@
+{
+ "note": "Profils vocaux du charabia. f0 en Hz ; syllabe = durée de voyelle (s) ; etendue multiplie l'amplitude mélodique ; densite = syllabes de charabia par syllabe anglaise ; consonnes/voyelles = inventaire pondéré (l'accent du personnage) ; rire = style de rire ; tics = probabilités d'hésitation. 'origine' reproduit le réglage des 10 voix d'origine.",
+ "profils": {
+  "origine": {
+   "label_en": "Original village voice",
+   "description_fr": "Le réglage des 10 voix d'origine (f0 ~210 Hz, timbre par défaut). Sert de référence d'identité.",
+   "f0": 210,
+   "timbre": {},
+   "syllabe": 0.12,
+   "pause_mot": [
+    0.05,
+    0.12
+   ],
+   "pause_phrase": [
+    0.16,
+    0.28
+   ],
+   "etendue": 1.0,
+   "densite": 0.62,
+   "accent": 1.12,
+   "volume_db": 0,
+   "consonnes": {
+    "p": 1,
+    "t": 1,
+    "k": 1,
+    "m": 1,
+    "n": 1,
+    "l": 1,
+    "s": 1,
+    "": 1
+   },
+   "voyelles": {
+    "a": 1,
+    "e": 1,
+    "i": 1,
+    "o": 1,
+    "eu": 1
+   },
+   "rire": "ha",
+   "tics": {
+    "euh": 0.08
+   }
+  },
+  "commercant_blase": {
+   "label_en": "Bored shopkeeper",
+   "description_fr": "Grave, lent, mélodie plate, finales qui tombent, soupire volontiers.",
+   "f0": 128,
+   "timbre": {
+    "formant": 0.94,
+    "carre": 0.22,
+    "souffle": 0.04,
+    "vibrato": 0.006,
+    "nasal": 0.25
+   },
+   "syllabe": 0.135,
+   "pause_mot": [
+    0.07,
+    0.15
+   ],
+   "pause_phrase": [
+    0.25,
+    0.4
+   ],
+   "etendue": 0.55,
+   "densite": 0.5,
+   "accent": 1.05,
+   "volume_db": -1,
+   "consonnes": {
+    "m": 3,
+    "n": 3,
+    "b": 2,
+    "d": 2,
+    "l": 2,
+    "f": 1,
+    "k": 1,
+    "": 2
+   },
+   "voyelles": {
+    "eu": 3,
+    "on": 3,
+    "e": 2,
+    "a": 1,
+    "o": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "euh": 0.15,
+    "soupir": 0.15
+   }
+  },
+  "vieil_habitue": {
+   "label_en": "Slow old regular",
+   "description_fr": "Voix âgée, rauque et tremblante, très lente, longues pauses.",
+   "f0": 112,
+   "timbre": {
+    "formant": 0.95,
+    "raucite": 0.22,
+    "vibrato": 0.03,
+    "vib_freq": 4.6,
+    "souffle": 0.05,
+    "largeur": 1.25
+   },
+   "syllabe": 0.155,
+   "pause_mot": [
+    0.09,
+    0.2
+   ],
+   "pause_phrase": [
+    0.32,
+    0.55
+   ],
+   "etendue": 0.8,
+   "densite": 0.5,
+   "accent": 1.1,
+   "volume_db": -1,
+   "consonnes": {
+    "m": 2,
+    "b": 2,
+    "d": 2,
+    "l": 2,
+    "r": 2,
+    "f": 1,
+    "p": 1,
+    "": 2
+   },
+   "voyelles": {
+    "o": 3,
+    "a": 2,
+    "on": 2,
+    "u": 1,
+    "eu": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "euh": 0.25,
+    "hmm": 0.15
+   }
+  },
+  "ado_surexcite": {
+   "label_en": "Overexcited teen",
+   "description_fr": "Aigu, rapide, grands sauts mélodiques, consonnes claquées, gloussements.",
+   "f0": 262,
+   "timbre": {
+    "formant": 1.12,
+    "carre": 0.3,
+    "vibrato": 0.008
+   },
+   "syllabe": 0.088,
+   "pause_mot": [
+    0.03,
+    0.07
+   ],
+   "pause_phrase": [
+    0.1,
+    0.18
+   ],
+   "etendue": 1.55,
+   "densite": 0.72,
+   "accent": 1.18,
+   "volume_db": 1,
+   "consonnes": {
+    "p": 3,
+    "t": 3,
+    "k": 2,
+    "b": 2,
+    "d": 1,
+    "s": 2,
+    "ch": 1,
+    "": 1
+   },
+   "voyelles": {
+    "i": 3,
+    "é": 3,
+    "a": 2,
+    "e": 1,
+    "o": 1
+   },
+   "rire": "hihi",
+   "tics": {
+    "euh": 0.05
+   }
+  },
+  "voisin_discret": {
+   "label_en": "Quiet neighbour",
+   "description_fr": "Doux, soufflé, phrases courtes, volume bas, voyelles fermées.",
+   "f0": 172,
+   "timbre": {
+    "scie": 0.65,
+    "carre": 0.14,
+    "souffle": 0.09,
+    "largeur": 1.3,
+    "brillance": 0.08
+   },
+   "syllabe": 0.11,
+   "pause_mot": [
+    0.06,
+    0.13
+   ],
+   "pause_phrase": [
+    0.22,
+    0.36
+   ],
+   "etendue": 0.7,
+   "densite": 0.5,
+   "accent": 1.06,
+   "volume_db": -5,
+   "consonnes": {
+    "m": 2,
+    "n": 2,
+    "l": 2,
+    "f": 2,
+    "s": 1,
+    "t": 1,
+    "p": 1,
+    "": 2
+   },
+   "voyelles": {
+    "u": 3,
+    "i": 2,
+    "eu": 2,
+    "e": 1,
+    "on": 1
+   },
+   "rire": "hihi",
+   "tics": {
+    "euh": 0.12
+   }
+  },
+  "vendeuse_bavarde": {
+   "label_en": "Chatty stallholder",
+   "description_fr": "Médium-aigu, débit rapide sans respirer, mélodie chantante, rit de ses propres phrases.",
+   "f0": 238,
+   "timbre": {
+    "formant": 1.06,
+    "carre": 0.28,
+    "vibrato": 0.014
+   },
+   "syllabe": 0.095,
+   "pause_mot": [
+    0.03,
+    0.07
+   ],
+   "pause_phrase": [
+    0.1,
+    0.2
+   ],
+   "etendue": 1.35,
+   "densite": 0.75,
+   "accent": 1.14,
+   "volume_db": 0,
+   "consonnes": {
+    "l": 3,
+    "n": 2,
+    "m": 2,
+    "t": 2,
+    "s": 2,
+    "k": 1,
+    "b": 1,
+    "": 1
+   },
+   "voyelles": {
+    "a": 3,
+    "é": 3,
+    "e": 2,
+    "o": 1,
+    "i": 1
+   },
+   "rire": "ha",
+   "tics": {
+    "euh": 0.04
+   }
+  },
+  "collectionneur_methodique": {
+   "label_en": "Methodical collector",
+   "description_fr": "Débit régulier, consonnes nettes (t, k), mélodie serrée, petits « hmm » d'examen.",
+   "f0": 142,
+   "timbre": {
+    "formant": 0.98,
+    "carre": 0.24,
+    "vibrato": 0.005,
+    "brillance": 0.2
+   },
+   "syllabe": 0.115,
+   "pause_mot": [
+    0.06,
+    0.09
+   ],
+   "pause_phrase": [
+    0.22,
+    0.3
+   ],
+   "etendue": 0.7,
+   "densite": 0.6,
+   "accent": 1.08,
+   "volume_db": -1,
+   "consonnes": {
+    "t": 3,
+    "k": 3,
+    "p": 2,
+    "d": 1,
+    "s": 2,
+    "n": 1,
+    "l": 1,
+    "": 1
+   },
+   "voyelles": {
+    "i": 3,
+    "e": 2,
+    "é": 2,
+    "o": 1,
+    "a": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "hmm": 0.25
+   }
+  },
+  "pro_presse": {
+   "label_en": "Hurried professional",
+   "description_fr": "Très rapide, presque sans pause, finales sèches qui tombent.",
+   "f0": 158,
+   "timbre": {
+    "carre": 0.27,
+    "vibrato": 0.004
+   },
+   "syllabe": 0.082,
+   "pause_mot": [
+    0.02,
+    0.05
+   ],
+   "pause_phrase": [
+    0.08,
+    0.14
+   ],
+   "etendue": 0.85,
+   "densite": 0.62,
+   "accent": 1.1,
+   "volume_db": 0,
+   "consonnes": {
+    "t": 3,
+    "s": 3,
+    "k": 2,
+    "p": 2,
+    "ch": 1,
+    "n": 1,
+    "d": 1,
+    "": 1
+   },
+   "voyelles": {
+    "e": 3,
+    "a": 2,
+    "é": 2,
+    "i": 1,
+    "o": 1
+   },
+   "rire": "ha",
+   "tics": {
+    "euh": 0.02
+   }
+  },
+  "parent_chaleureux": {
+   "label_en": "Warm parent",
+   "description_fr": "Rond et doux, voyelles ouvertes (o, ou), mélodie qui berce, rire chaleureux.",
+   "f0": 205,
+   "timbre": {
+    "scie": 0.75,
+    "carre": 0.18,
+    "souffle": 0.035,
+    "vibrato": 0.015,
+    "largeur": 1.1
+   },
+   "syllabe": 0.125,
+   "pause_mot": [
+    0.05,
+    0.11
+   ],
+   "pause_phrase": [
+    0.2,
+    0.32
+   ],
+   "etendue": 1.15,
+   "densite": 0.6,
+   "accent": 1.1,
+   "volume_db": 0,
+   "consonnes": {
+    "m": 3,
+    "b": 2,
+    "l": 2,
+    "n": 2,
+    "d": 1,
+    "p": 1,
+    "": 2,
+    "r": 1
+   },
+   "voyelles": {
+    "o": 3,
+    "u": 2,
+    "a": 2,
+    "on": 1,
+    "e": 1
+   },
+   "rire": "ha",
+   "tics": {
+    "euh": 0.06
+   }
+  },
+  "revendeur_nerveux": {
+   "label_en": "Nervous reseller",
+   "description_fr": "Rythme irrégulier, hésitations, sifflantes (s, ch), petits rires nerveux.",
+   "f0": 186,
+   "timbre": {
+    "carre": 0.26,
+    "vibrato": 0.02,
+    "vib_freq": 7.0,
+    "souffle": 0.04
+   },
+   "syllabe": 0.09,
+   "pause_mot": [
+    0.02,
+    0.16
+   ],
+   "pause_phrase": [
+    0.12,
+    0.35
+   ],
+   "etendue": 1.2,
+   "densite": 0.68,
+   "accent": 1.12,
+   "volume_db": -1,
+   "consonnes": {
+    "s": 3,
+    "ch": 3,
+    "t": 2,
+    "k": 1,
+    "p": 1,
+    "f": 1,
+    "n": 1,
+    "": 1
+   },
+   "voyelles": {
+    "i": 2,
+    "e": 2,
+    "eu": 2,
+    "é": 2,
+    "a": 1
+   },
+   "rire": "ricane",
+   "tics": {
+    "euh": 0.3
+   }
+  },
+  "sarcastique": {
+   "label_en": "Sarcastic",
+   "description_fr": "Traîne sur les syllabes accentuées, montées-descentes ironiques, « pfff » fréquents.",
+   "f0": 168,
+   "timbre": {
+    "nasal": 0.3,
+    "carre": 0.24,
+    "vibrato": 0.008
+   },
+   "syllabe": 0.12,
+   "pause_mot": [
+    0.05,
+    0.12
+   ],
+   "pause_phrase": [
+    0.2,
+    0.34
+   ],
+   "etendue": 1.3,
+   "densite": 0.55,
+   "accent": 1.2,
+   "volume_db": 0,
+   "consonnes": {
+    "n": 2,
+    "m": 2,
+    "t": 2,
+    "s": 2,
+    "p": 1,
+    "k": 1,
+    "l": 1,
+    "": 1
+   },
+   "voyelles": {
+    "é": 2,
+    "a": 2,
+    "on": 2,
+    "e": 1,
+    "i": 1
+   },
+   "rire": "ricane",
+   "tics": {
+    "euh": 0.04,
+    "pfff": 0.2
+   }
+  },
+  "enfant": {
+   "label_en": "Young child",
+   "description_fr": "Très aigu, petit conduit vocal, sautillant, rires en cascade.",
+   "f0": 305,
+   "timbre": {
+    "formant": 1.24,
+    "carre": 0.3,
+    "vibrato": 0.01,
+    "souffle": 0.03
+   },
+   "syllabe": 0.1,
+   "pause_mot": [
+    0.04,
+    0.1
+   ],
+   "pause_phrase": [
+    0.14,
+    0.26
+   ],
+   "etendue": 1.45,
+   "densite": 0.6,
+   "accent": 1.16,
+   "volume_db": 0,
+   "consonnes": {
+    "b": 3,
+    "p": 2,
+    "d": 2,
+    "m": 2,
+    "t": 1,
+    "l": 1,
+    "": 2,
+    "n": 1
+   },
+   "voyelles": {
+    "i": 3,
+    "a": 2,
+    "o": 2,
+    "u": 1,
+    "é": 1
+   },
+   "rire": "hihi",
+   "tics": {
+    "euh": 0.08
+   }
+  },
+  "grand_gaillard": {
+   "label_en": "Big gruff guy",
+   "description_fr": "Très grave, grand conduit vocal, plus de bourdon, consonnes sonores b/d.",
+   "f0": 96,
+   "timbre": {
+    "formant": 0.86,
+    "carre": 0.33,
+    "brillance": 0.12,
+    "raucite": 0.08
+   },
+   "syllabe": 0.13,
+   "pause_mot": [
+    0.06,
+    0.12
+   ],
+   "pause_phrase": [
+    0.22,
+    0.34
+   ],
+   "etendue": 0.9,
+   "densite": 0.55,
+   "accent": 1.12,
+   "volume_db": 1,
+   "consonnes": {
+    "b": 3,
+    "d": 3,
+    "m": 2,
+    "r": 2,
+    "k": 1,
+    "n": 1,
+    "": 1,
+    "l": 1
+   },
+   "voyelles": {
+    "o": 3,
+    "a": 3,
+    "on": 2,
+    "u": 1,
+    "eu": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "euh": 0.06,
+    "hmm": 0.08
+   }
+  },
+  "dame_distinguee": {
+   "label_en": "Refined elderly lady",
+   "description_fr": "Médium, vibrato marqué, lente et chantée, voyelles claires.",
+   "f0": 212,
+   "timbre": {
+    "formant": 1.04,
+    "vibrato": 0.035,
+    "vib_freq": 5.2,
+    "raucite": 0.08,
+    "souffle": 0.04,
+    "largeur": 1.15
+   },
+   "syllabe": 0.14,
+   "pause_mot": [
+    0.07,
+    0.14
+   ],
+   "pause_phrase": [
+    0.26,
+    0.42
+   ],
+   "etendue": 1.2,
+   "densite": 0.55,
+   "accent": 1.1,
+   "volume_db": -1,
+   "consonnes": {
+    "l": 3,
+    "m": 2,
+    "n": 2,
+    "s": 1,
+    "d": 1,
+    "t": 1,
+    "": 2,
+    "r": 1
+   },
+   "voyelles": {
+    "é": 3,
+    "i": 2,
+    "e": 2,
+    "a": 1,
+    "o": 1
+   },
+   "rire": "hihi",
+   "tics": {
+    "euh": 0.1
+   }
+  },
+  "revendeur_assure": {
+   "label_en": "Confident dealer",
+   "description_fr": "Grave et posé, débit ferme, silence avant chaque somme, finales nettes.",
+   "f0": 122,
+   "timbre": {
+    "formant": 0.93,
+    "carre": 0.3,
+    "vibrato": 0.004,
+    "brillance": 0.18
+   },
+   "syllabe": 0.12,
+   "pause_mot": [
+    0.06,
+    0.1
+   ],
+   "pause_phrase": [
+    0.24,
+    0.34
+   ],
+   "etendue": 0.85,
+   "densite": 0.55,
+   "accent": 1.15,
+   "volume_db": 1,
+   "consonnes": {
+    "d": 3,
+    "k": 2,
+    "t": 2,
+    "b": 2,
+    "n": 1,
+    "r": 1,
+    "m": 1,
+    "": 1
+   },
+   "voyelles": {
+    "a": 3,
+    "o": 2,
+    "on": 2,
+    "e": 1,
+    "eu": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "euh": 0.0
+   },
+   "pause_avant_chiffre": 0.42
+  },
+  "agent_officiel": {
+   "label_en": "Formal official",
+   "description_fr": "Neutre et carré, mélodie plate, syllabes égales, pauses régulières.",
+   "f0": 138,
+   "timbre": {
+    "carre": 0.28,
+    "vibrato": 0.003,
+    "brillance": 0.18
+   },
+   "syllabe": 0.112,
+   "pause_mot": [
+    0.07,
+    0.08
+   ],
+   "pause_phrase": [
+    0.24,
+    0.28
+   ],
+   "etendue": 0.6,
+   "densite": 0.58,
+   "accent": 1.08,
+   "volume_db": 0,
+   "consonnes": {
+    "k": 2,
+    "t": 2,
+    "d": 2,
+    "p": 2,
+    "n": 2,
+    "s": 1,
+    "r": 1,
+    "": 1
+   },
+   "voyelles": {
+    "o": 2,
+    "e": 2,
+    "a": 2,
+    "on": 1,
+    "i": 1
+   },
+   "rire": "hoho",
+   "tics": {
+    "euh": 0.03
+   }
+  },
+  "reveuse_artiste": {
+   "label_en": "Dreamy artist",
+   "description_fr": "Aiguë et soufflée, glissés lents, voyelles longues, s'interrompt pour réfléchir.",
+   "f0": 228,
+   "timbre": {
+    "formant": 1.08,
+    "scie": 0.7,
+    "carre": 0.15,
+    "souffle": 0.08,
+    "vibrato": 0.018,
+    "largeur": 1.2
+   },
+   "syllabe": 0.135,
+   "pause_mot": [
+    0.06,
+    0.16
+   ],
+   "pause_phrase": [
+    0.24,
+    0.45
+   ],
+   "etendue": 1.25,
+   "densite": 0.55,
+   "accent": 1.08,
+   "volume_db": -2,
+   "consonnes": {
+    "l": 3,
+    "m": 2,
+    "f": 2,
+    "s": 2,
+    "n": 1,
+    "r": 1,
+    "": 2,
+    "b": 1
+   },
+   "voyelles": {
+    "u": 2,
+    "o": 2,
+    "i": 2,
+    "eu": 2,
+    "a": 1
+   },
+   "rire": "hihi",
+   "tics": {
+    "euh": 0.12,
+    "hmm": 0.15
+   }
+  },
+  "cuisinier_jovial": {
+   "label_en": "Jovial cook",
+   "description_fr": "Grave-médium, fort, rebondissant, rit fort et souvent.",
+   "f0": 132,
+   "timbre": {
+    "formant": 0.92,
+    "carre": 0.3,
+    "vibrato": 0.012
+   },
+   "syllabe": 0.11,
+   "pause_mot": [
+    0.04,
+    0.09
+   ],
+   "pause_phrase": [
+    0.16,
+    0.26
+   ],
+   "etendue": 1.35,
+   "densite": 0.62,
+   "accent": 1.18,
+   "volume_db": 2,
+   "consonnes": {
+    "b": 2,
+    "m": 2,
+    "p": 2,
+    "l": 2,
+    "r": 2,
+    "k": 1,
+    "d": 1,
+    "": 1
+   },
+   "voyelles": {
+    "a": 3,
+    "o": 3,
+    "é": 1,
+    "on": 1,
+    "e": 1
+   },
+   "rire": "ha",
+   "tics": {
+    "euh": 0.04
+   }
+  }
+ }
+}

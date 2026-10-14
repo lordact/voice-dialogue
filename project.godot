@@ -1,0 +1,16 @@
+; Projet Godot minimal du laboratoire vocal (pilote du charabia Card Hustle).
+config_version=5
+
+[application]
+config/name="Charabia Card Hustle — pilote"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
+[importer_defaults]
+
+wav={
+"compress/mode": 2
+}

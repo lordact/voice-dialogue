@@ -1,0 +1,8 @@
+# Banque de grains régénérable à l'identique : python3 charabia/exporter_banque.py
+banque/
+# Godot
+.godot/
+*.import
+# Python
+__pycache__/
+*.pyc

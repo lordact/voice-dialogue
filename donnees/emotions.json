@@ -1,0 +1,31 @@
+{
+ "note": "Prosodie par émotion, appliquée par-dessus le profil. hauteur = multiplicateur de f0 ; etendue = amplitude mélodique ; debit = vitesse (pauses et longueur des syllabes) ; volume_db ; pauses = multiplicateur des silences ; fin = forme de la dernière syllabe (chute, montee, chute_montee, chantee, suspendue) ; avant/apres = vocalises possibles [type, probabilité] ; dures = probabilité de durcir une consonne ; tremble = vacillement de hauteur ; hesite = probabilité d'insérer un « euh » au milieu. L'intensité (0..1) dose l'écart au neutre et les probabilités.",
+ "emotions": {
+  "neutre":     {"hauteur": 1.0,  "etendue": 1.0,  "debit": 1.0,  "volume_db": 0,  "pauses": 1.0, "fin": null,           "avant": [], "apres": [], "dures": 0.0, "tremble": 0.0, "hesite": 0.0},
+  "curieux":    {"hauteur": 1.04, "etendue": 1.2,  "debit": 1.02, "volume_db": 0,  "pauses": 1.0, "fin": "montee",       "avant": [["hmm_reflexion", 0.35]], "apres": [], "dures": 0.0, "tremble": 0.0, "hesite": 0.0},
+  "joyeux":     {"hauteur": 1.1,  "etendue": 1.35, "debit": 1.1,  "volume_db": 1.5, "pauses": 0.85, "fin": "chantee",     "avant": [["ah", 0.15]], "apres": [["rire", 0.4]], "dures": 0.0, "tremble": 0.0, "hesite": 0.0},
+  "surpris":    {"hauteur": 1.2,  "etendue": 1.5,  "debit": 1.05, "volume_db": 2,  "pauses": 0.9, "fin": "montee",       "avant": [["inspiration_surprise", 0.65], ["hein", 0.2]], "apres": [], "dures": 0.1, "tremble": 0.0, "hesite": 0.0},
+  "decu":       {"hauteur": 0.92, "etendue": 0.7,  "debit": 0.88, "volume_db": -2, "pauses": 1.25, "fin": "chute",       "avant": [["oh_decu", 0.5]], "apres": [["soupir", 0.2]], "dures": 0.0, "tremble": 0.0, "hesite": 0.1},
+  "mefiant":    {"hauteur": 0.97, "etendue": 0.8,  "debit": 0.86, "volume_db": -1, "pauses": 1.35, "fin": "chute_montee","avant": [["hmm_doute", 0.55]], "apres": [], "dures": 0.1, "tremble": 0.0, "hesite": 0.1},
+  "triste":     {"hauteur": 0.88, "etendue": 0.6,  "debit": 0.78, "volume_db": -4, "pauses": 1.45, "fin": "chute",       "avant": [["soupir", 0.5]], "apres": [["reniflement", 0.2]], "dures": 0.0, "tremble": 0.025, "hesite": 0.1},
+  "agace":      {"hauteur": 1.02, "etendue": 0.95, "debit": 1.15, "volume_db": 2,  "pauses": 0.8, "fin": "chute",        "avant": [["tss", 0.3], ["grogne", 0.3]], "apres": [], "dures": 0.4, "tremble": 0.0, "hesite": 0.0},
+  "furieux":    {"hauteur": 1.14, "etendue": 1.6,  "debit": 1.25, "volume_db": 5,  "pauses": 0.7, "fin": "chute",        "avant": [["grogne", 0.6]], "apres": [["grogne", 0.25]], "dures": 0.7, "tremble": 0.0, "hesite": 0.0},
+  "moqueur":    {"hauteur": 1.05, "etendue": 1.45, "debit": 0.95, "volume_db": 0,  "pauses": 1.0, "fin": "chantee",      "avant": [["pfff", 0.35]], "apres": [["rire_moqueur", 0.5]], "dures": 0.1, "tremble": 0.0, "hesite": 0.0},
+  "embarrasse": {"hauteur": 1.06, "etendue": 0.8,  "debit": 1.1,  "volume_db": -3, "pauses": 1.1, "fin": "suspendue",    "avant": [["euh", 0.4]], "apres": [["rire_nerveux", 0.5]], "dures": 0.0, "tremble": 0.01, "hesite": 0.45},
+  "fatigue":    {"hauteur": 0.9,  "etendue": 0.55, "debit": 0.74, "volume_db": -3, "pauses": 1.5, "fin": "chute",        "avant": [["baillement", 0.3], ["soupir", 0.35]], "apres": [], "dures": 0.0, "tremble": 0.0, "hesite": 0.15},
+  "ravi":       {"hauteur": 1.15, "etendue": 1.5,  "debit": 1.1,  "volume_db": 2,  "pauses": 0.85, "fin": "chantee",      "avant": [["ooh", 0.5]], "apres": [["rire", 0.35]], "dures": 0.0, "tremble": 0.0, "hesite": 0.0},
+  "au_revoir":  {"hauteur": 1.06, "etendue": 1.2,  "debit": 1.0,  "volume_db": 0,  "pauses": 1.0, "fin": "chantee",      "avant": [], "apres": [], "dures": 0.0, "tremble": 0.0, "hesite": 0.0}
+ },
+ "tons_v8": {
+  "note": "Ton du choix (V8) -> émotion de la réponse du PNJ, par défaut. La scène peut la surcharger.",
+  "curious": "curieux", "practical": "neutre", "playful": "moqueur", "absurd": "joyeux", "kind": "joyeux",
+  "humor": "joyeux", "warm": "joyeux", "brief": "neutre", "empathetic": "triste", "careful": "mefiant",
+  "friendly": "joyeux", "direct": "neutre",
+  "ask": "neutre", "verify": "mefiant", "cooperate": "joyeux", "decline": "au_revoir"
+ },
+ "marchandage": {
+  "note": "Résultat de EcoHaggle (addons/economy) -> émotion de la réplique du vendeur. La voix suit le résultat, elle ne le décide jamais.",
+  "accept": "ravi", "reconsider": "surpris", "counter": "mefiant", "refuse": "agace",
+  "lowball": "furieux", "leave": "agace", "keep": "triste", "gone": "decu"
+ }
+}

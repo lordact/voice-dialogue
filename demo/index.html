@@ -1,0 +1,350 @@
+<title>Laboratoire du charabia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Mise en page : une colonne d'écoute (scènes A/B) puis le dossier (audit, mesures, autocritique).
+   La boîte de sous-titres reprend la couleur du panneau du jeu (#20342f, audio_village.gd). */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #17231f;
+  --muted: #5b6b65;
+  --line: #d5ddd8;
+  --box: #20342f;
+  --box-ink: #f4f1dc;
+  --sub: #ffd75e;
+  --new: #1f7a63;
+  --old: #8a6a2b;
+  --you: #9fc3ff;
+  --chip: #e7eeea;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101816; --surface: #17211e; --ink: #e5ece8; --muted: #9db0a8; --line: #2b3a35;
+    --box: #0b1412; --box-ink: #f4f1dc; --sub: #ffd75e; --new: #4fc3a1; --old: #d6ad5c; --you: #9fc3ff; --chip: #22302b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101816; --surface: #17211e; --ink: #e5ece8; --muted: #9db0a8; --line: #2b3a35;
+  --box: #0b1412; --box-ink: #f4f1dc; --sub: #ffd75e; --new: #4fc3a1; --old: #d6ad5c; --you: #9fc3ff; --chip: #22302b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.55rem; font-weight: 700; margin-top: 8px; }
+h3 { font-size: 1.12rem; font-weight: 700; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+header { display: grid; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.lede { font-size: 1.08rem; color: var(--ink); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--font-mono); font-size: .82rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.howto { display: grid; gap: 6px; margin-top: 4px; padding: 12px 14px; border-left: 3px solid var(--sub); background: var(--surface); border-radius: 0 8px 8px 0; font-size: .95rem; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 6px; }
+nav.toc a { font-size: .85rem; color: var(--ink); text-decoration: none; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+nav.toc a:hover, nav.toc a:focus-visible { border-color: var(--new); outline: none; }
+section.scenes { display: grid; gap: 22px; margin-top: 18px; }
+.scene { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.scene-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; }
+.scene-head .dur { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.desc { color: var(--muted); font-size: .95rem; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ab { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.ab button { font: 600 .85rem var(--font-body); padding: 7px 14px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.ab button[aria-pressed="true"].b-new { background: var(--new); color: #fff; }
+.ab button[aria-pressed="true"].b-old { background: var(--old); color: #fff; }
+.ab button:focus-visible { outline: 2px solid var(--sub); outline-offset: -2px; }
+.play { font: 700 .9rem var(--font-body); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); cursor: pointer; min-width: 92px; }
+.play:focus-visible { outline: 2px solid var(--sub); outline-offset: 2px; }
+.time { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lane { position: relative; height: 34px; border-radius: 6px; background: var(--chip); cursor: pointer; overflow: hidden; }
+.lane .seg { position: absolute; top: 6px; height: 22px; border-radius: 4px; opacity: .85; }
+.lane .seg.you { background: var(--you); opacity: .55; top: 11px; height: 12px; }
+.lane .seg.ui { background: var(--sub); opacity: .5; top: 14px; height: 6px; }
+.lane .head { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); left: 0; }
+.box { background: var(--box); color: var(--box-ink); border-radius: 14px; padding: 14px 18px; min-height: 92px; display: grid; gap: 4px; align-content: center; }
+.box .who { font: 700 .82rem var(--font-body); letter-spacing: .04em; text-transform: uppercase; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box .emo { font: 400 .72rem var(--font-mono); text-transform: lowercase; letter-spacing: 0; padding: 1px 7px; border-radius: 999px; border: 1px solid rgba(244,241,220,.35); }
+.box .line { font-size: 1.12rem; color: var(--sub); }
+.box .line.you { color: var(--you); font-style: italic; }
+.box .line.ui { color: var(--box-ink); font-family: var(--font-mono); font-size: .92rem; }
+.box .idle { color: rgba(244,241,220,.55); font-size: .92rem; }
+details.script summary { cursor: pointer; font-size: .88rem; color: var(--muted); }
+details.script ol { margin: 8px 0 0; padding-left: 22px; display: grid; gap: 3px; font-size: .9rem; }
+details.script li { cursor: pointer; }
+details.script li .t { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); margin-right: 6px; }
+details.script li.cur { color: var(--new); font-weight: 700; }
+.dossier { display: grid; gap: 30px; margin-top: 46px; padding-top: 24px; border-top: 1px solid var(--line); }
+.dossier section { display: grid; gap: 12px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+ul.tight { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+ul.tight li { max-width: 72ch; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+td.mono { font-family: var(--font-mono); font-size: .82rem; white-space: nowrap; }
+.ok { color: var(--new); font-weight: 700; }
+.warn { color: var(--old); font-weight: 700; }
+ol.decide { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Card Hustle · prototype vocal à valider · 10 octobre 2026</span>
+    <h1>Laboratoire du charabia</h1>
+    <p class="lede">Les premières voix du village, gardées telles quelles comme source sonore, et enrichies : 17 personnalités vocales, 14 émotions, 18 vocalises (rires, soupirs, « hmm », surprise…), des répliques dont la longueur suit le sous-titre anglais, et un motif reconnaissable quand la même phrase revient.</p>
+    <div class="facts">
+      <span><b>10</b> scènes A/B</span><span><b>17 + 1</b> profils</span><span><b>14</b> émotions</span>
+      <span><b>2 096</b> répliques V8 testées</span><span>parité Python / Godot <b>23/23</b></span><span>Godot <b>0,08 ms</b>/image pour 12 voix</span>
+    </div>
+    <div class="howto">
+      <span><b>Comment écouter.</b> Casque conseillé. « Nouveau » et « Ancien » ont la même sonie (égalisée), et le bouton de bascule garde la position : on compare la même seconde.</span>
+      <span>« Ancien » rejoue fidèlement le système actuel (10 phrases fixes, hauteur selon l'habitant). Les répliques viennent de la bibliothèque V8 et du module Economy.</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Scènes" id="toc"></nav>
+  <section class="scenes" id="scenes"></section>
+
+  <div class="dossier">
+    <section id="godot">
+      <span class="eyebrow">Moteur du jeu</span>
+      <h2>Sortie réelle de Godot 4.4.1</h2>
+      <p>Enregistrement du bus Master du pilote Godot (lecteur polyphonique + séquenceur porté en GDScript) : 10 s de stress test avec 12 habitants 3D qui parlent sans arrêt, bien au-delà de ce que le jeu fera, puis la négociation de Derek en dialogue.</p>
+      <div class="scene" id="scene-godot"></div>
+    </section>
+
+    <section id="audit-jeu">
+      <span class="eyebrow">Audit · dépôt cards-hustle, branche claude/brave-keller-kq8itw</span>
+      <h2>Le système vocal actuel</h2>
+      <div class="grid2">
+        <div class="panel"><h3>Ce qui marche</h3><ul class="tight">
+          <li>Les 10 voix (<span class="num">1,5–2,4 s</span>) sont 100 % originales : je les ai régénérées à l'identique depuis <code>Outils/generer_voix.py</code> (corrélation <span class="num">1,000</span>).</li>
+          <li>Bus « NPC voices », volume réglable (F10), coupure à la fermeture du dialogue, babillage d'ambiance désactivable.</li>
+          <li>Le module Economy renvoie déjà un résultat de marchandage (accept, counter, lowball, leave…) et la réplique du vendeur.</li>
+        </ul></div>
+        <div class="panel"><h3>Ce qui limite</h3><ul class="tight">
+          <li>Seulement 10 phrases : on les reconnaît vite. Leur durée ne dépend pas du texte.</li>
+          <li>Émotion : seules « neutre » et « curieux » (+8 % de hauteur) sont utilisées.</li>
+          <li>Les voix ne diffèrent que par la hauteur ; un seul lecteur de dialogue, non spatialisé.</li>
+          <li>Ambiance : une phrase au hasard toutes les 12–22 s, jamais de vraie conversation entre habitants.</li>
+          <li>Crédits erronés : <code>Credits_audio.json</code> attribue ces voix à « tcarisland, CC-BY-4.0 ». À corriger en « création originale ».</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section id="audit-v8">
+      <span class="eyebrow">Audit · bibliothèque consolidée V8</span>
+      <h2>Ce que contient vraiment la V8</h2>
+      <p>Intégrité mécanique confirmée : <span class="num">455</span> scènes, <span class="num">850</span> nœuds profonds, aucun lien cassé. Le contrôle de contenu révèle en revanche beaucoup de répétitions et quelques trous.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constat</th><th>Chiffre</th><th>Conséquence</th></tr></thead>
+        <tbody id="audit-table"></tbody>
+      </table></div>
+    </section>
+
+    <section id="mesures">
+      <span class="eyebrow">Mesures et tests</span>
+      <h2>Performance et vérifications</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Mesure</th><th>Résultat</th><th>Commentaire</th></tr></thead>
+        <tbody id="perf-table"></tbody>
+      </table></div>
+      <p class="desc">Mesures faites en mode headless sur une machine cloud, avec le pilote audio factice de Godot : le coût du mixage C++ lui-même n'est pas mesuré ici. À refaire sur un PC de jeu pendant la brocante.</p>
+    </section>
+
+    <section id="voix">
+      <span class="eyebrow">Palette</span>
+      <h2>Les 17 profils (et l'origine)</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Profil</th><th>Caractère</th><th>f0</th><th>Exemple d'habitant</th></tr></thead>
+        <tbody id="profils-table"></tbody>
+      </table></div>
+    </section>
+
+    <section id="autocritique">
+      <span class="eyebrow">Autocritique</span>
+      <h2>Ce qui est fragile ou pas encore fait</h2>
+      <ul class="tight">
+        <li><b>Je n'ai pas pu écouter moi-même.</b> Tout a été vérifié par mesures (niveaux, sauts d'échantillons, durées) et par spectrogrammes. Ton oreille tranche.</li>
+        <li><b>Mélodie en escalier.</b> Chaque syllabe est un grain transposé : la hauteur glisse dans la syllabe mais saute entre deux syllabes. Transposer décale aussi les formants (léger effet « voix accélérée », déjà présent dans l'ancien système).</li>
+        <li><b>Vocalises inégales.</b> Rires et « hmm » ont la même texture que la voix ; soupirs et reniflements sont surtout du souffle filtré et risquent de sonner moins naturels. Les rires partent en salves régulières, peut-être trop mécaniques.</li>
+        <li><b>Motif entre deux voix.</b> Une même réplique garde son motif chez un même habitant (testé), mais deux profils de densité différente la découpent autrement : la ressemblance entre deux voix est plus faible.</li>
+        <li><b>Tempo.</b> Le vieil habitué fatigué peut mettre 4–5 s pour une phrase moyenne : sans doute trop lent pour un jeu.</li>
+        <li><b>Ambiance posée à la main.</b> Dans le parc et la brocante, les chevauchements et les silences sont écrits dans la démo. Le « directeur d'ambiance » qui les gérera en jeu n'est pas encore codé.</li>
+        <li><b>Taille de la banque.</b> 276 fichiers par profil, environ 5 000 au total : 16 Mo importés et 45 s d'import Godot. Ma première version en OGG coûtait 1 ms par grain (un décodeur Vorbis par grain) ; je l'ai mesurée puis remplacée par du WAV importé en QOA (34 µs).</li>
+        <li><b>Rythme à l'image près.</b> Les grains partent au début d'une image : jusqu'à 16 ms de flottement à 60 i/s (33 ms à 30 i/s). Inaudible sur du charabia, à surveiller sur une machine lente.</li>
+        <li><b>A/B pas tout à fait « en jeu ».</b> Dans le jeu actuel, l'ancienne voix ne se déclenche qu'à l'ouverture du dialogue et aux trois réponses ; la démo la place sur chaque réplique pour comparer à égalité.</li>
+        <li><b>Pas d'animation faciale</b> : les modèles n'en ont pas, je n'en ai pas inventé. Le signal « parle / fini » est prêt pour une animation de tête.</li>
+        <li>Petite fuite signalée par Godot à la fermeture du banc d'essai (un lecteur polyphonique) ; le test des cas limites, lui, se ferme proprement.</li>
+      </ul>
+    </section>
+
+    <section id="optimisations">
+      <span class="eyebrow">Proposition</span>
+      <h2>Optimisations avant de généraliser</h2>
+      <ul class="tight">
+        <li><b>Glissés liés</b> entre syllabes : animer la hauteur du grain pendant sa lecture (Godot 4.4 le permet par grain).</li>
+        <li><b>Banque allégée</b> : 4 formes mélodiques au lieu de 6 et 22 kHz au lieu de 32 kHz (environ −55 %), ou un atlas par profil.</li>
+        <li><b>Directeur d'ambiance</b> : au plus 2 voix d'ambiance et 1 conversation entre habitants à la fois, silence de 20–40 s par habitant, mémoire des phrases déjà entendues, ambiance baissée de 8 dB pendant un dialogue.</li>
+        <li><b>Préchargement</b> d'un profil quand un habitant s'approche (déjà écrit : 13 profils en 0,6 s, en tâche de fond).</li>
+        <li><b>Branchement V8</b> : tons → émotions, résultats Economy → émotions (tables prêtes), alias des 6 hubs manquants, nettoyage non destructif des répétitions et fautes listées.</li>
+        <li><b>Intégration réversible</b> : option « Voix : classique / enrichie » dans F10, les anciens <code>voice_*.ogg</code> restent en place.</li>
+      </ul>
+    </section>
+
+    <section id="decisions">
+      <span class="eyebrow">À trancher</span>
+      <h2>Tes décisions avant la suite</h2>
+      <ol class="decide">
+        <li>Direction : garder ce timbre « synthé » tel quel, ou l'adoucir (moins d'onde carrée, plus de souffle) ?</li>
+        <li>Quels profils garder, fusionner ou retoucher (le plus lent, le plus aigu) ?</li>
+        <li>Fréquence des rires et soupirs : plus rare, autant, plus souvent ?</li>
+        <li>Les 17 scènes de boulanger : créer un habitant boulanger, ou les confier au café (Marcus) ?</li>
+        <li>Pop culture : retirer « So the cake was a lie? » (quasi-citation de Portal) et plafonner à une allusion par rencontre, dans quelques rencontres seulement ?</li>
+        <li>Feu vert pour l'intégration pilote dans le jeu avec l'option classique / enrichie ?</li>
+      </ol>
+    </section>
+  </div>
+  <footer>Code, données et rendus : dépôt <code>lordact/voice-dialogue</code>, branche <code>claude/dreamy-mccarthy-xh6h3h</code>. Ambiances des scènes parc et brocante : sons CC0 déjà présents dans le jeu (isaiah658, Thimras, Sandermotions). Toutes les voix sont synthétisées, sans échantillon tiers.</footer>
+</div>
+
+<script id="data" type="application/json">{"scenes": [{"cle": "palette", "titre": "Voice palette — 17 profiles + original, same line", "description": "Chaque profil dit la même réplique V2 (neutre). « origine » = réglage des voix actuelles, rejoué par le nouveau moteur.", "titres": [{"debut": 0.5, "fin": 2.7, "qui": "", "texte": "Original village voice — origine", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 0.9, "fin": 2.908, "qui": "origine", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 3.958, "fin": 6.158, "qui": "", "texte": "Bored shopkeeper — commercant_blase", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 4.358, "fin": 6.501, "qui": "commercant_blase", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 7.551, "fin": 9.751, "qui": "", "texte": "Slow old regular — vieil_habitue", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 7.951, "fin": 10.652, "qui": "vieil_habitue", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 11.702, "fin": 13.902, "qui": "", "texte": "Overexcited teen — ado_surexcite", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 12.102, "fin": 13.895, "qui": "ado_surexcite", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 14.945, "fin": 17.145, "qui": "", "texte": "Quiet neighbour — voisin_discret", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 15.345, "fin": 17.209, "qui": "voisin_discret", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 18.259, "fin": 20.459, "qui": "", "texte": "Chatty stallholder — vendeuse_bavarde", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 18.659, "fin": 20.728, "qui": "vendeuse_bavarde", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 21.778, "fin": 23.978, "qui": "", "texte": "Methodical collector — collectionneur_methodique", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 22.178, "fin": 24.17, "qui": "collectionneur_methodique", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 25.22, "fin": 27.42, "qui": "", "texte": "Hurried professional — pro_presse", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 25.62, "fin": 26.903, "qui": "pro_presse", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 27.953, "fin": 30.153, "qui": "", "texte": "Warm parent — parent_chaleureux", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 28.353, "fin": 30.53, "qui": "parent_chaleureux", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 31.58, "fin": 33.78, "qui": "", "texte": "Nervous reseller — revendeur_nerveux", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 31.98, "fin": 34.077, "qui": "revendeur_nerveux", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 35.127, "fin": 37.327, "qui": "", "texte": "Sarcastic — sarcastique", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 35.527, "fin": 37.623, "qui": "sarcastique", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 38.673, "fin": 40.873, "qui": "", "texte": "Young child — enfant", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 39.073, "fin": 40.783, "qui": "enfant", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 41.833, "fin": 44.033, "qui": "", "texte": "Big gruff guy — grand_gaillard", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 42.233, "fin": 44.526, "qui": "grand_gaillard", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 45.576, "fin": 47.776, "qui": "", "texte": "Refined elderly lady — dame_distinguee", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 45.976, "fin": 48.348, "qui": "dame_distinguee", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 49.398, "fin": 51.598, "qui": "", "texte": "Confident dealer — revendeur_assure", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 49.798, "fin": 51.807, "qui": "revendeur_assure", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 52.857, "fin": 55.057, "qui": "", "texte": "Formal official — agent_officiel", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 53.257, "fin": 55.21, "qui": "agent_officiel", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 56.26, "fin": 58.46, "qui": "", "texte": "Dreamy artist — reveuse_artiste", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 56.66, "fin": 59.121, "qui": "reveuse_artiste", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 60.171, "fin": 62.371, "qui": "", "texte": "Jovial cook — cuisinier_jovial", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 60.571, "fin": 62.319, "qui": "cuisinier_jovial", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "neutral", "joueur": false, "note": ""}], "duree": 63.97, "nouveau": "palette_nouveau.mp3", "ancien": "palette_ancien.mp3"}, {"cle": "passant", "titre": "Neutral passer-by — Felix the mail carrier", "description": "Felix passe en disant bonjour, le joueur l’arrête. Lignes V3 « postal_worker.busy_monday ».", "titres": [{"debut": 0.5, "fin": 1.7, "qui": "Felix Romero", "texte": "Monday mornings bring everyone’s weekend parcels.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 1.914, "fin": 3.904, "qui": "You", "texte": "Is Monday the busiest?", "emotion": "", "joueur": true, "note": ""}, {"debut": 4.154, "fin": 5.354, "qui": "Felix Romero", "texte": "Usually, yes.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 5.062, "fin": 6.827, "qui": "You", "texte": "Any quieter time?", "emotion": "", "joueur": true, "note": ""}, {"debut": 7.077, "fin": 8.277, "qui": "Felix Romero", "texte": "Late afternoon, unless a holiday is coming.", "emotion": "curious", "joueur": false, "note": ""}, {"debut": 8.503, "fin": 10.358, "qui": "You", "texte": "I should get going.", "emotion": "", "joueur": true, "note": ""}, {"debut": 10.608, "fin": 11.808, "qui": "Felix Romero", "texte": "See you around.", "emotion": "goodbye", "joueur": false, "note": ""}], "duree": 12.03, "nouveau": "passant_nouveau.mp3", "ancien": "passant_ancien.mp3"}, {"cle": "opposes", "titre": "Opposite timbres — Antonio (78) and Ava (9)", "description": "Scènes V3 « park_regular.weather » et V6 « v6_041 ».", "titres": [{"debut": 0.5, "fin": 3.483, "qui": "Antonio Garcia", "texte": "Looks like rain, but my knees are not a reliable forecast.", "emotion": "tired", "joueur": false, "note": ""}, {"debut": 4.033, "fin": 6.068, "qui": "You", "texte": "Are they usually right?", "emotion": "", "joueur": true, "note": ""}, {"debut": 6.318, "fin": 7.822, "qui": "Antonio Garcia", "texte": "They are usually dramatic.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 8.972, "fin": 10.911, "qui": "Ava Washington", "texte": "I found a wooden box under the bench and thought it was treasure.", "emotion": "delighted", "joueur": false, "note": ""}, {"debut": 11.461, "fin": 14.036, "qui": "You", "texte": "Was it filled with legendary socks?", "emotion": "", "joueur": true, "note": ""}, {"debut": 14.286, "fin": 16.387, "qui": "Ava Washington", "texte": "Worse. Gardening gloves.", "emotion": "disappointed", "joueur": false, "note": ""}], "duree": 17.54, "nouveau": "opposes_nouveau.mp3", "ancien": "opposes_ancien.mp3"}, {"cle": "parc", "titre": "Park chatter between residents — Rosa and Bob", "description": "Conversation entre PNJ reprise d’une scène V2, entendue en passant (distance 9 m → 5 m → 10 m), puis chacun reprend sa routine : 6 s de silence.", "titres": [{"debut": 0.5, "fin": 2.651, "qui": "Rosa Garcia", "texte": "Looks like rain again. The clouds have a personal problem with this town.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 3.001, "fin": 4.201, "qui": "Bob Foster", "texte": "Is it supposed to last?", "emotion": "curious", "joueur": false, "note": ""}, {"debut": 4.033, "fin": 5.301, "qui": "Rosa Garcia", "texte": "Forecast says until lunch, which means dinner.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 5.601, "fin": 7.631, "qui": "Bob Foster", "texte": "Ha! At this point the ducks should pay property tax.", "emotion": "happy", "joueur": false, "note": ""}, {"debut": 8.031, "fin": 9.364, "qui": "Rosa Garcia", "texte": "Oh, this town never runs out.", "emotion": "tired", "joueur": false, "note": ""}], "duree": 16.26, "nouveau": "parc_nouveau.mp3", "ancien": "parc_ancien.mp3"}, {"cle": "negociation", "titre": "Negotiation — Derek Moss, reseller (accepted)", "description": "Lot et prix calculés par addons/economy (profil « reseller »), répliques = lignes du profil. La voix suit le résultat (lowball → furieux, counter → méfiant, accept → ravi), elle ne décide rien.", "titres": [{"debut": 0.5, "fin": 2.06, "qui": "Derek Moss", "texte": "I know what the market is. I also know what sells.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 2.61, "fin": 5.05, "qui": "You", "texte": "What are you asking for the lot?", "emotion": "", "joueur": true, "note": ""}, {"debut": 5.3, "fin": 7.5, "qui": "", "texte": "Lot of 10 cards — asking $38.79", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 5.7, "fin": 8.037, "qui": "Derek Moss", "texte": "I can't pay retail if I'm the one taking the risk.", "emotion": "wary", "joueur": false, "note": ""}, {"debut": 8.587, "fin": 10.307, "qui": "You", "texte": "I can do $12.00.", "emotion": "", "joueur": true, "note": ""}, {"debut": 10.557, "fin": 11.757, "qui": "Derek Moss", "texte": "You're not my first lowballer today.", "emotion": "furious", "joueur": false, "note": ""}, {"debut": 11.825, "fin": 13.41, "qui": "You", "texte": "Fine. $31.00.", "emotion": "", "joueur": true, "note": ""}, {"debut": 13.66, "fin": 15.86, "qui": "", "texte": "Counter-offer: $36.69", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 14.06, "fin": 15.26, "qui": "Derek Moss", "texte": "Meet me in the middle.", "emotion": "wary", "joueur": false, "note": ""}, {"debut": 15.159, "fin": 16.834, "qui": "You", "texte": "Deal at $36.69.", "emotion": "", "joueur": true, "note": ""}, {"debut": 17.084, "fin": 18.284, "qui": "Derek Moss", "texte": "Pleasure doing business.", "emotion": "delighted", "joueur": false, "note": ""}], "duree": 19.26, "nouveau": "negociation_nouveau.mp3", "ancien": "negociation_ancien.mp3"}, {"cle": "negociation_rate", "titre": "Negotiation — Derek walks away", "description": "Même vendeur, autre suite réelle Economy : lowball → refuse → counter → départ (patience épuisée).", "titres": [{"debut": 0.5, "fin": 2.06, "qui": "Derek Moss", "texte": "I know what the market is. I also know what sells.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 2.61, "fin": 4.33, "qui": "You", "texte": "I can do $12.00.", "emotion": "", "joueur": true, "note": ""}, {"debut": 4.58, "fin": 5.78, "qui": "Derek Moss", "texte": "You're not my first lowballer today.", "emotion": "furious", "joueur": false, "note": ""}, {"debut": 6.215, "fin": 7.8, "qui": "You", "texte": "Okay, $24.00?", "emotion": "", "joueur": true, "note": ""}, {"debut": 8.05, "fin": 9.25, "qui": "Derek Moss", "texte": "I'd lose money on that.", "emotion": "annoyed", "joueur": false, "note": ""}, {"debut": 9.28, "fin": 10.595, "qui": "You", "texte": "$31.00?", "emotion": "", "joueur": true, "note": ""}, {"debut": 10.845, "fin": 13.045, "qui": "", "texte": "Counter-offer: $36.41", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 11.245, "fin": 12.546, "qui": "Derek Moss", "texte": "Meet me in the middle.", "emotion": "wary", "joueur": false, "note": ""}, {"debut": 13.096, "fin": 14.996, "qui": "You", "texte": "$35.00, final offer.", "emotion": "", "joueur": true, "note": ""}, {"debut": 15.246, "fin": 16.446, "qui": "Derek Moss", "texte": "See you next market.", "emotion": "annoyed", "joueur": false, "note": ""}], "duree": 16.9, "nouveau": "negociation_rate_nouveau.mp3", "ancien": "negociation_rate_ancien.mp3"}, {"cle": "meme_replique", "titre": "Same line, different voices and moods — “See you around.”", "description": "Même motif (graine = texte exact), réalisé par 6 voix ; Felix la dit deux fois : même motif, petites variations.", "titres": [{"debut": 0.5, "fin": 1.7, "qui": "Felix Romero", "texte": "See you around.", "emotion": "goodbye", "joueur": false, "note": ""}, {"debut": 1.718, "fin": 2.918, "qui": "Felix Romero", "texte": "See you around.", "emotion": "goodbye", "joueur": false, "note": ""}, {"debut": 2.939, "fin": 4.139, "qui": "Brittany Price", "texte": "See you around.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 4.168, "fin": 6.02, "qui": "Antonio Garcia", "texte": "See you around.", "emotion": "tired", "joueur": false, "note": ""}, {"debut": 6.97, "fin": 8.17, "qui": "Derek Moss", "texte": "See you around.", "emotion": "annoyed", "joueur": false, "note": ""}, {"debut": 8.492, "fin": 9.692, "qui": "Ava Washington", "texte": "See you around!", "emotion": "happy", "joueur": false, "note": ""}], "duree": 10.55, "nouveau": "meme_replique_nouveau.mp3", "ancien": "meme_replique_ancien.mp3"}, {"cle": "choix", "titre": "Reacting to the player’s choices — Marcus and Brittany at the café", "description": "Deux branches V4 « cafe_coffee » (blague absurde / question pratique), puis une blague qui tombe à plat chez Brittany (V2).", "titres": [{"debut": 0.5, "fin": 2.363, "qui": "Marcus Washington", "texte": "Someone ordered decaf with four shots of espresso.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 2.913, "fin": 5.263, "qui": "You", "texte": "A philosophical contradiction.", "emotion": "", "joueur": true, "note": ""}, {"debut": 5.513, "fin": 6.713, "qui": "Marcus Washington", "texte": "I considered asking what they believed in.", "emotion": "happy", "joueur": false, "note": ""}, {"debut": 7.048, "fin": 9.443, "qui": "You", "texte": "You have to admit it was funny.", "emotion": "", "joueur": true, "note": ""}, {"debut": 9.693, "fin": 11.422, "qui": "Marcus Washington", "texte": "You really are committed to that bit, huh?", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 11.972, "fin": 14.172, "qui": "", "texte": "— replay, other choice —", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 12.972, "fin": 14.238, "qui": "Marcus Washington", "texte": "Someone ordered decaf with four shots of espresso.", "emotion": "mocking", "joueur": false, "note": ""}, {"debut": 14.788, "fin": 16.913, "qui": "You", "texte": "What would you recommend?", "emotion": "", "joueur": true, "note": ""}, {"debut": 17.163, "fin": 18.383, "qui": "Marcus Washington", "texte": "Our house blend. Simple and reliable.", "emotion": "neutral", "joueur": false, "note": ""}, {"debut": 19.733, "fin": 22.398, "qui": "You", "texte": "I had a better joke, but I forgot it.", "emotion": "", "joueur": true, "note": ""}, {"debut": 22.648, "fin": 23.848, "qui": "Brittany Price", "texte": "Probably for the best.", "emotion": "mocking", "joueur": false, "note": ""}], "duree": 24.87, "nouveau": "choix_nouveau.mp3", "ancien": "choix_ancien.mp3"}, {"cle": "melange", "titre": "Mixed feelings — Paige hesitates to sell", "description": "Gêne → méfiance → tristesse → petit rire : V3 « casual_seller.no_sale » et la ligne Economy « keep » du profil nostalgique.", "titres": [{"debut": 0.5, "fin": 1.813, "qui": "Paige Turner", "texte": "I’m not sure I want to sell the whole pile.", "emotion": "embarrassed", "joueur": false, "note": ""}, {"debut": 2.363, "fin": 4.263, "qui": "You", "texte": "Would you sell some?", "emotion": "", "joueur": true, "note": ""}, {"debut": 4.513, "fin": 5.713, "qui": "Paige Turner", "texte": "Maybe the duplicates.", "emotion": "wary", "joueur": false, "note": ""}, {"debut": 5.675, "fin": 7.575, "qui": "You", "texte": "What about that one?", "emotion": "", "joueur": true, "note": ""}, {"debut": 7.825, "fin": 9.811, "qui": "Paige Turner", "texte": "I’m keeping that one. Childhood, you know?", "emotion": "sad", "joueur": false, "note": ""}, {"debut": 10.361, "fin": 12.981, "qui": "You", "texte": "That sounds like a lot to deal with.", "emotion": "", "joueur": true, "note": ""}, {"debut": 13.231, "fin": 14.431, "qui": "Paige Turner", "texte": "It has its moments.", "emotion": "happy", "joueur": false, "note": ""}], "duree": 14.81, "nouveau": "melange_nouveau.mp3", "ancien": "melange_ancien.mp3"}, {"cle": "brocante", "titre": "Flea market — several stalls, distance, voice budget, skipped line", "description": "Vendeurs à 3, 4, 6 et 9 m ; un 5e à 13 m n’est pas joué (au-delà de 11 m, comme dans le jeu). Deux voix se chevauchent au plus (règle du futur directeur d’ambiance, posée ici à la main). À la fin, le joueur passe une longue réplique : fondu de 60 ms.", "titres": [{"debut": 0.5, "fin": 2.146, "qui": "Marlene Baxter", "texte": "Found these cards while clearing a closet.", "emotion": "happy", "joueur": false, "note": ""}, {"debut": 1.546, "fin": 3.923, "qui": "Wade Baxter", "texte": "I sell dishes and lamps. The cards are just part of the table.", "emotion": "tired", "joueur": false, "note": ""}, {"debut": 5.523, "fin": 7.599, "qui": "Colin Pierce", "texte": "You and I may grade that corner differently.", "emotion": "wary", "joueur": false, "note": ""}, {"debut": 7.099, "fin": 8.299, "qui": "Trevor Hayes", "texte": "I already scanned this lot last night.", "emotion": "embarrassed", "joueur": false, "note": ""}, {"debut": 9.359, "fin": 11.559, "qui": "", "texte": "Out of earshot (13 m): Dylan’s line is subtitled in the log, not voiced.", "emotion": "", "joueur": false, "note": "ui"}, {"debut": 10.759, "fin": 12.436, "qui": "Marlene Baxter", "texte": "Sorry about the dust. This box was in the attic.", "emotion": "embarrassed", "joueur": false, "note": ""}, {"debut": 13.436, "fin": 15.606, "qui": "You", "texte": "Do you have anything else?", "emotion": "", "joueur": true, "note": ""}, {"debut": 15.856, "fin": 17.056, "qui": "Marlene Baxter", "texte": "There is more to it, but I cannot tell the whole story in one breath.", "emotion": "happy", "joueur": false, "note": "interrupted"}, {"debut": 17.566, "fin": 19.286, "qui": "You", "texte": "[skips the line]", "emotion": "", "joueur": true, "note": ""}, {"debut": 19.536, "fin": 20.736, "qui": "Marlene Baxter", "texte": "Sure thing.", "emotion": "neutral", "joueur": false, "note": ""}], "duree": 20.99, "nouveau": "brocante_nouveau.mp3", "ancien": "brocante_ancien.mp3"}], "godot": {"cle": "godot", "titre": "Godot capture — 12 voices, then Derek", "description": "", "duree": 17.6, "nouveau": "godot_reel_12voix_puis_dialogue.mp3", "ancien": null, "titres": []}, "profils": [["origine", "Le réglage des 10 voix d'origine (f0 ~210 Hz, timbre par défaut). Sert de référence d'identité.", "210 Hz", "—"], ["commercant_blase", "Grave, lent, mélodie plate, finales qui tombent, soupire volontiers.", "128 Hz", "Wade Baxter"], ["vieil_habitue", "Voix âgée, rauque et tremblante, très lente, longues pauses.", "112 Hz", "Antonio Garcia"], ["ado_surexcite", "Aigu, rapide, grands sauts mélodiques, consonnes claquées, gloussements.", "262 Hz", "Dylan Brooks"], ["voisin_discret", "Doux, soufflé, phrases courtes, volume bas, voyelles fermées.", "172 Hz", "Paige Turner"], ["vendeuse_bavarde", "Médium-aigu, débit rapide sans respirer, mélodie chantante, rit de ses propres phrases.", "238 Hz", "Marlene Baxter"], ["collectionneur_methodique", "Débit régulier, consonnes nettes (t, k), mélodie serrée, petits « hmm » d'examen.", "142 Hz", "Colin Pierce"], ["pro_presse", "Très rapide, presque sans pause, finales sèches qui tombent.", "158 Hz", "Felix Romero"], ["parent_chaleureux", "Rond et doux, voyelles ouvertes (o, ou), mélodie qui berce, rire chaleureux.", "205 Hz", "Jennifer Parker"], ["revendeur_nerveux", "Rythme irrégulier, hésitations, sifflantes (s, ch), petits rires nerveux.", "186 Hz", "Trevor Hayes"], ["sarcastique", "Traîne sur les syllabes accentuées, montées-descentes ironiques, « pfff » fréquents.", "168 Hz", "Brittany Price"], ["enfant", "Très aigu, petit conduit vocal, sautillant, rires en cascade.", "305 Hz", "Ava Washington"], ["grand_gaillard", "Très grave, grand conduit vocal, plus de bourdon, consonnes sonores b/d.", "96 Hz", "Bob Foster"], ["dame_distinguee", "Médium, vibrato marqué, lente et chantée, voyelles claires.", "212 Hz", "Rosa Garcia"], ["revendeur_assure", "Grave et posé, débit ferme, silence avant chaque somme, finales nettes.", "122 Hz", "Derek Moss"], ["agent_officiel", "Neutre et carré, mélodie plate, syllabes égales, pauses régulières.", "138 Hz", "Scott Walker"], ["reveuse_artiste", "Aiguë et soufflée, glissés lents, voyelles longues, s'interrompt pour réfléchir.", "228 Hz", "Amber Morgan"], ["cuisinier_jovial", "Grave-médium, fort, rebondissant, rit fort et souvent.", "132 Hz", "Marcus Washington"]], "audit": [["Scènes et arbres profonds", "455 + 850", "V1 10 · V2 120 · V3 120 · V4 20 · V5 66 · V6 119. Aucun lien cassé."], ["Répliques PNJ des scènes", "6 295 / 2 052 uniques", "« Probably for the best. » 240×, « You too. » 240×, « See you around. » 140× : il faut une mémoire anti-redite."], ["Relances V2 et choix V3", "16 relances × 120", "Les 120 scènes V2 partagent les mêmes 16 relances ; les 120 scènes V3 les mêmes 3 choix génériques."], ["Arbres V1 (négociation)", "3 410 / 94 uniques", "« Understood. Thanks for being decent about it. » 800×."], ["Réponse = réplique déjà entendue", "640", "Au niveau 3, le choix « ask » fait répéter mot pour mot la ligne précédente."], ["Fautes dans les arbres V1", "40 + 240", "« Fair. the box… » (minuscule) ; « boundary on trunk lot », « more about family binder » (article manquant)."], ["Hubs appelés mais absents", "6", "close_polite, local_chatter, personal_checkin, absurd_banter, role_related, practical_or_exit ; 140 relances V4 attendent un hub."], ["Scènes sans habitant réel", "33 / 455", "Boulanger 17, bibliothécaire 6, fermier 2, taxi, zoo, radio, marin… ; 22 scènes citent une boulangerie absente du village."], ["Scènes avec référence pop", "185 (41 %)", "Toutes V5/V6. Une quasi-citation à retirer : « So the cake was a lie? » (Portal)."], ["Cartes hors métier", "≈ 1", "Les sujets « cartes » restent chez des rôles légitimes ; une scène de bibliothécaire à vérifier."]], "perf": [["Séquenceur GDScript", "0,31 ms / réplique", "Moyenne sur les 2 096 répliques V8 (p99 0,9 ms). Calculé une fois par réplique."], ["Déclenchement d’un grain", "34 µs", "WAV importé en QOA. Version OGG mesurée d’abord : 1 ms par grain, abandonnée."], ["12 voix 3D en continu", "0,08 ms / image", "p99 0,24 ms, max 0,34 ms (préchargement fait). Stress test, bien au-delà du budget du jeu."], ["Préchargement", "0,6 s pour 13 profils", "En tâche de fond, quand un habitant s’approche."], ["Banque", "18 × 276 grains", "16 Mo importés dans Godot ; régénérable à l’identique en 24 s (Python)."], ["Parité Python / Godot", "23 / 23", "Mêmes grains, mêmes instants, mêmes hauteurs (écart < 10⁻⁹)."], ["Tests Python", "32 / 32", "Dont les 10 voix d’origine reproduites (corrélation > 0,999) et 2 096 répliques V8 sans échec."], ["Cas limites Godot", "16 / 16", "Profil inconnu, banque absente, émotion inconnue, réplique coupée, redite, PNJ retiré de la scène, sauvegarde/reprise, textes vides."]]}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var palette = ['#2f9e7f', '#c4793a', '#5f7fd6', '#b0549a', '#8a9a2a', '#d0504a', '#3a9fbf', '#9a6ad6'];
+  var players = [];
+  function fmt(t) { t = Math.max(0, t || 0); var m = Math.floor(t / 60), s = Math.floor(t % 60); return m + ':' + (s < 10 ? '0' : '') + s; }
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  function buildScene(container, sc, opts) {
+    var colors = {}, ci = 0;
+    sc.titres.forEach(function (x) { if (x.qui && !x.joueur && !(x.qui in colors)) colors[x.qui] = palette[ci++ % palette.length]; });
+    var head = el('div', 'scene-head');
+    head.appendChild(el('h3', null, sc.titre));
+    head.appendChild(el('span', 'dur', fmt(sc.duree)));
+    container.appendChild(head);
+    if (sc.description) container.appendChild(el('p', 'desc', sc.description));
+    var controls = el('div', 'controls');
+    var play = el('button', 'play', '▶ Écouter'); play.type = 'button';
+    controls.appendChild(play);
+    var srcNew = sc.nouveau, srcOld = sc.ancien;
+    var ab = null, bNew = null, bOld = null;
+    if (srcOld) {
+      ab = el('div', 'ab'); ab.setAttribute('role', 'group'); ab.setAttribute('aria-label', 'Version');
+      bNew = el('button', 'b-new', 'Nouveau'); bNew.type = 'button'; bNew.setAttribute('aria-pressed', 'true');
+      bOld = el('button', 'b-old', 'Ancien'); bOld.type = 'button'; bOld.setAttribute('aria-pressed', 'false');
+      ab.appendChild(bNew); ab.appendChild(bOld); controls.appendChild(ab);
+    }
+    var time = el('span', 'time', '0:00 / ' + fmt(sc.duree)); controls.appendChild(time);
+    container.appendChild(controls);
+    var lane = el('div', 'lane'); lane.setAttribute('aria-hidden', 'true');
+    sc.titres.forEach(function (x) {
+      var s = el('div', 'seg' + (x.joueur ? ' you' : x.note === 'ui' ? ' ui' : ''));
+      s.style.left = (100 * x.debut / sc.duree) + '%';
+      s.style.width = Math.max(.6, 100 * (x.fin - x.debut) / sc.duree) + '%';
+      if (!x.joueur && x.note !== 'ui') s.style.background = colors[x.qui] || 'var(--new)';
+      lane.appendChild(s);
+    });
+    var headLine = el('div', 'head'); lane.appendChild(headLine);
+    container.appendChild(lane);
+    var box = el('div', 'box'); box.setAttribute('aria-live', 'polite');
+    var idle = el('span', 'idle', sc.titres.length ? 'Les sous-titres anglais s’affichent ici pendant l’écoute.' : 'Pas de sous-titres pour cette capture.');
+    box.appendChild(idle); container.appendChild(box);
+    var list = null;
+    if (sc.titres.length) {
+      var det = el('details', 'script'); det.appendChild(el('summary', null, 'Script complet (' + sc.titres.length + ' lignes) — cliquer une ligne pour y aller'));
+      list = el('ol');
+      sc.titres.forEach(function (x, i) {
+        var li = el('li'); var t = el('span', 't', fmt(x.debut)); li.appendChild(t);
+        li.appendChild(document.createTextNode((x.qui ? x.qui + (x.emotion ? ' (' + x.emotion + ')' : '') + ' : ' : '') + x.texte + (x.note === 'interrupted' ? '  [interrompue]' : '')));
+        li.addEventListener('click', function () { seek(x.debut); });
+        list.appendChild(li);
+      });
+      det.appendChild(list); container.appendChild(det);
+    }
+    var audio = new Audio(); audio.preload = 'none'; audio.src = srcNew;
+    var current = 'new', lastIdx = -2;
+    players.push(audio);
+    function show(t) {
+      var idx = -1;
+      for (var i = sc.titres.length - 1; i >= 0; i--) { var x = sc.titres[i]; if (t >= x.debut && t <= x.fin + 0.25) { idx = i; break; } }
+      if (idx === lastIdx) return; lastIdx = idx;
+      box.innerHTML = '';
+      if (idx < 0) { box.appendChild(idle); }
+      else {
+        var x = sc.titres[idx];
+        if (x.qui) {
+          var who = el('div', 'who'); var name = el('span', null, x.qui); if (!x.joueur) name.style.color = colors[x.qui]; who.appendChild(name);
+          if (x.emotion) who.appendChild(el('span', 'emo', x.emotion));
+          if (x.note === 'interrupted') who.appendChild(el('span', 'emo', 'skipped by player'));
+          box.appendChild(who);
+        }
+        box.appendChild(el('div', 'line' + (x.joueur ? ' you' : x.note === 'ui' ? ' ui' : ''), x.texte));
+      }
+      if (list) Array.prototype.forEach.call(list.children, function (li, i) { li.classList.toggle('cur', i === idx); });
+    }
+    function tick() {
+      var d = audio.duration || sc.duree;
+      headLine.style.left = (100 * audio.currentTime / d) + '%';
+      time.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+      show(audio.currentTime);
+    }
+    function seek(t) { try { audio.currentTime = t; } catch (e) {} if (audio.paused) start(); tick(); }
+    function start() {
+      players.forEach(function (p) { if (p !== audio) p.pause(); });
+      var pr = audio.play(); if (pr && pr.catch) pr.catch(function () {});
+    }
+    play.addEventListener('click', function () { if (audio.paused) start(); else audio.pause(); });
+    audio.addEventListener('play', function () { play.textContent = '❚❚ Pause'; });
+    audio.addEventListener('pause', function () { play.textContent = '▶ Écouter'; });
+    audio.addEventListener('ended', function () { play.textContent = '▶ Réécouter'; });
+    audio.addEventListener('timeupdate', tick);
+    lane.addEventListener('click', function (ev) { var r = lane.getBoundingClientRect(); seek((ev.clientX - r.left) / r.width * (audio.duration || sc.duree)); });
+    function switchTo(which) {
+      if (which === current) return;
+      var t = audio.currentTime, wasPlaying = !audio.paused;
+      current = which; audio.src = which === 'new' ? srcNew : srcOld;
+      bNew.setAttribute('aria-pressed', which === 'new'); bOld.setAttribute('aria-pressed', which === 'old');
+      audio.addEventListener('loadedmetadata', function once() { audio.removeEventListener('loadedmetadata', once); try { audio.currentTime = t; } catch (e) {} if (wasPlaying) start(); }, { once: true });
+      audio.load();
+    }
+    if (ab) { bNew.addEventListener('click', function () { switchTo('new'); }); bOld.addEventListener('click', function () { switchTo('old'); }); }
+  }
+
+  var toc = document.getElementById('toc'), wrap = document.getElementById('scenes');
+  D.scenes.forEach(function (sc) {
+    var a = el('a', null, sc.titre.split(' — ')[0]); a.href = '#' + sc.cle; toc.appendChild(a);
+    var card = el('article', 'scene'); card.id = sc.cle; wrap.appendChild(card); buildScene(card, sc);
+  });
+  var g = el('a', null, 'Sortie Godot'); g.href = '#godot'; toc.appendChild(g);
+  buildScene(document.getElementById('scene-godot'), D.godot);
+
+  function rows(id, data, cls) {
+    var tb = document.getElementById(id);
+    data.forEach(function (r) {
+      var tr = el('tr');
+      r.forEach(function (c, i) { var td = el('td', i === 1 ? 'mono' : null); td.textContent = c; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+  rows('audit-table', D.audit);
+  rows('perf-table', D.perf);
+  rows('profils-table', D.profils);
+})();
+</script>

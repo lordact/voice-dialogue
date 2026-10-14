@@ -1,0 +1,18 @@
+{
+  "scene_count": 455,
+  "scene_counts_by_source": {
+    "V2": 120,
+    "V3": 120,
+    "V4": 20,
+    "V5": 66,
+    "V6": 119,
+    "V1": 10
+  },
+  "v1_deep_nodes": 850,
+  "v1_entry_links": 40,
+  "missing_deep_entry_links": 0,
+  "missing_internal_links": 0,
+  "duplicate_scene_ids": 0,
+  "all_six_source_families_present": true,
+  "note": "Mechanical integrity only. Semantic consistency, near-duplicate dialogue, feasibility of contextual hubs and IP allusions require Claude's review."
+}

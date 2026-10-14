@@ -1,0 +1,31 @@
+{"note": "Cas partagés par tests/test_parite.py (Python) et godot/tests/test_parite.gd (Godot). Chaque cas = un habitant qui enchaîne des répliques (la mémoire anti-répétition compte).",
+ "cas": [
+  {"profil": "revendeur_assure", "ident": 73, "repliques": [
+    ["I know what the market is. I also know what sells.", "neutre", 0.6],
+    ["You're not my first lowballer today.", "furieux", 0.75],
+    ["Meet me in the middle.", "mefiant", 0.7],
+    ["Two hundred. Not a dollar less.", "neutre", 0.7],
+    ["Pleasure doing business.", "ravi", 0.55],
+    ["See you around.", "au_revoir", 0.6],
+    ["See you around.", "au_revoir", 0.6]]},
+  {"profil": "enfant", "ident": 36, "repliques": [
+    ["I found a wooden box under the bench and thought it was treasure.", "ravi", 0.8],
+    ["Worse. Gardening gloves.", "decu", 0.8],
+    ["Wow! Is that a real one?", "surpris", 0.9],
+    ["Haha, no way!", "joyeux", 1.0]]},
+  {"profil": "vieil_habitue", "ident": 28, "repliques": [
+    ["Looks like rain, but my knees are not a reliable forecast.", "fatigue", 0.5],
+    ["Hmm. They are usually dramatic.", "moqueur", 0.5],
+    ["Uh... I think these shiny ones are worth a lot?", "embarrasse", 0.8],
+    ["I stood up and forgot why I came to the park…", "triste", 0.7]]},
+  {"profil": "sarcastique", "ident": 19, "repliques": [
+    ["Probably for the best.", "moqueur", 0.9],
+    ["Pfft. Sure, whatever you say.", "agace", 0.7],
+    ["Oh, this town never runs out.", "fatigue", 0.6],
+    ["Did you just say that out loud?", "curieux", 0.6]]},
+  {"profil": "origine", "ident": 1, "repliques": [
+    ["Morning. The bread's almost ready.", "neutre", 0.7],
+    ["Ugh, not again!", "furieux", 1.0],
+    ["Sigh. Fine.", "triste", 0.4],
+    ["Mm-hm. Sure.", "neutre", 0.2]]}
+ ]}
