@@ -117,7 +117,7 @@
     },
     {
      "player": "Is there anything useful I should know?",
-     "npc": "The awning outside the café is still dry.",
+     "npc": "The awning outside the bakery is still dry.",
      "tone": "practical",
      "followups": [
       {
@@ -6218,7 +6218,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -6395,7 +6396,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -6572,7 +6574,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -6749,7 +6752,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -6926,7 +6930,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -7103,7 +7108,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -7280,7 +7286,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -7457,7 +7464,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -7634,7 +7642,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -7811,7 +7820,8 @@
     89,
     90,
     91,
-    92
+    92,
+    96
    ],
    "disponible": true,
    "humour_pop": false
@@ -8063,7 +8073,7 @@
    "choices": [
     {
      "player": "Does it belong to anyone?",
-     "npc": "The café owner. It ignores her too.",
+     "npc": "The bakery owner. It ignores her too.",
      "tone": "curious",
      "followups": [
       {
@@ -10277,7 +10287,7 @@
     },
     {
      "player": "Is there anything useful I should know?",
-     "npc": "The café still has warm rolls.",
+     "npc": "The bakery still has warm rolls.",
      "tone": "practical",
      "followups": [
       {
@@ -18678,7 +18688,7 @@
     },
     {
      "player": "Is there anything useful I should know?",
-     "npc": "The detour goes past the café.",
+     "npc": "The detour goes past the bakery.",
      "tone": "practical",
      "followups": [
       {
@@ -20011,7 +20021,7 @@
    "choices": [
     {
      "player": "Where did it go?",
-     "npc": "Up the sidewalk toward the café.",
+     "npc": "Up the sidewalk toward the bakery.",
      "tone": "curious",
      "followups": [
       {
@@ -24169,7 +24179,7 @@
    "role": "ambient_resident",
    "location": "variable",
    "topic": "Local Rumors and Mysteries",
-   "opening": "Everyone says the café has a secret ingredient.",
+   "opening": "Everyone says the bakery has a secret ingredient.",
    "choices": [
     {
      "player": "Has anyone guessed it?",
@@ -25905,9 +25915,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26052,9 +26061,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26199,9 +26207,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26346,9 +26353,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26493,9 +26499,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26507,7 +26512,7 @@
    "role": "baker",
    "location": "bakery",
    "topic": "basketball",
-   "opening": "The kids keep hitting the café wall with their basketball.",
+   "opening": "The kids keep hitting the bakery wall with their basketball.",
    "choices": [
     {
      "player": "Have you talked to them?",
@@ -26640,9 +26645,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26787,9 +26791,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -26934,9 +26937,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -44841,9 +44843,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -44980,9 +44981,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -47789,9 +47789,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -47850,9 +47849,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -47911,9 +47909,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -47972,9 +47969,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -48033,9 +48029,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -48094,9 +48089,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -51805,7 +51799,7 @@
     },
     {
      "player": "I can print money on sandwich bread.",
-     "npc": "The café would object.",
+     "npc": "The bakery would object.",
      "tone": "absurd",
      "followups": [],
      "suggested_next_hub": "absurd_banter"
@@ -59787,9 +59781,8 @@
     "last_scene_id",
     "last_encounter_day"
    ],
-   "role_village": "cafe_cook",
    "habitants": [
-    34,
+    30,
     96
    ],
    "disponible": true,
@@ -107616,7 +107609,7 @@
     "id": 30,
     "nom": "Dave Bennett",
     "age": 50,
-    "metier": "bricolage",
+    "metier": "boulangerie",
     "famille": "commerce",
     "public": "adulte",
     "style": "bon_public",
@@ -108624,8 +108617,8 @@
     "id": 96,
     "nom": "Leo Garcia",
     "age": 24,
-    "metier": "proche",
-    "famille": "visiteurs",
+    "metier": "boulangerie",
+    "famille": "commerce",
     "public": "adulte",
     "style": "bon_public",
     "appetit": 0.45,
@@ -109125,7 +109118,7 @@
     2
    ],
    "baker": [
-    34,
+    30,
     96
    ],
    "cafe_owner": [

@@ -6,7 +6,7 @@ Ce que fait la V9 :
   - corrige les fautes des arbres V1 (majuscule après un point, articles manquants) ;
   - remplace les redites des arbres V1 (refus identique x800, réponse qui répète la ligne précédente x640) ;
   - crée les 6 raccords appelés mais absents, et varie l'ouverture des raccords existants ;
-  - rattache chaque scène à de vrais habitants (la boulangerie devient la cuisine du café) ;
+  - rattache chaque scène à de vrais habitants (la boulangerie est tenue par Dave Bennett et Leo Garcia) ;
   - corrige la quasi-citation pop culture repérée ;
   - ajoute les réponses variées aux relances génériques, l'humour pop culture et les running gags.
 """
@@ -126,23 +126,16 @@ def construire():
     for s in v9['scenes']:
         role = s['role_normalized']
         if role == 'baker':
-            s['role_village'] = 'cafe_cook'
-            rapport['scenes_boulanger_vers_cafe'] += 1
+            rapport['scenes_boulanger_dave_et_leo'] += 1   # la boulangerie (commerce2) est tenue par Dave Bennett et Leo Garcia
         for c in [s] + s['choices']:
             for cle in ('opening', 'player', 'npc'):
                 if c.get(cle):
-                    t = c[cle].replace('the bakery', 'the café').replace('bakery', 'café')
+                    t = c[cle]
                     for a, b in remplacements.items():
                         if a in t:
                             t = t.replace(a, b)
                             rapport['citations_corrigees'] += 1
-                    rapport['lieux_corriges'] += t != c[cle] and 'bakery' in c[cle]
                     c[cle] = t
-            for f in c.get('followups', []) if c is not s else []:
-                for cle in ('player', 'npc'):
-                    if f.get(cle) and 'bakery' in f[cle]:
-                        f[cle] = f[cle].replace('the bakery', 'the café').replace('bakery', 'café')
-                        rapport['lieux_corriges'] += 1
         s['habitants'] = dist['roles'].get(role, dist['roles']['ambient_resident']) if role in dist['roles'] else \
             dist['roles']['ambient_resident']
         if s['source'] == 'V2':   # les scènes V2 « ambiance » visent des publics précis selon leur thème

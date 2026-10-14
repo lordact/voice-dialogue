@@ -16,6 +16,20 @@ extends Node
 @export var gain_ambiance_db := -5.0      ## on bavarde entre soi plus doucement qu'on ne parle au joueur
 @export var baisse_dialogue_db := -9.0
 @export var envie := 0.5                  ## chance qu'un groupe disponible se mette à parler à chaque examen
+@export var bus := "Master"
+
+## Filtre du jeu : func(noeud) -> bool (ex. pas en voiture, pas à l'intérieur). Un habitant caché ne parle jamais.
+var disponible := Callable()
+## false : tout le monde se tait (option désactivée, joueur à l'intérieur...).
+var actif := true:
+	set(v):
+		if actif and not v:
+			for c in conversations:
+				c.a.voix.arreter()
+				c.b.voix.arreter()
+				_terminer(c)
+			conversations.clear()
+		actif = v
 
 var auditeur: Node3D
 var habitants := []        # [{noeud, voix, id, libre_a}]
@@ -35,7 +49,7 @@ var cout_usec := 0
 
 func _ready() -> void:
 	rng.seed = 12345
-	scripts = JSON.parse_string(FileAccess.get_file_as_string("res://donnees/ambiance_scripts.json"))
+	scripts = JSON.parse_string(FileAccess.get_file_as_string(CharabiaVoix.chemin_donnees("ambiance_scripts.json")))
 	_gain_courant = gain_ambiance_db
 	_gain_vise = gain_ambiance_db
 
@@ -43,33 +57,36 @@ func _ready() -> void:
 func ajouter(noeud: Node3D, profil_id: String, id_habitant: int) -> CharabiaVoix:
 	var v := CharabiaVoix.new()
 	noeud.add_child(v)
-	v.configurer(profil_id, id_habitant, true, "Master", rayon_ecoute)
+	v.configurer(profil_id, id_habitant, true, bus, rayon_ecoute)
 	v.gain_db = gain_ambiance_db
 	habitants.append({"noeud": noeud, "voix": v, "id": id_habitant, "libre_a": 0.0, "occupe": false})
 	return v
 
 ## Le joueur parle à quelqu'un : on baisse le bavardage (et cet habitant ne bavarde plus).
-func dialogue_joueur(actif: bool, noeud_interlocuteur: Node3D = null) -> void:
-	_gain_vise = gain_ambiance_db + (baisse_dialogue_db if actif else 0.0)
+func dialogue_joueur(en_cours: bool, noeud_interlocuteur: Node3D = null) -> void:
+	_gain_vise = gain_ambiance_db + (baisse_dialogue_db if en_cours else 0.0)
 	for h in habitants:
 		if h.noeud == noeud_interlocuteur:
-			h.occupe = actif
-			if actif:
+			h.occupe = en_cours
+			if en_cours:
 				_couper_conversations_de(h)
 
 func _process(delta: float) -> void:
 	var t0 := Time.get_ticks_usec()
 	_t += delta
 	# Baisse / remontée douce du volume d'ambiance.
-	_gain_courant = move_toward(_gain_courant, _gain_vise, delta * 30.0)
-	for h in habitants:
-		h.voix.gain_db = _gain_courant
+	if _gain_courant != _gain_vise:
+		_gain_courant = move_toward(_gain_courant, _gain_vise, delta * 30.0)
+		for h in habitants:
+			h.voix.gain_db = _gain_courant
 	# Tours de parole des conversations en cours.
 	var k := 0
 	while k < conversations.size():
 		var c: Dictionary = conversations[k]
-		# Devenue inaudible (le joueur s'est éloigné) : elle s'arrête et libère sa place.
-		if auditeur and c.a.noeud.global_position.distance_to(auditeur.global_position) > rayon_ecoute + 5.0:
+		# Devenue inaudible (le joueur s'est éloigné) ou un des deux est parti (entré, monté en voiture) :
+		# elle s'arrête et libère sa place.
+		if (auditeur and c.a.noeud.global_position.distance_to(auditeur.global_position) > rayon_ecoute + 5.0) \
+				or not _present(c.a) or not _present(c.b):
 			c.a.voix.arreter()
 			c.b.voix.arreter()
 			_terminer(c)
@@ -96,7 +113,7 @@ func _process(delta: float) -> void:
 		k += 1
 	# Recherche de nouveaux groupes (deux fois par seconde suffit).
 	_examen -= delta
-	if _examen <= 0.0:
+	if _examen <= 0.0 and actif:
 		_examen = 0.5
 		_chercher()
 	_mesurer()
@@ -107,13 +124,15 @@ func _chercher() -> void:
 		return
 	var proches := _nb_proches()
 	var p := auditeur.global_position
-	for i in habitants.size():
-		var a: Dictionary = habitants[i]
-		if not _libre(a) or a.noeud.global_position.distance_to(p) > rayon_ecoute:
-			continue
-		for j in range(i + 1, habitants.size()):
-			var b: Dictionary = habitants[j]
-			if not _libre(b) or a.noeud.global_position.distance_to(b.noeud.global_position) > distance_paire:
+	var libres := []   # d'abord les habitants libres à portée d'oreille, puis les paires parmi eux
+	for h in habitants:
+		if is_instance_valid(h.noeud) and h.noeud.global_position.distance_to(p) <= rayon_ecoute and _libre(h):
+			libres.append(h)
+	for i in libres.size():
+		var a: Dictionary = libres[i]
+		for j in range(i + 1, libres.size()):
+			var b: Dictionary = libres[j]
+			if a.noeud.global_position.distance_to(b.noeud.global_position) > distance_paire:
 				continue
 			var cle := "%d-%d" % [a.id, b.id]
 			if _t < float(silences.get(cle, 0.0)):
@@ -135,8 +154,11 @@ func _chercher() -> void:
 				print("t=%.1f lance %s (dist joueur %.0f m, %d en cours)" % [_t, cle, a.noeud.global_position.distance_to(p), conversations.size()])
 			return
 
+func _present(h: Dictionary) -> bool:
+	return is_instance_valid(h.noeud) and h.noeud.is_visible_in_tree() and (not disponible.is_valid() or disponible.call(h.noeud))
+
 func _libre(h: Dictionary) -> bool:
-	return not h.occupe and _t >= float(h.libre_a)
+	return not h.occupe and _t >= float(h.libre_a) and _present(h)
 
 func _inverser(tours: Array) -> Array:
 	var out := []

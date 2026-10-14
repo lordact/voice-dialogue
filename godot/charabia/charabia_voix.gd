@@ -34,10 +34,19 @@ static var nb_grains := 0
 static var emotions := {}
 static var profils := {}
 
+## Dossiers de données : celui du jeu (Card Hustle) puis celui du labo voice-dialogue.
+static var dossiers_donnees := ["res://Donnees/charabia/", "res://donnees/"]
+
+static func chemin_donnees(nom: String) -> String:
+	for dossier in dossiers_donnees:
+		if FileAccess.file_exists(dossier + nom):
+			return dossier + nom
+	return dossiers_donnees[-1] + nom
+
 static func charger_donnees() -> void:
 	if profils.is_empty():
-		profils = JSON.parse_string(FileAccess.get_file_as_string("res://donnees/profils_voix.json")).profils
-		emotions = JSON.parse_string(FileAccess.get_file_as_string("res://donnees/emotions.json")).emotions
+		profils = JSON.parse_string(FileAccess.get_file_as_string(chemin_donnees("profils_voix.json"))).profils
+		emotions = JSON.parse_string(FileAccess.get_file_as_string(chemin_donnees("emotions.json"))).emotions
 
 ## spatial : true = AudioStreamPlayer3D (bus, distance max) ; false = dialogue plein cadre.
 func configurer(profil_id: String, id_habitant: int, spatial: bool, bus: String = "Master", distance_max: float = 11.0) -> void:

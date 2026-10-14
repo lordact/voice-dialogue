@@ -3,6 +3,8 @@ extends RefCounted
 ## Banque de grains d'un profil (res://banque/<profil>/), chargée à la demande.
 ## Grains en WAV importés en QOA (compressés en mémoire, décodage quasi gratuit).
 
+## Où chercher : d'abord les banques empaquetées (une par profil), sinon les dossiers de grains.
+static var dossiers_packs := ["res://Audio/charabia/", "res://banque_pack/"]
 const RACINE := "res://banque/"
 static var _banques := {}
 
@@ -11,6 +13,8 @@ var durees := {"syllabes": {}, "vocalises": {}, "inventaire": []}
 var _flux := {}
 var ok := false
 var extension := "wav"
+var pack: CharabiaPack
+var chemin_pack := ""
 
 static func pour(profil_id: String) -> CharabiaBanque:
 	if not _banques.has(profil_id):
@@ -24,11 +28,21 @@ static func vider() -> void:
 
 func _init(profil_id: String) -> void:
 	pid = profil_id
+	for d in dossiers_packs:
+		if ResourceLoader.exists(d + pid + ".res"):
+			chemin_pack = d + pid + ".res"
+			break
+	if chemin_pack != "":
+		pack = load(chemin_pack)
+		_lire_index(pack.index)
+		return
 	var chemin := RACINE + pid + "/index.json"
 	if not FileAccess.file_exists(chemin):
 		push_warning("Charabia : banque absente pour " + pid)
 		return
-	var idx: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(chemin))
+	_lire_index(JSON.parse_string(FileAccess.get_file_as_string(chemin)))
+
+func _lire_index(idx: Dictionary) -> void:
 	for nom in idx.syllabes:
 		durees.syllabes[nom] = [float(idx.syllabes[nom].duree), float(idx.syllabes[nom].attaque)]
 	for typ in idx.vocalises:
@@ -61,6 +75,8 @@ func grains() -> Array:
 ## Précharge tous les grains du profil en tâche de fond (à appeler quand un habitant
 ## de ce profil s'approche du joueur) : évite les pics de chargement au premier mot.
 func precharger() -> void:
+	if pack:
+		return   # une banque empaquetée est chargée d'un bloc
 	for g in grains():
 		if not _flux.has(g) and not _en_attente.has(g):
 			_en_attente[g] = _chemin(g)
@@ -77,6 +93,8 @@ func prechargement_fini() -> bool:
 
 ## "syl:ta_plat" ou "voc:rire:1" -> AudioStream (null si le fichier manque).
 func flux(grain: String) -> AudioStream:
+	if pack:
+		return pack.grains.get(grain)
 	if _flux.has(grain):
 		return _flux[grain]
 	var chemin := _chemin(grain)

@@ -6,3 +6,4 @@ banque/
 # Python
 __pycache__/
 *.pyc
+banque_pack/

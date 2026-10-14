@@ -28,6 +28,16 @@ audit V8, mesures, autocritique).
 réponses variées par famille, humour pop culture et running gags. `dialogues/moteur.py` est le moteur de
 conversation de référence avec son directeur d'humour ; `dialogues/simuler_semaine.py` simule la semaine de démo.
 Détails : `docs/DIALOGUES_V9.md`, exemples : `docs/exemples_conversations.md`.
+`godot/dialogues/moteur_dialogue.gd` (MoteurDialogue) en est le portage interactif pour le jeu.
+
+## Dans le jeu (cards-hustle)
+
+Copies à jour : `godot/charabia/*.gd` et `godot/dialogues/moteur_dialogue.gd` → `Scripts/charabia/` ;
+`donnees/{profils_voix,emotions,ambiance_scripts,dialogues_v9,voix_habitants}.json` → `Donnees/charabia/` ;
+`banque_pack/*.res` → `Audio/charabia/`. Les paquets référencent leur script par chemin : `CharabiaPack` vit donc
+à `Scripts/charabia/charabia_pack.gd` dans les deux dépôts. Les scripts trouvent seuls leurs données
+(`res://Donnees/charabia/` dans le jeu, `res://donnees/` ici). `outils/voix_habitants.py` attribue un profil
+vocal à chaque habitant. L'ancien module de voix (`voice_*.ogg`) n'est plus utilisé par le jeu.
 
 ## Commandes
 
@@ -42,6 +52,9 @@ godot --headless --editor --path . --import --quit
 godot --headless --path . --script res://godot/tests/test_parite.gd && python3 tests/test_parite.py <user://parite_godot.json>
 godot --headless --path . --script res://godot/tests/test_cas_limites.gd
 godot --headless --path . --script res://godot/tests/banc_charabia.gd
+godot --headless --path . --script res://godot/outils/empaqueter_banque.gd   # banque/ -> banque_pack/*.res
+godot --headless --path . --script res://godot/tests/test_moteur_dialogue.gd
+godot --headless --path . --script res://godot/tests/test_ambiance.gd
 ```
 
 ## Résultats (14 octobre 2026, Godot 4.4.1 headless, Linux)

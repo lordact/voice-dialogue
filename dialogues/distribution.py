@@ -10,7 +10,7 @@ import json, os
 RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 FAMILLE_METIER = {
-    'café': 'cafe', 'épicerie': 'commerce', 'pharmacie': 'commerce', 'coiffeuse': 'commerce', 'bricolage': 'commerce',
+    'café': 'cafe', 'boulangerie': 'commerce', 'épicerie': 'commerce', 'pharmacie': 'commerce', 'coiffeuse': 'commerce', 'bricolage': 'commerce',
     'commercial': 'commerce', 'immobilier': 'commerce', 'mairie': 'services_publics', 'administration': 'services_publics',
     'poste': 'services_publics', 'bus': 'services_publics', 'livraison': 'services_publics', 'livreur': 'services_publics',
     'municipal': 'services_publics', 'événements': 'services_publics', 'enseignante': 'services_publics',
@@ -45,7 +45,7 @@ ROLES = {
     'ambient_resident': 'adultes', 'neighbor': 'adultes', 'cafe_regular': 'adultes', 'friend': 'jeunes', 'parent': 'parents',
     'dad': [2, 34, 48, 37, 38, 14, 69], 'roommate': [17, 18, 19], 'student': 'ados', 'teenager': 'ados', 'fashion_teen': 'ados',
     'child': 'enfants', 'basketball_player': 'ados+', 'school_friend': 'ados', 'parent_at_home': [1, 2],
-    'baker': [34, 96], 'cafe_owner': [83, 34, 19, 22], 'barista': [19, 22, 7], 'radio_host': [19, 22],
+    'baker': [30, 96], 'cafe_owner': [83, 34, 19, 22], 'barista': [19, 22, 7], 'radio_host': [19, 22],
     'grocer': [6, 9], 'shopkeeper': [6, 9, 30], 'shop_employee': [22, 38, 9], 'clothing_clerk': [59, 64], 'pharmacist': [49],
     'postal_worker': [86, 12], 'post_worker': [86], 'delivery_driver': [88, 17], 'bus_driver': [87, 32], 'taxi_driver': [87],
     'police_officer': [43, 85], 'police': [43, 85], 'night_guard': [85, 43], 'firefighter': [5, 84],
