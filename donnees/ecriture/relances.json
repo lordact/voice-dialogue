@@ -1,0 +1,533 @@
+{
+ "note": "Réponses variées aux relances génériques du joueur (V2/V3/V4 les répétaient 120 fois chacune). Chaque relance du joueur est rattachée à une fonction ; le moteur choisit une réponse dans le tronc commun ou dans la famille du personnage, sans redire ce que ce personnage a déjà dit, ni ce que le joueur vient d'entendre ailleurs. Les répliques V8 d'origine restent dans le tronc commun.",
+ "fonctions": {
+  "Tell me a little more.": "plus",
+  "How did you hear about it?": "plus",
+  "You have more stories like that?": "plus",
+  "What actually happened next?": "plus",
+  "Want to tell me more?": "plus",
+  "Could you explain a little more?": "plus",
+  "There has to be a story behind that.": "plus",
+  "Thanks for explaining.": "merci",
+  "Good tip, thanks.": "merci",
+  "Thanks, that helps.": "merci",
+  "I hope the rest of your day goes well.": "souhait",
+  "Hope the rest of it goes smoothly.": "souhait",
+  "I hope things get easier.": "souhait",
+  "How are you doing now?": "empathie",
+  "That sounds like a lot to deal with.": "empathie",
+  "Sounds like you’ve had quite a day.": "empathie",
+  "That sounds like quite a day.": "empathie",
+  "Is there anything I can do?": "empathie",
+  "Want some company for a minute?": "compagnie",
+  "Want to talk about it another time?": "compagnie",
+  "Maybe another time.": "compagnie",
+  "I should get going.": "depart",
+  "I have to run, sorry.": "depart",
+  "Anyway, I should head out.": "depart",
+  "I'll leave you to it.": "depart",
+  "I will leave you to it.": "depart",
+  "Anyway, take care.": "depart",
+  "See you later.": "depart",
+  "Have a good one.": "depart",
+  "Bye.": "depart",
+  "Got it. I won’t keep you.": "depart",
+  "I should let you go.": "depart",
+  "I had a better joke, but I forgot it.": "blague_ratee",
+  "Sorry, bad joke.": "blague_ratee",
+  "I’ll stop teasing.": "blague_ratee",
+  "I had to ask.": "blague_ratee",
+  "Okay, that sounded ridiculous.": "blague_ratee",
+  "I am kidding, obviously.": "blague_ratee",
+  "You have to admit it was funny.": "blague_insiste",
+  "I have more terrible ideas.": "blague_insiste",
+  "Where exactly is that?": "ou_quand",
+  "Is that happening today?": "ou_quand",
+  "That sounds like a collector’s nightmare.": "cauchemar"
+ },
+ "commun": {
+  "plus": [
+   "I could, but that is most of what I know.",
+   "Mostly from being around here. You pick up things.",
+   "Oh, this town never runs out.",
+   "There is more to it, but I cannot tell the whole story in one breath.",
+   "There usually is. Don’t make me tell it twice.",
+   "Honestly? That’s the short version and the long version.",
+   "Ask me again on a slower day.",
+   "I heard it at the fountain, so it’s at least half true.",
+   "Everybody tells it a little differently. Mine has the best ending."
+  ],
+  "merci": [
+   "Of course. I like talking when somebody actually listens.",
+   "Sure thing.",
+   "Happy to help.",
+   "Anytime.",
+   "Don’t mention it. Really, don’t. People will want advice.",
+   "Glad somebody asked."
+  ],
+  "souhait": [
+   "Thanks. You too.",
+   "I appreciate that.",
+   "Thanks. It can only go up from here. Probably.",
+   "You too. Stay out of trouble.",
+   "That’s kind. I’ll hold you to it."
+  ],
+  "empathie": [
+   "A little better after talking, thanks.",
+   "It has its moments.",
+   "That’s one way of putting it. Thanks for asking.",
+   "You could say that. It comes with the hobby.",
+   "Better now. Mostly.",
+   "It’s fine. It’s a small town; everything is a big deal for a day.",
+   "That is kind of you. I will let you know if I need a hand."
+  ],
+  "compagnie": [
+   "That would be nice, if you have time.",
+   "Maybe when things are quieter.",
+   "Sure.",
+   "Another time, then. I’ll remember.",
+   "I’d like that. Just not right now."
+  ],
+  "depart": [
+   "Sure. See you around.",
+   "No worries. Take care.",
+   "Try not to become the next town story.",
+   "See you later.",
+   "See you around.",
+   "You too.",
+   "Later.",
+   "Take care.",
+   "No problem. Catch you around.",
+   "Thanks. I should get back to it.",
+   "Go on, the day won’t wait."
+  ],
+  "blague_ratee": [
+   "Probably for the best.",
+   "I have heard worse, believe me.",
+   "Fair enough.",
+   "Fair enough. I appreciate knowing when you are joking.",
+   "I’ll pretend I laughed.",
+   "We’ll call that a warm-up."
+  ],
+  "blague_insiste": [
+   "You really are committed to that bit, huh?",
+   "I admire the persistence. Not the joke.",
+   "One more and I start charging admission."
+  ],
+  "ou_quand": [
+   "Around the square. Ask if you get turned around.",
+   "Double-check the notice board. Schedules change.",
+   "By the fountain. You can’t miss it, people have tried.",
+   "Ask Debbie. She has a schedule for her schedules.",
+   "Today, unless it rains. Then also today, but wetter."
+  ],
+  "cauchemar": [
+   "Depends on your definition of nightmare.",
+   "Nightmare is a strong word. Accurate, but strong.",
+   "For a collector? It’s a horror movie with sleeves."
+  ]
+ },
+ "familles": {
+  "cafe": {
+   "plus": [
+    "Pull up a stool. The good stories only come out after the second coffee.",
+    "I hear everything from behind the counter. Officially, I hear nothing."
+   ],
+   "merci": [
+    "Anytime. Tips are appreciated, advice is free.",
+    "No charge. This one’s on the house."
+   ],
+   "souhait": [
+    "You too. Come back when it’s quiet. It’s never quiet.",
+    "Thanks. I’ll survive until closing."
+   ],
+   "empathie": [
+    "Better. Coffee helps. Coffee always helps.",
+    "Busy. The kind of busy where you forget to drink your own coffee."
+   ],
+   "compagnie": [
+    "Grab the corner table. I’ll come by when the line dies down."
+   ],
+   "depart": [
+    "See you tomorrow. Same order, I assume.",
+    "Go on. Your table will still be here.",
+    "Bye! Don’t forget your cup this time."
+   ],
+   "blague_ratee": [
+    "I’ll put it on the specials board. Under ‘regrets’.",
+    "Marcus has heard worse. Marcus has said worse."
+   ],
+   "blague_insiste": [
+    "Keep going and I start charging per pun."
+   ],
+   "ou_quand": [
+    "Right across from the fountain. Follow the smell of coffee."
+   ]
+  },
+  "commerce": {
+   "plus": [
+    "Between us? Half the town shops here just to talk.",
+    "I know more than the register does, and the register knows a lot."
+   ],
+   "merci": [
+    "My pleasure. Come back when you need anything, or nothing.",
+    "Anytime. That’s customer service."
+   ],
+   "souhait": [
+    "Thanks! Same to you.",
+    "Thanks. I’ll take it, with a receipt."
+   ],
+   "empathie": [
+    "Long shift, short break. The usual.",
+    "Busy, but busy is good for business."
+   ],
+   "compagnie": [
+    "After closing, maybe. Before closing, I belong to the customers."
+   ],
+   "depart": [
+    "Take care. And if you see Curtis, tell him the back door is open.",
+    "Bye! Mind the wet floor sign. It means it.",
+    "See you next time. There’s always a next time."
+   ],
+   "blague_ratee": [
+    "I’ll file that next to the expired coupons.",
+    "Cute. Not funny. Cute."
+   ],
+   "blague_insiste": [
+    "I’ve worked retail. I can out-wait any joke."
+   ],
+   "ou_quand": [
+    "Two doors down from the café. Look for the sign that’s been crooked since spring."
+   ]
+  },
+  "services_publics": {
+   "plus": [
+    "I could tell you, but there’s a form for that.",
+    "Officially, no comment. Unofficially, ask me at lunch."
+   ],
+   "merci": [
+    "You’re welcome. That one didn’t even need paperwork.",
+    "Glad to help. It’s literally my job."
+   ],
+   "souhait": [
+    "Thank you. It’s a long list today.",
+    "Thanks. Here’s hoping the afternoon is boring."
+   ],
+   "empathie": [
+    "Busy. Meetings about meetings.",
+    "Fine. Everyone has an urgent question and it’s always the same one."
+   ],
+   "compagnie": [
+    "My break is at three. If the phone lets me."
+   ],
+   "depart": [
+    "Have a good one. Office hours end at five, patience at four.",
+    "Take care. Drive slow by the school.",
+    "See you around. Probably at a council meeting."
+   ],
+   "blague_ratee": [
+    "I’ll note that in the minutes. Under ‘other business’.",
+    "That joke needs a permit."
+   ],
+   "blague_insiste": [
+    "Noted. Not approved."
+   ],
+   "ou_quand": [
+    "Check the notice board at City Hall. It’s updated. Mostly.",
+    "Today at four, if the council agrees. They rarely agree."
+   ]
+  },
+  "secours": {
+   "plus": [
+    "Can’t share details. I can share that it was ridiculous.",
+    "Let’s just say it’s in a report now."
+   ],
+   "merci": [
+    "Anytime. Stay safe.",
+    "That’s what we’re here for."
+   ],
+   "souhait": [
+    "Thanks. Quiet days are the best days.",
+    "Appreciated. Fingers crossed for no sirens."
+   ],
+   "empathie": [
+    "Long shift. Nothing exploded, so it was a good one.",
+    "Tired, but everyone went home fine."
+   ],
+   "compagnie": [
+    "Sure, if the radio stays quiet."
+   ],
+   "depart": [
+    "Stay safe out there.",
+    "Take care. And look both ways, I mean it.",
+    "See you. Hopefully not professionally."
+   ],
+   "blague_ratee": [
+    "I’ve heard worse on night shift.",
+    "Filed under harmless."
+   ],
+   "blague_insiste": [
+    "I’m trained to stay calm. Even now."
+   ],
+   "ou_quand": [
+    "Near the station, you’ll see the trucks.",
+    "It’s happening at noon. Unless something catches fire."
+   ]
+  },
+  "retraites": {
+   "plus": [
+    "Oh, that’s a long story. Sit down, I’ll make it longer.",
+    "Back in my day, we had the same story, just slower."
+   ],
+   "merci": [
+    "You’re a good kid. Your grandmother raised you right. Whoever she is.",
+    "Anytime, dear. I have nothing but time."
+   ],
+   "souhait": [
+    "Thank you, dear. At my age, every day is a bonus round.",
+    "You too. Don’t work too hard."
+   ],
+   "empathie": [
+    "My knees complain, my heart’s fine.",
+    "Better now. Talking is good for the old engine."
+   ],
+   "compagnie": [
+    "Sit, sit. The bench has room and I have stories."
+   ],
+   "depart": [
+    "Off you go. Say hello to your parents.",
+    "Take care, sweetheart. Wear a jacket.",
+    "Go on, young people are always running somewhere."
+   ],
+   "blague_ratee": [
+    "Ha! I didn’t get it, but I liked your face while telling it.",
+    "My late brother told that one better. In 1974."
+   ],
+   "blague_insiste": [
+    "Keep going, I’ll laugh eventually. I’m patient."
+   ],
+   "ou_quand": [
+    "By the fountain, where the old hardware store used to be.",
+    "This afternoon. Or tomorrow. I wrote it on a napkin."
+   ]
+  },
+  "enfants": {
+   "plus": [
+    "Okay so, okay so, it’s a secret but I’ll tell you everything.",
+    "I can’t tell you. I can tell you a little. Okay, everything."
+   ],
+   "merci": [
+    "You’re welcome! Do you want to know about beetles now?",
+    "Yay! I helped!"
+   ],
+   "souhait": [
+    "You too! Have the best day ever. Or second best.",
+    "Thanks! Mine is already great because recess."
+   ],
+   "empathie": [
+    "I’m fine! I fell but I didn’t cry. Much.",
+    "Good! I had pancakes!"
+   ],
+   "compagnie": [
+    "Yes! You can be on my team!"
+   ],
+   "depart": [
+    "Bye! Bye! Okay bye!",
+    "See you! Don’t tell anyone my secret!",
+    "Bye! I’m going to run there, not walk."
+   ],
+   "blague_ratee": [
+    "That was so bad it was funny.",
+    "I don’t get it. Tell it again!"
+   ],
+   "blague_insiste": [
+    "Okay, I laughed. Happy?"
+   ],
+   "ou_quand": [
+    "Over there! No, there! By the big fountain!"
+   ]
+  },
+  "ados": {
+   "plus": [
+    "Honestly? It’s a whole saga.",
+    "You don’t want the lore. Trust me, you want the lore."
+   ],
+   "merci": [
+    "No problem.",
+    "Yeah, sure. Anytime."
+   ],
+   "souhait": [
+    "Thanks. Same.",
+    "You too, I guess."
+   ],
+   "empathie": [
+    "I’m good. Tired. School-tired.",
+    "Fine. My parents asked me the same thing. Twice."
+   ],
+   "compagnie": [
+    "Sure, just don’t make it weird."
+   ],
+   "depart": [
+    "Later.",
+    "See ya.",
+    "Cool. Bye."
+   ],
+   "blague_ratee": [
+    "That was so dad-coded.",
+    "Respectfully, no."
+   ],
+   "blague_insiste": [
+    "Okay, it was kind of funny. Don’t tell anyone."
+   ],
+   "ou_quand": [
+    "By the courts. Or the café. Somewhere with Wi-Fi."
+   ]
+  },
+  "cartes": {
+   "plus": [
+    "Let me put it this way: condition is everything, and that story was mint.",
+    "There’s more, but I don’t give away information for free. Kidding. Mostly."
+   ],
+   "merci": [
+    "Anytime. Knowledge is the only thing I share without a price tag.",
+    "Sure. Just don’t quote me on prices."
+   ],
+   "souhait": [
+    "Thanks. May your pulls be shiny.",
+    "You too. And sleeve your cards."
+   ],
+   "empathie": [
+    "Fine. The market’s moody, so I’m moody.",
+    "It’s been a long day of people saying ‘it’s rare’."
+   ],
+   "compagnie": [
+    "Sure, if you don’t mind me sorting while we talk."
+   ],
+   "depart": [
+    "See you at the next market.",
+    "Later. Check your corners.",
+    "Take care. Don’t buy anything shiny on impulse."
+   ],
+   "blague_ratee": [
+    "I’d grade that joke a four. Light play, visible wear.",
+    "Common. Very common."
+   ],
+   "blague_insiste": [
+    "You’re trying to inflate that joke’s value. I see you."
+   ],
+   "ou_quand": [
+    "At the card shop, Linh will know.",
+    "Saturday morning, the big market. Be early, the resellers are."
+   ]
+  },
+  "brocante": {
+   "plus": [
+    "Everything on this table has a story. Some of them are even true.",
+    "Oh, you want the story? That’s free. The lamp is five dollars."
+   ],
+   "merci": [
+    "Anytime, dear. Take a look around while you’re here.",
+    "My pleasure. Tell your friends, we take cash."
+   ],
+   "souhait": [
+    "Thanks! Hope you find a treasure.",
+    "You too. And if you see a lost lid, it’s mine."
+   ],
+   "empathie": [
+    "Sorting a whole life into boxes. It’s a lot.",
+    "Long morning. Everybody wants a discount and a story."
+   ],
+   "compagnie": [
+    "Stay a minute. You’re good for business, you look curious."
+   ],
+   "depart": [
+    "Come back before noon, everything gets cheaper.",
+    "Bye! Tell your parents we’re here till three.",
+    "See you. Don’t forget, everything must go."
+   ],
+   "blague_ratee": [
+    "I’ll sell that joke for a quarter. No refunds.",
+    "Even the fondue set laughed harder."
+   ],
+   "blague_insiste": [
+    "Keep it up and I’ll make you buy the lamp."
+   ],
+   "ou_quand": [
+    "Wednesday around the fountain, Saturday on the big square."
+   ]
+  },
+  "techniques": {
+   "plus": [
+    "Long story short: someone pushed the wrong button. Long story long: same, with diagrams.",
+    "The technical answer is boring. The real answer is ‘it was Doug’."
+   ],
+   "merci": [
+    "Sure. If it breaks again, it wasn’t me.",
+    "No problem. Turn it off and on again, works on most things."
+   ],
+   "souhait": [
+    "Thanks. Here’s to nothing breaking.",
+    "Appreciated. It’s been a two-coffee problem kind of day."
+   ],
+   "empathie": [
+    "Fixed one thing, found three more. Normal day.",
+    "Fine. The machine won this round, I win tomorrow."
+   ],
+   "compagnie": [
+    "Sure, hand me that wrench while you’re here."
+   ],
+   "depart": [
+    "See you. Don’t touch anything blinking.",
+    "Later. Label your stuff.",
+    "Take care. And close the gate, please."
+   ],
+   "blague_ratee": [
+    "That joke needs maintenance.",
+    "Error 404: punchline not found."
+   ],
+   "blague_insiste": [
+    "I’ve debugged worse. Not much worse."
+   ],
+   "ou_quand": [
+    "Up by the wind turbines. Follow the humming.",
+    "Behind the hardware store, the gate with the sign nobody reads."
+   ]
+  },
+  "visiteurs": {
+   "plus": [
+    "I just got here and already have a notebook full of stories.",
+    "Everyone here talks like the town is a sitcom. I’m starting to believe it."
+   ],
+   "merci": [
+    "Thanks! People here are so friendly. Suspiciously friendly.",
+    "Thank you, that’s really helpful."
+   ],
+   "souhait": [
+    "Thanks! You too.",
+    "Thank you! I’ll try to see the water tower before I go."
+   ],
+   "empathie": [
+    "Good! Just a little lost. Charmingly lost.",
+    "Great, honestly. Small towns are restful."
+   ],
+   "compagnie": [
+    "I’d love that. You can tell me which stories are true."
+   ],
+   "depart": [
+    "Bye! Maybe I’ll see you at the market.",
+    "Take care! I’m off to sketch the water tower again.",
+    "See you around. Literally, the town is small."
+   ],
+   "blague_ratee": [
+    "Is that a local joke? I feel like I’m missing context.",
+    "I’ll laugh once I figure out where the punchline went."
+   ],
+   "blague_insiste": [
+    "Okay, you’re officially the town comedian."
+   ],
+   "ou_quand": [
+    "Somewhere near the fountain, I think. Everything here is near the fountain."
+   ]
+  }
+ }
+}

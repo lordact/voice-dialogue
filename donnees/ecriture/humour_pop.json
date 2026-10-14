@@ -1,0 +1,1143 @@
+{
+ "note": "Humour pop culture de Card Hustle. Règles d'écriture : allusions reconnaissables, jamais de réplique culte recopiée mot pour mot, pas de nom de personnage ou de marque dans le texte dit (le champ 'reference' sert seulement à l'audit). Chaque réplique a un public (âge), des goûts (ce que le personnage connaît) et une intensité (1 = clin d'œil discret, 2 = blague franche, 3 = gros gag) ; le directeur d'humour décide si et quand elle sort.",
+ "domaines": [
+  "jeux_video",
+  "memes",
+  "films",
+  "series",
+  "cartes",
+  "anime",
+  "jeux_societe"
+ ],
+ "repliques": [
+  {
+   "id": "h_plus_01",
+   "fonction": "plus",
+   "texte": "Oh, there’s a whole side quest. It ends with me fetching ten mushrooms for nobody.",
+   "domaine": "jeux_video",
+   "reference": "quêtes secondaires RPG",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_plus_02",
+   "fonction": "plus",
+   "texte": "That story has three endings. Depends on what dialogue option you pick.",
+   "domaine": "jeux_video",
+   "reference": "choix multiples RPG",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_plus_03",
+   "fonction": "plus",
+   "texte": "The lore runs deep. Like, collect-every-scattered-diary-page deep.",
+   "domaine": "jeux_video",
+   "reference": "lore en notes cachées",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_plus_04",
+   "fonction": "plus",
+   "texte": "Previously, on This Town…",
+   "domaine": "series",
+   "reference": "résumé d'épisode",
+   "public": [
+    "ado",
+    "adulte",
+    "senior"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_plus_05",
+   "fonction": "plus",
+   "texte": "It’s a long story. Like, extended-edition-with-appendices long.",
+   "domaine": "films",
+   "reference": "trilogie fantasy longue",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_plus_06",
+   "fonction": "plus",
+   "texte": "I’d tell you, but then the plot twist wouldn’t hit as hard.",
+   "domaine": "films",
+   "reference": "twist final",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_plus_07",
+   "fonction": "plus",
+   "texte": "That’s canon. Everything after that is fan theory.",
+   "domaine": "memes",
+   "reference": "canon vs fan theory",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_plus_08",
+   "fonction": "plus",
+   "texte": "Okay, but first you need the context. And the context needs context.",
+   "domaine": "memes",
+   "reference": "explications en chaîne",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_plus_09",
+   "fonction": "plus",
+   "texte": "The full story unlocks at friendship level three.",
+   "domaine": "jeux_video",
+   "reference": "jauges d'amitié des simulations de vie",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_plus_10",
+   "fonction": "plus",
+   "texte": "My grandson says it ‘has lore’. I think that means it’s complicated.",
+   "domaine": "memes",
+   "reference": "le mot lore",
+   "public": [
+    "senior"
+   ],
+   "intensite": 2,
+   "style": "papy_meme"
+  },
+  {
+   "id": "h_plus_11",
+   "fonction": "plus",
+   "texte": "In this house we call that a rare drop. As in, it rarely happens and then drops on you.",
+   "domaine": "jeux_video",
+   "reference": "rare drop",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_plus_12",
+   "fonction": "plus",
+   "texte": "There’s more, but you have to watch until after the credits.",
+   "domaine": "films",
+   "reference": "scène post-générique",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_merci_01",
+   "fonction": "merci",
+   "texte": "Achievement unlocked: actually listening.",
+   "domaine": "jeux_video",
+   "reference": "succès / trophées",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_merci_02",
+   "fonction": "merci",
+   "texte": "Glad to help. Consider it a free tutorial.",
+   "domaine": "jeux_video",
+   "reference": "tutoriel",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_merci_03",
+   "fonction": "merci",
+   "texte": "Tip of the day: never trust a crate in a game, or a free sample at the market.",
+   "domaine": "jeux_video",
+   "reference": "astuces d'écran de chargement",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_merci_04",
+   "fonction": "merci",
+   "texte": "You’re welcome. Your quest log has been updated.",
+   "domaine": "jeux_video",
+   "reference": "journal de quêtes",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_merci_05",
+   "fonction": "merci",
+   "texte": "Happy to help. I’m basically the friendly shopkeeper in the first village.",
+   "domaine": "jeux_video",
+   "reference": "marchand du premier village RPG",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_merci_06",
+   "fonction": "merci",
+   "texte": "Anytime. Wisdom: plus one.",
+   "domaine": "jeux_video",
+   "reference": "statistiques RPG",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_merci_07",
+   "fonction": "merci",
+   "texte": "No problem. My granddaughter would say I ‘carried’. I carried groceries mostly.",
+   "domaine": "memes",
+   "reference": "argot gamer 'carry'",
+   "public": [
+    "senior"
+   ],
+   "intensite": 2,
+   "style": "papy_meme"
+  },
+  {
+   "id": "h_souhait_01",
+   "fonction": "souhait",
+   "texte": "Thanks. Here’s hoping today doesn’t have a final boss.",
+   "domaine": "jeux_video",
+   "reference": "boss final",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_souhait_02",
+   "fonction": "souhait",
+   "texte": "You too. May your loading screens be short.",
+   "domaine": "jeux_video",
+   "reference": "écrans de chargement",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_souhait_03",
+   "fonction": "souhait",
+   "texte": "Thanks. I’ll save my progress just in case.",
+   "domaine": "jeux_video",
+   "reference": "sauvegarde",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_souhait_04",
+   "fonction": "souhait",
+   "texte": "Thanks. Everything is fine. That’s what the dog in the burning room said too.",
+   "domaine": "memes",
+   "reference": "chien dans la pièce en feu",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_souhait_05",
+   "fonction": "souhait",
+   "texte": "You too. Main character energy, okay?",
+   "domaine": "memes",
+   "reference": "main character energy",
+   "public": [
+    "ado"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_empathie_01",
+   "fonction": "empathie",
+   "texte": "Honestly? My stamina bar is flashing red.",
+   "domaine": "jeux_video",
+   "reference": "barre d'endurance",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_02",
+   "fonction": "empathie",
+   "texte": "Let’s just say my needs bars are all orange.",
+   "domaine": "jeux_video",
+   "reference": "jauges de besoins des simulations de vie",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_03",
+   "fonction": "empathie",
+   "texte": "It’s fine. Everything is fine. Small fire, very calm dog.",
+   "domaine": "memes",
+   "reference": "chien dans la pièce en feu",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_04",
+   "fonction": "empathie",
+   "texte": "Today felt like a level where you can’t pause.",
+   "domaine": "jeux_video",
+   "reference": "jeux sans pause",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_empathie_05",
+   "fonction": "empathie",
+   "texte": "I died a few times, but I respawned at the coffee machine.",
+   "domaine": "jeux_video",
+   "reference": "réapparition",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_06",
+   "fonction": "empathie",
+   "texte": "Tired. Like a hero after the training montage, minus the muscles.",
+   "domaine": "films",
+   "reference": "montage d'entraînement",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_07",
+   "fonction": "empathie",
+   "texte": "Rough day. The kids would say it was ‘an emotional damage situation’. I just say Tuesday.",
+   "domaine": "memes",
+   "reference": "mème emotional damage",
+   "public": [
+    "adulte",
+    "senior"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_empathie_08",
+   "fonction": "empathie",
+   "texte": "I’m okay. No thoughts, head empty, just vibes.",
+   "domaine": "memes",
+   "reference": "no thoughts head empty",
+   "public": [
+    "ado"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_compagnie_01",
+   "fonction": "compagnie",
+   "texte": "Sure. Party member joined.",
+   "domaine": "jeux_video",
+   "reference": "rejoindre le groupe",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_compagnie_02",
+   "fonction": "compagnie",
+   "texte": "Another time. Let’s say I’ll be at the same spot, same hour, like a well-scripted villager.",
+   "domaine": "jeux_video",
+   "reference": "routines des PNJ",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_compagnie_03",
+   "fonction": "compagnie",
+   "texte": "Co-op mode? Sure. You hold the bags.",
+   "domaine": "jeux_video",
+   "reference": "coopération",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_depart_01",
+   "fonction": "depart",
+   "texte": "See you. Don’t forget to save.",
+   "domaine": "jeux_video",
+   "reference": "sauvegarde",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_depart_02",
+   "fonction": "depart",
+   "texte": "Bye! I’ll be right here, standing in the exact same spot. As one does.",
+   "domaine": "jeux_video",
+   "reference": "PNJ immobiles",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_depart_03",
+   "fonction": "depart",
+   "texte": "Go on. Your quest marker is blinking.",
+   "domaine": "jeux_video",
+   "reference": "marqueurs de quête",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_depart_04",
+   "fonction": "depart",
+   "texte": "Later. Don’t fast-travel into a wall.",
+   "domaine": "jeux_video",
+   "reference": "voyage rapide",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_depart_05",
+   "fonction": "depart",
+   "texte": "Take care. Heading out alone? Here, take a snack. Every hero starts with one item.",
+   "domaine": "jeux_video",
+   "reference": "allusion au vieil homme de la grotte",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_depart_06",
+   "fonction": "depart",
+   "texte": "See you. I’ll pretend this conversation never happened, spy-movie style.",
+   "domaine": "films",
+   "reference": "films d'espionnage",
+   "public": [
+    "adulte",
+    "senior"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_depart_07",
+   "fonction": "depart",
+   "texte": "Bye. Touch some grass on the way, it’s free.",
+   "domaine": "memes",
+   "reference": "touch grass",
+   "public": [
+    "ado"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_depart_08",
+   "fonction": "depart",
+   "texte": "Off you go. My grandson says ‘GG’. I believe it means good luck.",
+   "domaine": "memes",
+   "reference": "GG",
+   "public": [
+    "senior"
+   ],
+   "intensite": 2,
+   "style": "papy_meme"
+  },
+  {
+   "id": "h_blague_ratee_01",
+   "fonction": "blague_ratee",
+   "texte": "That joke needed a patch before release.",
+   "domaine": "jeux_video",
+   "reference": "patch day one",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_ratee_02",
+   "fonction": "blague_ratee",
+   "texte": "Critical miss.",
+   "domaine": "jeux_societe",
+   "reference": "échec critique (dés)",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_ratee_03",
+   "fonction": "blague_ratee",
+   "texte": "Roll for charisma. Oh. Oh no.",
+   "domaine": "jeux_societe",
+   "reference": "jet de charisme",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_ratee_04",
+   "fonction": "blague_ratee",
+   "texte": "Skill issue. Comedy skill, specifically.",
+   "domaine": "memes",
+   "reference": "skill issue",
+   "public": [
+    "ado"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_ratee_05",
+   "fonction": "blague_ratee",
+   "texte": "I can hear the sitcom laugh track refusing to play.",
+   "domaine": "series",
+   "reference": "rires enregistrés",
+   "public": [
+    "adulte",
+    "senior"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_ratee_06",
+   "fonction": "blague_ratee",
+   "texte": "That one’s getting a one-star review.",
+   "domaine": "memes",
+   "reference": "avis une étoile",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_blague_ratee_07",
+   "fonction": "blague_ratee",
+   "texte": "Common rarity. Heavily played.",
+   "domaine": "cartes",
+   "reference": "état de carte",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_insiste_01",
+   "fonction": "blague_insiste",
+   "texte": "You’re grinding that joke like it’s going to level up.",
+   "domaine": "jeux_video",
+   "reference": "farm / grind",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_blague_insiste_02",
+   "fonction": "blague_insiste",
+   "texte": "Interesting strategy. The crowd remains unconvinced.",
+   "domaine": "films",
+   "reference": "commentateur sportif",
+   "public": [
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_blague_insiste_03",
+   "fonction": "blague_insiste",
+   "texte": "This is your villain origin story, isn’t it?",
+   "domaine": "films",
+   "reference": "origin story",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  },
+  {
+   "id": "h_ou_01",
+   "fonction": "ou_quand",
+   "texte": "Follow the fountain. Everything here is one fast-travel point.",
+   "domaine": "jeux_video",
+   "reference": "point de voyage rapide",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 1
+  },
+  {
+   "id": "h_ou_02",
+   "fonction": "ou_quand",
+   "texte": "By the square. If you reach the edge of the map, you went too far.",
+   "domaine": "jeux_video",
+   "reference": "bord de carte",
+   "public": [
+    "ado",
+    "adulte"
+   ],
+   "intensite": 2
+  }
+ ],
+ "receptions": {
+  "note": "Réaction d'un personnage quand le joueur choisit un ton joueur ou absurde, selon son style d'humour. 'rit' si le personnage aime ce genre de blague, 'poli' sinon, 'plat' quand ce n'est vraiment pas le moment (émotion négative, négociation tendue).",
+  "sarcastique": {
+   "rit": [
+    "Okay, that was decent. Don’t let it go to your head.",
+    "Ha. Fine. One point to you.",
+    "Alright, that one landed.",
+    "I hate that I laughed."
+   ],
+   "poli": [
+    "Wow. Hilarious. Truly.",
+    "I’m laughing on the inside. Deep inside.",
+    "Riveting.",
+    "Somebody write that down. Then lose it."
+   ],
+   "plat": [
+    "Not the day, comedian."
+   ]
+  },
+  "pince_sans_rire": {
+   "rit": [
+    "That’s… actually funny. Noted.",
+    "I’ll allow it.",
+    "Huh. Good one.",
+    "That was almost funny. Almost."
+   ],
+   "poli": [
+    "Mm-hm.",
+    "I see what you did there. I’m choosing not to react.",
+    "Interesting choice.",
+    "I’ll process that later."
+   ],
+   "plat": [
+    "Let’s keep it serious for a minute."
+   ]
+  },
+  "enthousiaste": {
+   "rit": [
+    "Ha! Okay, you’re funny!",
+    "Stop, that’s so good!",
+    "You’re ridiculous. I love it.",
+    "Okay, okay, that’s good!"
+   ],
+   "poli": [
+    "Ha, cute.",
+    "I mean, I smiled.",
+    "Heh, you’re in a mood today.",
+    "Ha, sure!"
+   ],
+   "plat": [
+    "Ha… not right now, okay?"
+   ]
+  },
+  "naif": {
+   "rit": [
+    "Hahaha! Wait, why is it funny? Hahaha!",
+    "That’s the funniest thing ever!",
+    "Again! Say it again!",
+    "Hahaha, that’s silly!"
+   ],
+   "poli": [
+    "I don’t get it but okay!",
+    "Is that a grown-up joke?",
+    "Huh? Oh! Haha?",
+    "My brother would get it."
+   ],
+   "plat": [
+    "That’s not funny, I’m sad."
+   ]
+  },
+  "bon_public": {
+   "rit": [
+    "Ha! You’re a riot.",
+    "Oh, I’m telling that one at dinner.",
+    "Ha! Stop it.",
+    "You kill me, kid.",
+    "That’s a good one, I’ll steal it."
+   ],
+   "poli": [
+    "Heh. Good one.",
+    "You’re in a good mood today.",
+    "Heh. You’re funny.",
+    "Cute one."
+   ],
+   "plat": [
+    "Another time, kiddo."
+   ]
+  },
+  "geek": {
+   "rit": [
+    "Ha! Nice reference. I’m counting it.",
+    "Okay, that was a crit.",
+    "Critical hit. Respect.",
+    "Ha! Deep cut. Nice."
+   ],
+   "poli": [
+    "I get the reference. I just don’t respect it.",
+    "Close. Swing again.",
+    "Mid, but I see the effort.",
+    "Two out of five stars. Generous."
+   ],
+   "plat": [
+    "Not now, I’m focused."
+   ]
+  },
+  "papy_meme": {
+   "rit": [
+    "Ha! That’s one of those internet jokes, isn’t it? I love those.",
+    "Oh, you young people and your bits!",
+    "Ha! You remind me of my brother. He was trouble too.",
+    "Oh, that’s a good one. I won’t remember it, but it’s good."
+   ],
+   "poli": [
+    "I’ll laugh once my grandson explains it.",
+    "Is that a meme? It feels like a meme.",
+    "Heh. Kids these days.",
+    "I’ll pretend I understood, dear."
+   ],
+   "plat": [
+    "Not today, dear."
+   ]
+  },
+  "serieux": {
+   "rit": [
+    "Ha. Okay. That was good.",
+    "Fine, you got me.",
+    "Ha. Fair enough.",
+    "Okay. That was funny."
+   ],
+   "poli": [
+    "Right.",
+    "Sure.",
+    "Okay.",
+    "Mm."
+   ],
+   "plat": [
+    "Let’s stay focused, please."
+   ]
+  }
+ },
+ "running_gags": [
+  {
+   "id": "rg_canards",
+   "titre": "Les canards du passage piéton",
+   "habitants": [
+    43,
+    85,
+    47,
+    99
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "Six ducks refused to leave the crosswalk this morning. Traffic stopped. The ducks did not care.",
+     "domaine": "village",
+     "qui": 43
+    },
+    {
+     "jour_min": 2,
+     "texte": "The ducks are back. One of them stared at me like I owed it money.",
+     "domaine": "village",
+     "qui": 85
+    },
+    {
+     "jour_min": 4,
+     "texte": "The ducks now cross in formation. I think they have a leader. I think it has a plan.",
+     "domaine": "films",
+     "reference": "film de braquage / plan",
+     "qui": 99
+    },
+    {
+     "jour_min": 6,
+     "texte": "Final report on the ducks: they won. We put up a sign. They ignore the sign.",
+     "domaine": "village",
+     "qui": 43
+    }
+   ]
+  },
+  {
+   "id": "rg_bourse",
+   "titre": "La Bourse de Tyler et Noah",
+   "habitants": [
+    8,
+    26,
+    50
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "Noah and I opened a trading desk. It’s a bench, but it’s a professional bench.",
+     "domaine": "cartes",
+     "qui": 8
+    },
+    {
+     "jour_min": 2,
+     "texte": "Market update: shiny dragons are up two juice boxes. Bugs are down. Bugs are always down.",
+     "domaine": "memes",
+     "reference": "graphique boursier qui monte",
+     "qui": 26
+    },
+    {
+     "jour_min": 4,
+     "texte": "We had a crash. Mason traded a holo for a dinosaur sticker. Noah needs a minute.",
+     "domaine": "cartes",
+     "qui": 8
+    },
+    {
+     "jour_min": 6,
+     "texte": "We recovered! The market loves dinosaurs now. Mason is a genius. Or lucky. Noah says lucky.",
+     "domaine": "cartes",
+     "qui": 8
+    }
+   ]
+  },
+  {
+   "id": "rg_sauce",
+   "titre": "La sauce barbecue de Marcus",
+   "habitants": [
+    34,
+    96,
+    2
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "Try the sauce. Don’t comment on the sauce. Just try the sauce.",
+     "domaine": "village",
+     "qui": 34
+    },
+    {
+     "jour_min": 2,
+     "texte": "Mike says his barbecue sauce is better. Mike is wrong, and Mike knows it.",
+     "domaine": "village",
+     "qui": 34
+    },
+    {
+     "jour_min": 4,
+     "texte": "The recipe is locked in a safe. The safe is locked in my head. My head is locked to Mike.",
+     "domaine": "films",
+     "reference": "coffre-fort de film de braquage",
+     "qui": 34
+    },
+    {
+     "jour_min": 6,
+     "texte": "Fine. One secret ingredient. It’s patience. And a lot of paprika. Mostly paprika.",
+     "domaine": "village",
+     "qui": 34
+    }
+   ]
+  },
+  {
+   "id": "rg_outils",
+   "titre": "Les outils de Doug",
+   "habitants": [
+    56,
+    89,
+    55
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "Has anyone seen my good wrench? Not the other good wrench. The good one.",
+     "domaine": "village",
+     "qui": 56
+    },
+    {
+     "jour_min": 2,
+     "texte": "Jamie labeled every tool in the shed. Every single one. Even the label maker has a label.",
+     "domaine": "village",
+     "qui": 89
+    },
+    {
+     "jour_min": 4,
+     "texte": "Found the wrench. It was in my hand. For two days. Don’t tell Carol.",
+     "domaine": "village",
+     "qui": 56
+    },
+    {
+     "jour_min": 6,
+     "texte": "Doug lent the wrench again. We’re starting a tracking system. It has a spreadsheet and a prayer.",
+     "domaine": "village",
+     "qui": 89
+    }
+   ]
+  },
+  {
+   "id": "rg_tableur",
+   "titre": "Colin « Spreadsheet »",
+   "habitants": [
+    79,
+    38
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "I averaged every price this month. The average is lying, but consistently.",
+     "domaine": "cartes",
+     "qui": 79
+    },
+    {
+     "jour_min": 2,
+     "texte": "Ben says I forgot condition again. My spreadsheet has feelings now. Column G is called Regret.",
+     "domaine": "memes",
+     "reference": "tableur qui pleure",
+     "qui": 79
+    },
+    {
+     "jour_min": 4,
+     "texte": "I added a column for language. Then one for ‘vibes’. Ben is concerned.",
+     "domaine": "memes",
+     "reference": "vibes",
+     "qui": 79
+    },
+    {
+     "jour_min": 6,
+     "texte": "The spreadsheet crashed. I stared at it like the end of a sad movie. It was beautiful.",
+     "domaine": "films",
+     "qui": 79
+    }
+   ]
+  },
+  {
+   "id": "rg_chateau_eau",
+   "titre": "Samir et le château d'eau",
+   "habitants": [
+    98,
+    28,
+    97
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "That water tower has incredible lighting at six. I’ve taken two hundred photos.",
+     "domaine": "village",
+     "qui": 98
+    },
+    {
+     "jour_min": 2,
+     "texte": "Antonio says he helped build it. He also says he built half the town. I’m starting to believe him.",
+     "domaine": "village",
+     "qui": 98
+    },
+    {
+     "jour_min": 4,
+     "texte": "I think the water tower is the town’s final boss. Nobody has seen the top.",
+     "domaine": "jeux_video",
+     "reference": "boss final",
+     "qui": 97
+    },
+    {
+     "jour_min": 6,
+     "texte": "Antonio took me up. The top has a chair, a thermos and a 1983 newspaper. Legend confirmed.",
+     "domaine": "village",
+     "qui": 98
+    }
+   ]
+  },
+  {
+   "id": "rg_plaque",
+   "titre": "Nora ne t'attendra pas",
+   "habitants": [
+    87,
+    32
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "The bus leaves at 8:10. Not 8:11. The bus is not a negotiation.",
+     "domaine": "village",
+     "qui": 87
+    },
+    {
+     "jour_min": 3,
+     "texte": "Someone asked me to wait one minute. I said: this is a bus, not a loading screen.",
+     "domaine": "jeux_video",
+     "reference": "écran de chargement",
+     "qui": 87
+    },
+    {
+     "jour_min": 5,
+     "texte": "Gloria says I’m strict. Gloria once left the mayor at a bus stop. In the rain. On his birthday.",
+     "domaine": "village",
+     "qui": 87
+    }
+   ]
+  },
+  {
+   "id": "rg_brocante_regles",
+   "titre": "Les règles de Debbie",
+   "habitants": [
+    46,
+    95,
+    47
+   ],
+   "etapes": [
+    {
+     "jour_min": 0,
+     "texte": "Stalls open at seven. Not seven-ish. Seven. I printed it in bold.",
+     "domaine": "village",
+     "qui": 46
+    },
+    {
+     "jour_min": 2,
+     "texte": "I added rule fourteen: no haggling with a dramatic speech about destiny. You know who you are.",
+     "domaine": "films",
+     "reference": "discours épique d'élu",
+     "qui": 46
+    },
+    {
+     "jour_min": 5,
+     "texte": "Patricia contradicted me in front of everyone. She was right. That’s not the point. The point is the rules.",
+     "domaine": "village",
+     "qui": 46
+    }
+   ]
+  }
+ ],
+ "audit_existant": {
+  "note": "Ajustements des scènes V5/V6 existantes (le reste est conservé tel quel : allusions sans citation).",
+  "remplacements": {
+   "So the cake was a lie?": "So the recipe was a trap all along?"
+  }
+ },
+ "reactions_gag": {
+  "note": "Ce que le joueur peut répondre à une étape de running gag.",
+  "joueur": [
+   {
+    "texte": "Keep me posted.",
+    "ton": "curious"
+   },
+   {
+    "texte": "Seriously?",
+    "ton": "curious"
+   },
+   {
+    "texte": "This town, I swear.",
+    "ton": "playful"
+   },
+   {
+    "texte": "Honestly, I need the sequel.",
+    "ton": "playful"
+   }
+  ],
+  "pnj": [
+   "Oh, I will. This isn’t over.",
+   "Dead serious. Ask anyone.",
+   "Tell me about it.",
+   "Stay tuned. Same time tomorrow.",
+   "You’ll hear about it. Everybody does."
+  ],
+  "pnj_par_reaction": {
+   "Keep me posted.": [
+    "Oh, I will. This isn’t over.",
+    "Stay tuned. Same time tomorrow.",
+    "Count on it."
+   ],
+   "Seriously?": [
+    "Dead serious. Ask anyone.",
+    "Completely. I have witnesses.",
+    "I wish I was joking."
+   ],
+   "This town, I swear.": [
+    "Tell me about it.",
+    "Every single day.",
+    "Welcome home, kid."
+   ],
+   "Honestly, I need the sequel.": [
+    "Stay tuned. Same time tomorrow.",
+    "You’ll get it. Everybody does, eventually.",
+    "The sequel is already in production."
+   ]
+  }
+ }
+}

@@ -1,0 +1,338 @@
+{
+ "note": "Raccords (hubs) appelés par la V8 mais absents, et variantes pour les arbres profonds V1. Les raccords existants gagnent aussi quelques variantes d'ouverture.",
+ "raccords": {
+  "close_polite": {
+   "npc_variantes": [
+    "Anyway, I won’t keep you.",
+    "Well, I should let you get on with your day.",
+    "Alright. Good talking to you."
+   ],
+   "choices": [
+    {
+     "player": "Good talking to you too.",
+     "npc": "Same. Don’t be a stranger.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "See you at the market?",
+     "npc": "If I survive the week, sure.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "Actually, one more thing.",
+     "npc": "Go on, quickly.",
+     "suggested_next": "role_related"
+    },
+    {
+     "player": "Take care.",
+     "npc": "You too.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  },
+  "local_chatter": {
+   "npc_variantes": [
+    "New around town? Let me think.",
+    "Oh, you haven’t heard?",
+    "Depends. Do you want gossip or facts?"
+   ],
+   "choices": [
+    {
+     "player": "Anything happening this weekend?",
+     "npc": "The big flea market on Saturday. Debbie already printed the rules. Twice.",
+     "suggested_next": "neighborhood_smalltalk"
+    },
+    {
+     "player": "Heard any good gossip?",
+     "npc": "Nothing I’d repeat. Okay, maybe one thing, but not here.",
+     "suggested_next": "light_banter"
+    },
+    {
+     "player": "Is the café busy these days?",
+     "npc": "Always. Marcus is testing a new sauce and everyone has opinions.",
+     "suggested_next": "neighborhood_smalltalk"
+    },
+    {
+     "player": "I should keep moving.",
+     "npc": "Sure. If anything happens, you’ll hear it by lunch.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  },
+  "personal_checkin": {
+   "npc_variantes": [
+    "Honestly? It’s been a week.",
+    "My week? Let me count the days. All of them were long.",
+    "Not bad. Could be quieter."
+   ],
+   "choices": [
+    {
+     "player": "Anything good happen?",
+     "npc": "A quiet evening. They’re rare, so I’m counting it.",
+     "suggested_next": "neighborhood_smalltalk"
+    },
+    {
+     "player": "You look tired.",
+     "npc": "Thanks for noticing. I think.",
+     "suggested_next": "family_chat"
+    },
+    {
+     "player": "Need a hand with anything?",
+     "npc": "That’s kind. I’ll let you know.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "Hang in there.",
+     "npc": "Trying. Thanks.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  },
+  "absurd_banter": {
+   "npc_variantes": [
+    "Okay, this conversation took a turn.",
+    "I like where your head’s at. I don’t understand it, but I like it.",
+    "We are not normal people, are we?",
+    "I feel like we just invented a new holiday.",
+    "This is the kind of talk that ends up on the town noticeboard."
+   ],
+   "choices": [
+    {
+     "player": "It’s a gift.",
+     "npc": "Is there a receipt?",
+     "suggested_next": "light_banter"
+    },
+    {
+     "player": "Let’s keep going.",
+     "npc": "No. One of us has to stay sane.",
+     "suggested_next": "neighborhood_smalltalk"
+    },
+    {
+     "player": "Okay, back to reality.",
+     "npc": "Reality, right. Overrated, but fine.",
+     "suggested_next": "role_related"
+    },
+    {
+     "player": "I should go before it gets weirder.",
+     "npc": "Wise. Very wise.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  },
+  "role_related": {
+   "npc_variantes": [
+    "Anyway, work doesn’t do itself.",
+    "Back to the real stuff, then.",
+    "You know, about my job…"
+   ],
+   "choices": [
+    {
+     "player": "How’s work going?",
+     "npc": "Busy. Good busy, mostly.",
+     "suggested_next": "local_work_or_smalltalk"
+    },
+    {
+     "player": "What’s the hardest part?",
+     "npc": "People. The work is easy, people are the hard part.",
+     "suggested_next": "local_work_or_smalltalk"
+    },
+    {
+     "player": "Do you like it?",
+     "npc": "Most days. The other days, I like lunch.",
+     "suggested_next": "neighborhood_smalltalk"
+    },
+    {
+     "player": "I’ll let you work.",
+     "npc": "Appreciated.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  },
+  "practical_or_exit": {
+   "npc_variantes": [
+    "Need anything else?",
+    "Anything I can actually help with?",
+    "Is that all for today?"
+   ],
+   "choices": [
+    {
+     "player": "Where’s the best place to sit around here?",
+     "npc": "The benches by the fountain. Bring a snack, the pigeons are organized.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "When does the market open?",
+     "npc": "Wednesday around the fountain, Saturday on the big square. Early is better.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "Nothing, just saying hi.",
+     "npc": "Well, hi. That was nice.",
+     "suggested_next": "polite_exit"
+    },
+    {
+     "player": "That’s all, thanks.",
+     "npc": "Anytime.",
+     "suggested_next": "polite_exit"
+    }
+   ]
+  }
+ },
+ "variantes_ouverture_raccords": {
+  "neighborhood_smalltalk": [
+   "Anyway, how has your week been treating you?",
+   "So, how’s life on your side of the street?",
+   "Enough about that. How are you holding up?"
+  ],
+  "local_work_or_smalltalk": [
+   "Well, the day is not going to run itself.",
+   "Anyway, back to the grind.",
+   "Right. Work calls. Loudly."
+  ],
+  "light_banter": [
+   "That might be the strangest thing I have heard today.",
+   "You’re a strange one. I mean that kindly.",
+   "Okay, that’s a new one.",
+   "Well, that escalated quickly.",
+   "I’m going to remember that, unfortunately.",
+   "You have a very specific sense of humor."
+  ],
+  "family_chat": [
+   "So, what is happening with you lately?",
+   "How’s the family? Still busy with the cards?",
+   "You look like someone with news."
+  ],
+  "polite_exit": [
+   "See you around.",
+   "Take care.",
+   "Catch you later.",
+   "Off you go, then."
+  ]
+ },
+ "arbres_v1": {
+  "refus_par_interlocuteur": {
+   "note": "Remplace « Understood. Thanks for being decent about it. » (800 occurrences) selon qui parle.",
+   "Neighbor": [
+    "No problem. The box isn’t going anywhere.",
+    "Sure. Knock if you change your mind.",
+    "Fair enough. I’ll keep the garage door open."
+   ],
+   "Parent vendor": [
+    "Okay. My kid will be relieved, honestly.",
+    "No worries. We’re here until three.",
+    "Got it. I’ll ask the parents’ group instead."
+   ],
+   "Collector": [
+    "Understood. I respect a buyer who walks away.",
+    "Fine. Patience is part of collecting.",
+    "Noted. Come back when you’re sure."
+   ],
+   "Card shop owner": [
+    "Of course. Better no deal than a bad one.",
+    "That’s fine. The counter will still be here.",
+    "Okay. Smart buyers sleep on it."
+   ],
+   "Parking seller": [
+    "Your loss. Kidding. Mostly.",
+    "Fine, fine. I’m parked here till noon.",
+    "Alright. I’ll find someone in a hurry."
+   ],
+   "Online buyer": [
+    "No problem. I’ll keep the listing open.",
+    "Okay. Message me if you change your mind.",
+    "Understood. Thanks for answering quickly, at least."
+   ],
+   "School friend": [
+    "Sure, no pressure. Seriously.",
+    "Okay. We’re still cool.",
+    "Fine. More snacks for me."
+   ],
+   "Parent at home": [
+    "Alright. Just don’t sell the house.",
+    "Okay, sweetie. Dinner’s at seven.",
+    "Fair. Sleep on it, that’s what I’d do."
+   ],
+   "Flea vendor": [
+    "No harm done. Browse around.",
+    "Sure, dear. Maybe something else will catch your eye.",
+    "Okay. Everything must go, but not today apparently."
+   ],
+   "Regular customer": [
+    "Sure. I’ll be around Saturday anyway.",
+    "No problem. Good instinct.",
+    "Fair. I’d have hesitated too."
+   ]
+  },
+  "reformulations_honnetes": {
+   "note": "Remplace la réponse terminale qui répétait mot pour mot « All right. Here is the honest part: X. Anything beyond that needs checking. » ; {fait} = X.",
+   "modeles": [
+    "So, to be precise: {fait}. The rest is guesswork until we look.",
+    "Known: {fait}. Unknown: everything else, honestly.",
+    "Facts first: {fait}. Anything more and I’d be making it up.",
+    "That’s the solid part: {fait}. We check the rest together.",
+    "No surprises from me: {fait}. Beyond that, your guess is as good as mine."
+   ]
+  },
+  "reformulations_conditions": {
+   "note": "Remplace la redite de « Potentially. {condition}. We can talk after the facts are clear. »",
+   "modeles": [
+    "Like I said: {condition}. Once the facts are clear, we talk.",
+    "Same answer, different words: {condition}. Facts first.",
+    "Still possible. Still true: {condition}.",
+    "I haven’t changed my mind: {condition}. Then we’ll see."
+   ]
+  },
+  "reformulations_motifs": {
+   "note": "Remplace la redite de « {motif}. That is why I care about this. »",
+   "modeles": [
+    "Like I said, {motif_min}. It matters to me.",
+    "It all comes back to that: {motif_min}.",
+    "Honestly? {motif}. That’s the whole reason.",
+    "You already know: {motif_min}. So yes, I care."
+   ]
+  }
+ },
+ "variantes_reponses_raccords": {
+  "note": "Réponses alternatives aux choix des raccords les plus fréquents (clé = réplique du joueur).",
+  "I can do worse.": [
+   "Please do not take that as a challenge.",
+   "I believe you. That’s the scary part.",
+   "Save it for the talent show."
+  ],
+  "Okay, serious question.": [
+   "Go on.",
+   "Serious mode activated. Briefly.",
+   "Alright, I’m listening. Seriously."
+  ],
+  "Sorry, that was a bad one.": [
+   "I have heard worse.",
+   "It had potential. It didn’t use it.",
+   "Apology accepted. Joke rejected."
+  ],
+  "I should leave before it gets worse.": [
+   "Probably wise.",
+   "Run while you still can.",
+   "Smart. Leave on a high note. Or a medium one."
+  ],
+  "It’s a gift.": [
+   "Is there a receipt?",
+   "Can I return it for store credit?",
+   "Wrapped beautifully, too."
+  ],
+  "Let’s keep going.": [
+   "No. One of us has to stay sane.",
+   "Absolutely not. Okay, maybe one more.",
+   "I’m out. This is your show now."
+  ],
+  "Okay, back to reality.": [
+   "Reality, right. Overrated, but fine.",
+   "Reality called. It wants its normal conversation back.",
+   "Sure. Reality. Where were we?"
+  ],
+  "I should go before it gets weirder.": [
+   "Wise. Very wise.",
+   "Good call. It was heading somewhere strange.",
+   "Go, before I start agreeing with you."
+  ]
+ }
+}

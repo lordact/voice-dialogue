@@ -45,6 +45,47 @@ donnees = {
         ['Cas limites Godot', '18 / 18', 'Profil inconnu, banque absente, émotion inconnue, réplique coupée, redite, PNJ retiré de la scène, sauvegarde/reprise, textes vides.'],
     ],
 }
+# Section dialogues V9 : rapport de construction, dosage simulé, extraits.
+sys.path.insert(0, os.path.join(RACINE, 'dialogues'))
+rv9 = json.load(open(os.path.join(RACINE, 'donnees', 'rapport_v9.json'), encoding='utf-8'))
+sim = json.load(open(os.path.join(RACINE, 'donnees', 'simulation_semaine.json'), encoding='utf-8'))
+import simuler_semaine
+_, journal = simuler_semaine.simuler('blagueur')
+MARQUES = {'scene_pop': '🎮', 'gag': '🔁', 'clin': '😉', 'reaction': '😄'}
+exemples = []
+for e in journal:
+    if e['tendu']:
+        continue
+    sortes = [MARQUES[x['tag'].split(':')[0]] for x in e['echanges'] if x['tag'].split(':')[0] in MARQUES]
+    if sortes:
+        exemples.append((sortes, {'titre': 'Jour %d — %s' % (e['jour'] + 1, e['habitant']),
+                                  'lignes': [{'qui': x['qui'], 'texte': x['texte'], 'marque': MARQUES.get(x['tag'].split(':')[0], '')}
+                                             for x in e['echanges']]}))
+choisis = []
+for m in ('🔁', '🎮', '😉', '😄'):   # un exemple de chaque sorte d'humour, puis on complète
+    ex = next((x for s_, x in exemples if m in s_ and x not in choisis), None)
+    if ex:
+        choisis.append(ex)
+for s_, x in exemples:
+    if len(choisis) >= 6:
+        break
+    if x not in choisis:
+        choisis.append(x)
+donnees['dialogues'] = {
+    'table': [
+        ['Répliques de PNJ différentes', '%d → %d' % (rv9['repliques_pnj_uniques_v8'], rv9['repliques_pnj_uniques_v9']), 'Réponses variées par famille, clins d’œil, running gags, réactions, raccords.'],
+        ['Redites dans les arbres V1', '1 280 → 0', '800 refus identiques variés selon l’interlocuteur, 480 répétitions reformulées.'],
+        ['Fautes corrigées (arbres V1)', str(rv9['arbres_fautes_corrigees']), 'Majuscules après un point, articles manquants (« the trunk lot »).'],
+        ['Raccords appelés mais absents', '6 → 0', 'close_polite, local_chatter, personal_checkin, absurd_banter, role_related, practical_or_exit.'],
+        ['Scènes jouables par un vrai habitant', '422 → %d / 455' % rv9['scenes_jouables'], 'Boulangerie → cuisine du café (Marcus, Leo) ; restent sans habitant : maître-nageur, acheteur en ligne.'],
+        ['Humour pop culture ajouté', '%d répliques + %d running gags' % (rv9['repliques_humour_pop_nouvelles'], rv9['running_gags']), '%d étapes de gags propres au village ; 8 styles de réaction aux blagues du joueur.' % rv9['etapes_running_gags']],
+    ],
+    'dosage': [[{'blagueur': 'Blagueur', 'neutre': 'Neutre', 'serieux': 'Sérieux'}[k],
+                '%d %%' % round(100 * v['part_rencontres_avec_humour_moy5']),
+                'Moyenne sur 5 semaines simulées ; redites entendues : %.1f sur %d répliques ; humour en négociation tendue : %d.' % (
+                    v['redites_entendues_moy5'], v['repliques_pnj_moy5'], v['max_negociation_tendue_sur_5'])] for k, v in sim.items()],
+    'exemples': choisis,
+}
 page = open(os.path.join(ICI, 'page_demo.html'), encoding='utf-8').read()
 page = page.replace('__DONNEES__', json.dumps(donnees, ensure_ascii=False).replace('</', '<\\/'))
 open(os.path.join(RACINE, 'demo', 'index.html'), 'w', encoding='utf-8').write(page)

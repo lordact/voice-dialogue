@@ -21,12 +21,21 @@ audit V8, mesures, autocritique).
 | `godot/tests/`, `tests/` | Parité Python/Godot, cas limites, banc de performance, tests Python |
 | `outils_jeu/negociation_demo.gd` | À lancer dans le projet du jeu : produit `donnees/negociation_economy.json` |
 
+## Dialogues V9
+
+`dialogues/construire_v9.py` reconstruit `donnees/dialogues_v9.json` depuis la V8 (intacte) et les textes de
+`donnees/ecriture/` : fautes et redites corrigées, raccords manquants, distribution sur les vrais habitants,
+réponses variées par famille, humour pop culture et running gags. `dialogues/moteur.py` est le moteur de
+conversation de référence avec son directeur d'humour ; `dialogues/simuler_semaine.py` simule la semaine de démo.
+Détails : `docs/DIALOGUES_V9.md`, exemples : `docs/exemples_conversations.md`.
+
 ## Commandes
 
 ```sh
 pip install numpy scipy            # + ffmpeg
 python3 charabia/exporter_banque.py                     # banque/ (ignorée par git, 24 s)
 python3 tests/test_charabia.py                          # JEU=<projet du jeu> pour comparer aux voix d'origine
+python3 dialogues/construire_v9.py && python3 tests/test_dialogues.py && python3 dialogues/simuler_semaine.py
 python3 charabia/demo.py --jeu <projet du jeu> --sortie demo && python3 charabia/page_demo.py
 
 godot --headless --editor --path . --import --quit

@@ -1,0 +1,20 @@
+{
+ "arbres_fautes_corrigees": 443,
+ "arbres_redites_reformulees": 480,
+ "arbres_refus_varies": 800,
+ "raccords_ajoutes": 6,
+ "lieux_corriges": 8,
+ "scenes_jouables": 453,
+ "scenes_boulanger_vers_cafe": 17,
+ "citations_corrigees": 1,
+ "repliques_pnj_uniques_v8": 2124,
+ "repliques_pnj_uniques_v9": 2696,
+ "repliques_humour_pop_nouvelles": 55,
+ "running_gags": 8,
+ "etapes_running_gags": 30,
+ "raccords_manquants_restants": 0,
+ "scenes_sans_habitant": {
+  "lifeguard": 1,
+  "online_buyer": 1
+ }
+}

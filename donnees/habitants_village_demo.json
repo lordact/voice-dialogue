@@ -1,0 +1,3921 @@
+[
+  {
+    "id": 1,
+    "nom": "Susan Miller",
+    "age": 45,
+    "maison": 1,
+    "sexe": "F",
+    "metier": "mairie",
+    "histoire": "Our mother supports our card business and talks about it a little too much at City Hall.",
+    "semaine": [
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "courses",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.53,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "3f8e89",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 2,
+        "lien": "conjoints"
+      },
+      {
+        "id": 3,
+        "lien": "parent"
+      },
+      {
+        "id": 4,
+        "lien": "parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_001.tscn"
+  },
+  {
+    "id": 2,
+    "nom": "Mike Miller",
+    "age": 47,
+    "maison": 1,
+    "sexe": "M",
+    "metier": "extérieur",
+    "histoire": "Our father doubts the value of cardboard but spends a fortune on his barbecue.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "jardin",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.685,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "a3473e",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 1,
+        "lien": "conjoints"
+      },
+      {
+        "id": 93,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_002.tscn"
+  },
+  {
+    "id": 3,
+    "nom": "Frank Thompson",
+    "age": 72,
+    "maison": 2,
+    "sexe": "M",
+    "metier": "retraité",
+    "histoire": "Our grandfather has kept every cable since 1987. A retired mechanic, he enjoys sharing his tricks.",
+    "semaine": [
+      "jardin",
+      "café",
+      "brocante",
+      "jardin",
+      "courses",
+      "brocante",
+      "visite1"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Suit",
+      "taille": 1.72,
+      "corpulence": 0.98,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "4776a0",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 1,
+        "lien": "enfant"
+      },
+      {
+        "id": 4,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_003.tscn"
+  },
+  {
+    "id": 4,
+    "nom": "Betty Thompson",
+    "age": 70,
+    "maison": 2,
+    "sexe": "F",
+    "metier": "retraitée",
+    "histoire": "Our grandmother diplomatically clears out the attic. She remembers every promise Frank ever made.",
+    "semaine": [
+      "maison",
+      "courses",
+      "brocante",
+      "café",
+      "maison",
+      "stand",
+      "visite1"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "b99539",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 1,
+        "lien": "enfant"
+      },
+      {
+        "id": 3,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_004.tscn"
+  },
+  {
+    "id": 5,
+    "nom": "Chris Parker",
+    "age": 43,
+    "maison": 3,
+    "sexe": "M",
+    "metier": "caserne",
+    "histoire": "A firefighter who stays calm during emergencies, less so when assembling furniture. Jennifer's husband.",
+    "semaine": [
+      "caserne",
+      "maison",
+      "caserne",
+      "maison",
+      "caserne",
+      "courses",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.79,
+      "corpulence": 0.9,
+      "peau": "ae7957",
+      "cheveux": "282729",
+      "haut": "33475f",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 6,
+        "lien": "conjoints"
+      },
+      {
+        "id": 7,
+        "lien": "foyer"
+      },
+      {
+        "id": 8,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_005.tscn"
+  },
+  {
+    "id": 6,
+    "nom": "Jennifer Parker",
+    "age": 41,
+    "maison": 3,
+    "sexe": "F",
+    "metier": "épicerie",
+    "histoire": "The grocery store manager. She knows her customers' habits and sometimes forgets to take a break.",
+    "semaine": [
+      "épicerie",
+      "épicerie",
+      "épicerie",
+      "maison",
+      "épicerie",
+      "épicerie",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.705,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "56784a",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 5,
+        "lien": "conjoints"
+      },
+      {
+        "id": 7,
+        "lien": "foyer"
+      },
+      {
+        "id": 8,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_006.tscn"
+  },
+  {
+    "id": 7,
+    "nom": "Ashley Parker",
+    "age": 18,
+    "maison": 3,
+    "sexe": "F",
+    "metier": "études",
+    "histoire": "Our childhood friend dreams of exploring other towns. She sometimes works at the cafe.",
+    "semaine": [
+      "études",
+      "études",
+      "études",
+      "études",
+      "études",
+      "café",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.495,
+      "corpulence": 1.2,
+      "peau": "ae7957",
+      "cheveux": "503929",
+      "haut": "763c51",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 8,
+        "lien": "fratrie"
+      },
+      {
+        "id": 25,
+        "lien": "amis"
+      },
+      {
+        "id": 5,
+        "lien": "foyer"
+      },
+      {
+        "id": 6,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_007.tscn"
+  },
+  {
+    "id": 8,
+    "nom": "Tyler Parker",
+    "age": 10,
+    "maison": 3,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "Ashley's little brother treats card trading like a stock exchange. Noah checks his calculations.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.205,
+      "corpulence": 1.05,
+      "peau": "ae7957",
+      "cheveux": "503929",
+      "haut": "c77a37",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 7,
+        "lien": "fratrie"
+      },
+      {
+        "id": 26,
+        "lien": "amis"
+      },
+      {
+        "id": 5,
+        "lien": "foyer"
+      },
+      {
+        "id": 6,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_008.tscn"
+  },
+  {
+    "id": 9,
+    "nom": "Amanda Brooks",
+    "age": 39,
+    "maison": 4,
+    "sexe": "F",
+    "metier": "épicerie",
+    "histoire": "Dylan and Lily's mother prefers a straightforward sale to twenty messages. Debbie and Bob help her a lot.",
+    "semaine": [
+      "épicerie",
+      "épicerie",
+      "stand",
+      "épicerie",
+      "épicerie",
+      "épicerie",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.565,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "4776a0",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 46,
+        "lien": "parent"
+      },
+      {
+        "id": 47,
+        "lien": "parent"
+      },
+      {
+        "id": 10,
+        "lien": "foyer"
+      },
+      {
+        "id": 11,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_009.tscn"
+  },
+  {
+    "id": 10,
+    "nom": "Dylan Brooks",
+    "age": 15,
+    "maison": 4,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "He sells his played cards to fund a computer. Lily occasionally reveals their trip through the washing machine.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "brocante",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.58,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "6b747c",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 35,
+        "lien": "amis"
+      },
+      {
+        "id": 9,
+        "lien": "foyer"
+      },
+      {
+        "id": 11,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_010.tscn"
+  },
+  {
+    "id": 11,
+    "nom": "Lily Brooks",
+    "age": 8,
+    "maison": 4,
+    "sexe": "F",
+    "metier": "école",
+    "histoire": "Dylan's little sister invents families for her figurines and tells the truth at exactly the wrong moment.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "visite16",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.155,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "785794",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 9,
+        "lien": "foyer"
+      },
+      {
+        "id": 10,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_011.tscn"
+  },
+  {
+    "id": 12,
+    "nom": "Gary Henderson",
+    "age": 66,
+    "maison": 5,
+    "sexe": "M",
+    "metier": "retraité",
+    "histoire": "A retired mail carrier, meticulous collector and Matt's father. He values honesty over big speeches.",
+    "semaine": [
+      "maison",
+      "boutique",
+      "brocante",
+      "maison",
+      "café",
+      "brocante",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.79,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "b4a27b",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 13,
+        "lien": "conjoints"
+      },
+      {
+        "id": 14,
+        "lien": "enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_012.tscn"
+  },
+  {
+    "id": 13,
+    "nom": "Linda Henderson",
+    "age": 64,
+    "maison": 5,
+    "sexe": "F",
+    "metier": "retraitée",
+    "histoire": "A former librarian and Gary's wife. She knows exactly how much his collection costs.",
+    "semaine": [
+      "jardin",
+      "courses",
+      "brocante",
+      "café",
+      "maison",
+      "courses",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.705,
+      "corpulence": 0.98,
+      "peau": "dbad8c",
+      "cheveux": "b3b5b1",
+      "haut": "76536c",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 12,
+        "lien": "conjoints"
+      },
+      {
+        "id": 14,
+        "lien": "enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_013.tscn"
+  },
+  {
+    "id": 14,
+    "nom": "Matt Henderson",
+    "age": 33,
+    "maison": 6,
+    "sexe": "M",
+    "metier": "électricien",
+    "histoire": "Gary's son and Megan's husband. He buys nostalgic collectibles for Chloe's college fund; she would prefer a bicycle.",
+    "semaine": [
+      "chantier",
+      "extérieur",
+      "chantier",
+      "extérieur",
+      "maison",
+      "jardin",
+      "visite5"
+    ],
+    "apparence": {
+      "modele": "Worker",
+      "tete": "Worker",
+      "taille": 1.615,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 12,
+        "lien": "parent"
+      },
+      {
+        "id": 13,
+        "lien": "parent"
+      },
+      {
+        "id": 15,
+        "lien": "conjoints"
+      },
+      {
+        "id": 16,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_014.tscn"
+  },
+  {
+    "id": 15,
+    "nom": "Megan Henderson",
+    "age": 32,
+    "maison": 6,
+    "sexe": "F",
+    "metier": "hôpital",
+    "histoire": "A nurse, Jake's sister and Chloe's mother. She appreciates punctual people and short messages.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "maison",
+      "extérieur",
+      "courses",
+      "extérieur",
+      "visite5"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.53,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "397078",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 14,
+        "lien": "conjoints"
+      },
+      {
+        "id": 17,
+        "lien": "fratrie"
+      },
+      {
+        "id": 16,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_015.tscn"
+  },
+  {
+    "id": 16,
+    "nom": "Chloe Henderson",
+    "age": 7,
+    "maison": 6,
+    "sexe": "F",
+    "metier": "école",
+    "histoire": "Matt and Megan's daughter loves animals, her grandparents and the bicycle she does not have yet.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "visite5",
+      "visite5"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.13,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "56784a",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 14,
+        "lien": "foyer"
+      },
+      {
+        "id": 15,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_016.tscn"
+  },
+  {
+    "id": 17,
+    "nom": "Jake Dawson",
+    "age": 24,
+    "maison": 7,
+    "sexe": "M",
+    "metier": "livreur",
+    "histoire": "Megan's brother shares a house with Ryan and Brittany. He launches a new business every week but remains a reliable friend.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "stand",
+      "maison"
+    ],
+    "apparence": {
+      "modele": "Casual_Hoodie",
+      "tete": "Punk",
+      "taille": 1.72,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "c77a37",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 15,
+        "lien": "fratrie"
+      },
+      {
+        "id": 18,
+        "lien": "colocataires"
+      },
+      {
+        "id": 19,
+        "lien": "colocataires"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_017.tscn"
+  },
+  {
+    "id": 18,
+    "nom": "Ryan Mitchell",
+    "age": 23,
+    "maison": 7,
+    "sexe": "M",
+    "metier": "mécanicien",
+    "histoire": "Jake's roommate restores a car that consumes his savings and corrects his friend's business ideas.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "jardin",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Worker",
+      "tete": "Casual_2",
+      "taille": 1.755,
+      "corpulence": 1.32,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 17,
+        "lien": "colocataires"
+      },
+      {
+        "id": 19,
+        "lien": "colocataires"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_018.tscn"
+  },
+  {
+    "id": 19,
+    "nom": "Brittany Price",
+    "age": 25,
+    "maison": 7,
+    "sexe": "F",
+    "metier": "café",
+    "histoire": "A sarcastic, loyal waitress saving for training. She keeps track of the household grocery bills.",
+    "semaine": [
+      "courses",
+      "café",
+      "café",
+      "café",
+      "café",
+      "café",
+      "maison"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.67,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "282729",
+      "haut": "707650",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 17,
+        "lien": "colocataires"
+      },
+      {
+        "id": 18,
+        "lien": "colocataires"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_019.tscn"
+  },
+  {
+    "id": 20,
+    "nom": "Rick Sullivan",
+    "age": 56,
+    "maison": 8,
+    "sexe": "M",
+    "metier": "commercial",
+    "histoire": "A car salesman and Karen's husband. He retells every negotiation he won and mysteriously forgets the others.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "brocante",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.825,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "bb7c68",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 21,
+        "lien": "conjoints"
+      },
+      {
+        "id": 22,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_020.tscn"
+  },
+  {
+    "id": 21,
+    "nom": "Karen Sullivan",
+    "age": 54,
+    "maison": 8,
+    "sexe": "F",
+    "metier": "immobilier",
+    "histoire": "A real estate agent and Chad's mother. She prepares a file for everything, including defending the neighbors.",
+    "semaine": [
+      "maison",
+      "extérieur",
+      "courses",
+      "extérieur",
+      "maison",
+      "extérieur",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.495,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "c9c2a7",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 20,
+        "lien": "conjoints"
+      },
+      {
+        "id": 22,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_021.tscn"
+  },
+  {
+    "id": 22,
+    "nom": "Chad Sullivan",
+    "age": 20,
+    "maison": 8,
+    "sexe": "M",
+    "metier": "café",
+    "histoire": "He works at the cafe and wants to leave the family home. He admires Ryan's independence.",
+    "semaine": [
+      "café",
+      "maison",
+      "café",
+      "parc",
+      "café",
+      "café",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_Hoodie",
+      "tete": "Casual_2",
+      "taille": 1.65,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 20,
+        "lien": "foyer"
+      },
+      {
+        "id": 21,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_022.tscn"
+  },
+  {
+    "id": 23,
+    "nom": "Linh Nguyen",
+    "age": 42,
+    "maison": 9,
+    "sexe": "F",
+    "metier": "boutique",
+    "histoire": "The card shop owner gladly gives advice, but she will not bankroll bad decisions.",
+    "semaine": [
+      "maison",
+      "boutique",
+      "boutique",
+      "boutique",
+      "boutique",
+      "boutique",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.565,
+      "corpulence": 0.98,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "763c51",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 24,
+        "lien": "conjoints"
+      },
+      {
+        "id": 38,
+        "lien": "collègues"
+      },
+      {
+        "id": 25,
+        "lien": "foyer"
+      },
+      {
+        "id": 26,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_023.tscn"
+  },
+  {
+    "id": 24,
+    "nom": "Daniel Nguyen",
+    "age": 44,
+    "maison": 9,
+    "sexe": "M",
+    "metier": "comptable",
+    "histoire": "Linh's husband works remotely as an accountant. He considers cards irrational and spends too much on his garden.",
+    "semaine": [
+      "maison",
+      "maison",
+      "maison",
+      "extérieur",
+      "maison",
+      "jardin",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Casual_2",
+      "taille": 1.72,
+      "corpulence": 1.13,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "56784a",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 23,
+        "lien": "conjoints"
+      },
+      {
+        "id": 25,
+        "lien": "foyer"
+      },
+      {
+        "id": 26,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_024.tscn"
+  },
+  {
+    "id": 25,
+    "nom": "Emma Nguyen",
+    "age": 17,
+    "maison": 9,
+    "sexe": "F",
+    "metier": "école",
+    "histoire": "Linh's daughter and Ashley's friend would rather draw monsters than track their prices.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "boutique",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.63,
+      "corpulence": 0.9,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "c9c2a7",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 7,
+        "lien": "amis"
+      },
+      {
+        "id": 23,
+        "lien": "foyer"
+      },
+      {
+        "id": 24,
+        "lien": "foyer"
+      },
+      {
+        "id": 26,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_025.tscn"
+  },
+  {
+    "id": 26,
+    "nom": "Noah Nguyen",
+    "age": 12,
+    "maison": 9,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "Linh and Daniel's son records his trades with Tyler, but his favorite card can make him forget caution.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.255,
+      "corpulence": 1.05,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 8,
+        "lien": "amis"
+      },
+      {
+        "id": 23,
+        "lien": "foyer"
+      },
+      {
+        "id": 24,
+        "lien": "foyer"
+      },
+      {
+        "id": 25,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_026.tscn"
+  },
+  {
+    "id": 27,
+    "nom": "Rosa Garcia",
+    "age": 76,
+    "maison": 10,
+    "sexe": "F",
+    "metier": "retraitée",
+    "histoire": "A retired seamstress and Isabel's mother. She knows how every neighborhood story began, rarely how it ended.",
+    "semaine": [
+      "maison",
+      "courses",
+      "brocante",
+      "maison",
+      "maison",
+      "maison",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.705,
+      "corpulence": 1.2,
+      "peau": "b98c69",
+      "cheveux": "929189",
+      "haut": "56784a",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 28,
+        "lien": "conjoints"
+      },
+      {
+        "id": 29,
+        "lien": "enfant"
+      },
+      {
+        "id": 96,
+        "lien": "petit-enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_027.tscn"
+  },
+  {
+    "id": 28,
+    "nom": "Antonio Garcia",
+    "age": 78,
+    "maison": 10,
+    "sexe": "M",
+    "metier": "retraité",
+    "histoire": "A retired mason, Rosa's husband and Frank's friend. His hearing improves when the offer goes up.",
+    "semaine": [
+      "jardin",
+      "café",
+      "brocante",
+      "jardin",
+      "courses",
+      "café",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.615,
+      "corpulence": 1.32,
+      "peau": "b98c69",
+      "cheveux": "d4d0c1",
+      "haut": "7d6250",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 27,
+        "lien": "conjoints"
+      },
+      {
+        "id": 29,
+        "lien": "enfant"
+      },
+      {
+        "id": 96,
+        "lien": "petit-enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_028.tscn"
+  },
+  {
+    "id": 29,
+    "nom": "Isabel Bennett",
+    "age": 49,
+    "maison": 11,
+    "sexe": "F",
+    "metier": "mairie",
+    "histoire": "The Garcias' daughter works at City Hall. She turns Debbie's grand plans into achievable tasks.",
+    "semaine": [
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "courses",
+      "visite10"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.53,
+      "corpulence": 1.13,
+      "peau": "b98c69",
+      "cheveux": "503929",
+      "haut": "74a6bd",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 27,
+        "lien": "parent"
+      },
+      {
+        "id": 28,
+        "lien": "parent"
+      },
+      {
+        "id": 30,
+        "lien": "conjoints"
+      },
+      {
+        "id": 31,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_029.tscn"
+  },
+  {
+    "id": 30,
+    "nom": "Dave Bennett",
+    "age": 50,
+    "maison": 11,
+    "sexe": "M",
+    "metier": "bricolage",
+    "histoire": "Isabel's husband sells hardware. Every two months he changes hobbies and sells the previous equipment.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "jardin",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "visite10"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.685,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "7d6250",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 29,
+        "lien": "conjoints"
+      },
+      {
+        "id": 31,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_030.tscn"
+  },
+  {
+    "id": 31,
+    "nom": "Madison Bennett",
+    "age": 19,
+    "maison": 11,
+    "sexe": "F",
+    "metier": "études",
+    "histoire": "Isabel and Dave's daughter studies communications. She photographs his items but refuses to write all his listings.",
+    "semaine": [
+      "études",
+      "études",
+      "études",
+      "études",
+      "études",
+      "épicerie",
+      "visite10"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.6,
+      "corpulence": 1.05,
+      "peau": "b98c69",
+      "cheveux": "503929",
+      "haut": "9985b5",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 29,
+        "lien": "foyer"
+      },
+      {
+        "id": 30,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_031.tscn"
+  },
+  {
+    "id": 32,
+    "nom": "Gloria Washington",
+    "age": 68,
+    "maison": 12,
+    "sexe": "F",
+    "metier": "retraitée",
+    "histoire": "A former bus driver and Denise's mother. She still recognizes adults by their childhood mischief.",
+    "semaine": [
+      "maison",
+      "courses",
+      "brocante",
+      "maison",
+      "parc",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 1.2,
+      "peau": "754c38",
+      "cheveux": "929189",
+      "haut": "76536c",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 33,
+        "lien": "enfant"
+      },
+      {
+        "id": 34,
+        "lien": "foyer"
+      },
+      {
+        "id": 35,
+        "lien": "foyer"
+      },
+      {
+        "id": 36,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_032.tscn"
+  },
+  {
+    "id": 33,
+    "nom": "Denise Washington",
+    "age": 40,
+    "maison": 12,
+    "sexe": "F",
+    "metier": "enseignante",
+    "histoire": "Gloria's daughter and Marcus's wife is patient in class, but would like to shop without discussing school.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "courses",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.67,
+      "corpulence": 0.98,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "397078",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 32,
+        "lien": "parent"
+      },
+      {
+        "id": 34,
+        "lien": "conjoints"
+      },
+      {
+        "id": 35,
+        "lien": "foyer"
+      },
+      {
+        "id": 36,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_033.tscn"
+  },
+  {
+    "id": 34,
+    "nom": "Marcus Washington",
+    "age": 42,
+    "maison": 12,
+    "sexe": "M",
+    "metier": "café",
+    "histoire": "The cafe cook and Denise's husband is generous, but takes criticism of his barbecue sauce personally.",
+    "semaine": [
+      "courses",
+      "café",
+      "café",
+      "café",
+      "café",
+      "café",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.825,
+      "corpulence": 1.32,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "a3473e",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 33,
+        "lien": "conjoints"
+      },
+      {
+        "id": 32,
+        "lien": "foyer"
+      },
+      {
+        "id": 35,
+        "lien": "foyer"
+      },
+      {
+        "id": 36,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_034.tscn"
+  },
+  {
+    "id": 35,
+    "nom": "Jayden Washington",
+    "age": 16,
+    "maison": 12,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "Denise and Marcus's son, Dylan's friend, is looking for equipment to make music.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.605,
+      "corpulence": 0.9,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "56784a",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 10,
+        "lien": "amis"
+      },
+      {
+        "id": 32,
+        "lien": "foyer"
+      },
+      {
+        "id": 33,
+        "lien": "foyer"
+      },
+      {
+        "id": 34,
+        "lien": "foyer"
+      },
+      {
+        "id": 36,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_035.tscn"
+  },
+  {
+    "id": 36,
+    "nom": "Ava Washington",
+    "age": 9,
+    "maison": 12,
+    "sexe": "F",
+    "metier": "école",
+    "histoire": "Jayden's little sister loves insects and secrets she cannot keep.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.18,
+      "corpulence": 1.05,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "ba738c",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 32,
+        "lien": "foyer"
+      },
+      {
+        "id": 33,
+        "lien": "foyer"
+      },
+      {
+        "id": 34,
+        "lien": "foyer"
+      },
+      {
+        "id": 35,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_036.tscn"
+  },
+  {
+    "id": 37,
+    "nom": "Ethan Reed",
+    "age": 37,
+    "maison": 13,
+    "sexe": "M",
+    "metier": "jardinier",
+    "histoire": "Ben's husband is a self-employed gardener. He defends natural spaces against Carol's very specific requests.",
+    "semaine": [
+      "chantier",
+      "parc",
+      "chantier",
+      "chantier",
+      "parc",
+      "jardin",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.685,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "56784a",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 38,
+        "lien": "conjoints"
+      },
+      {
+        "id": 39,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_037.tscn"
+  },
+  {
+    "id": 38,
+    "nom": "Ben Reed",
+    "age": 39,
+    "maison": 13,
+    "sexe": "M",
+    "metier": "boutique",
+    "histoire": "Ethan's husband, Alice's father and Linh's employee loves card history so much that he forgets to sell them.",
+    "semaine": [
+      "maison",
+      "boutique",
+      "boutique",
+      "courses",
+      "boutique",
+      "boutique",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.72,
+      "corpulence": 1.32,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "785794",
+      "bas": "3f4148",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 23,
+        "lien": "collègues"
+      },
+      {
+        "id": 37,
+        "lien": "conjoints"
+      },
+      {
+        "id": 39,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_038.tscn"
+  },
+  {
+    "id": 39,
+    "nom": "Alice Reed",
+    "age": 11,
+    "maison": 13,
+    "sexe": "F",
+    "metier": "école",
+    "histoire": "Ethan and Ben's daughter invents board-game rules and compares her parents' spending.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "jardin",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.23,
+      "corpulence": 1.05,
+      "peau": "ae7957",
+      "cheveux": "503929",
+      "haut": "c3a142",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 37,
+        "lien": "foyer"
+      },
+      {
+        "id": 38,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_039.tscn"
+  },
+  {
+    "id": 40,
+    "nom": "Earl Cooper",
+    "age": 63,
+    "maison": 14,
+    "sexe": "M",
+    "metier": "réparateur",
+    "histoire": "Dale's brother repairs almost anything and considers the landfill a personal defeat.",
+    "semaine": [
+      "jardin",
+      "chantier",
+      "stand",
+      "jardin",
+      "jardin",
+      "stand",
+      "café"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Suit",
+      "taille": 1.79,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "4776a0",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 41,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_040.tscn"
+  },
+  {
+    "id": 41,
+    "nom": "Dale Cooper",
+    "age": 59,
+    "maison": 14,
+    "sexe": "M",
+    "metier": "déchetterie",
+    "histoire": "Earl's brother works at the recycling center. With permission, he salvages more objects than they can repair.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "stand",
+      "extérieur",
+      "maison",
+      "stand",
+      "maison"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Punk",
+      "taille": 1.825,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "707650",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 40,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_041.tscn"
+  },
+  {
+    "id": 42,
+    "nom": "Nancy Walker",
+    "age": 46,
+    "maison": 15,
+    "sexe": "F",
+    "metier": "coiffeuse",
+    "histoire": "Scott's wife runs a home hair salon. She hears many secrets and hates being called a gossip.",
+    "semaine": [
+      "chantier",
+      "extérieur",
+      "maison",
+      "chantier",
+      "extérieur",
+      "chantier",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.495,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "383e44",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 43,
+        "lien": "conjoints"
+      },
+      {
+        "id": 44,
+        "lien": "foyer"
+      },
+      {
+        "id": 45,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_042.tscn"
+  },
+  {
+    "id": 43,
+    "nom": "Scott Walker",
+    "age": 48,
+    "maison": 15,
+    "sexe": "M",
+    "metier": "police",
+    "histoire": "The local police officer and Nancy's husband talks through disputes, except those involving school sports.",
+    "semaine": [
+      "police",
+      "police",
+      "maison",
+      "police",
+      "police",
+      "police",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.65,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "33475f",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 42,
+        "lien": "conjoints"
+      },
+      {
+        "id": 44,
+        "lien": "foyer"
+      },
+      {
+        "id": 45,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_043.tscn"
+  },
+  {
+    "id": 44,
+    "nom": "Hailey Walker",
+    "age": 18,
+    "maison": 15,
+    "sexe": "F",
+    "metier": "formation",
+    "histoire": "Nancy and Scott's daughter, Ashley's friend, wants to work and become independent. She stays frank with us.",
+    "semaine": [
+      "études",
+      "études",
+      "études",
+      "études",
+      "études",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.565,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "4776a0",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 42,
+        "lien": "foyer"
+      },
+      {
+        "id": 43,
+        "lien": "foyer"
+      },
+      {
+        "id": 45,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_044.tscn"
+  },
+  {
+    "id": 45,
+    "nom": "Logan Walker",
+    "age": 14,
+    "maison": 15,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "Hailey's little brother always quotes the highest sale price and hides the card he overpaid for.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "brocante",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.555,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "4776a0",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 42,
+        "lien": "foyer"
+      },
+      {
+        "id": 43,
+        "lien": "foyer"
+      },
+      {
+        "id": 44,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_045.tscn"
+  },
+  {
+    "id": 46,
+    "nom": "Debbie Foster",
+    "age": 61,
+    "maison": 16,
+    "sexe": "F",
+    "metier": "événements",
+    "histoire": "Amanda's mother organizes the flea market. She replaced chaos with rules almost as long as the street.",
+    "semaine": [
+      "mairie",
+      "mairie",
+      "stand",
+      "courses",
+      "mairie",
+      "stand",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "be7964",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 9,
+        "lien": "enfant"
+      },
+      {
+        "id": 47,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_046.tscn"
+  },
+  {
+    "id": 47,
+    "nom": "Bob Foster",
+    "age": 65,
+    "maison": 16,
+    "sexe": "M",
+    "metier": "retraité",
+    "histoire": "Debbie's husband, a retired road worker, loves his grandchildren and hates moving the same barrier three times.",
+    "semaine": [
+      "jardin",
+      "café",
+      "brocante",
+      "courses",
+      "jardin",
+      "maison",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.79,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "b4a27b",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 9,
+        "lien": "enfant"
+      },
+      {
+        "id": 46,
+        "lien": "conjoints"
+      },
+      {
+        "id": 95,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_047.tscn"
+  },
+  {
+    "id": 48,
+    "nom": "Kevin Collins",
+    "age": 35,
+    "maison": 17,
+    "sexe": "M",
+    "metier": "informatique",
+    "histoire": "A newcomer working remotely. He came for peace and quiet and is already fixing the neighbors' devices.",
+    "semaine": [
+      "maison",
+      "maison",
+      "maison",
+      "maison",
+      "maison",
+      "jardin",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.825,
+      "corpulence": 0.98,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "33475f",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 49,
+        "lien": "conjoints"
+      },
+      {
+        "id": 50,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_048.tscn"
+  },
+  {
+    "id": 49,
+    "nom": "Rachel Collins",
+    "age": 34,
+    "maison": 17,
+    "sexe": "F",
+    "metier": "pharmacie",
+    "histoire": "Kevin's wife wants to fit in, accepts too many invitations and sometimes mixes up their times.",
+    "semaine": [
+      "extérieur",
+      "extérieur",
+      "courses",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.495,
+      "corpulence": 1.13,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "b99539",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 48,
+        "lien": "conjoints"
+      },
+      {
+        "id": 50,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_049.tscn"
+  },
+  {
+    "id": 50,
+    "nom": "Mason Collins",
+    "age": 8,
+    "maison": 17,
+    "sexe": "M",
+    "metier": "école",
+    "histoire": "Kevin and Rachel's son is new at school. He knows dinosaurs and discovers cards with Tyler and Noah.",
+    "semaine": [
+      "école",
+      "école",
+      "école",
+      "école",
+      "école",
+      "parc",
+      "famille"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.155,
+      "corpulence": 1.05,
+      "peau": "b98c69",
+      "cheveux": "503929",
+      "haut": "56784a",
+      "bas": "3f4148",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 48,
+        "lien": "foyer"
+      },
+      {
+        "id": 49,
+        "lien": "foyer"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_050.tscn"
+  },
+  {
+    "id": 51,
+    "nom": "Dorothy Morgan",
+    "age": 74,
+    "maison": 18,
+    "sexe": "F",
+    "metier": "retraitée",
+    "histoire": "A retired bank employee and Amber's grandmother. She seems distracted until it is time to count the money.",
+    "semaine": [
+      "maison",
+      "courses",
+      "brocante",
+      "visite12",
+      "maison",
+      "stand",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.565,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "763c51",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 52,
+        "lien": "petit-enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_051.tscn"
+  },
+  {
+    "id": 52,
+    "nom": "Amber Morgan",
+    "age": 26,
+    "maison": 18,
+    "sexe": "F",
+    "metier": "illustratrice",
+    "histoire": "An illustrator staying with Dorothy. She is stabilizing her income and discovering her grandmother negotiates better.",
+    "semaine": [
+      "maison",
+      "maison",
+      "brocante",
+      "extérieur",
+      "maison",
+      "stand",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Soldier",
+      "taille": 1.6,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "383e44",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 51,
+        "lien": "grand-parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_052.tscn"
+  },
+  {
+    "id": 53,
+    "nom": "Ron Hayes",
+    "age": 52,
+    "maison": 19,
+    "sexe": "M",
+    "metier": "municipal",
+    "histoire": "A maintenance worker, Trevor's father and Mike's friend. He fixes the consequences of other people's good ideas.",
+    "semaine": [
+      "chantier",
+      "parc",
+      "brocante",
+      "chantier",
+      "chantier",
+      "jardin",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Worker",
+      "taille": 1.755,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "c77a37",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 54,
+        "lien": "enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_053.tscn"
+  },
+  {
+    "id": 54,
+    "nom": "Trevor Hayes",
+    "age": 28,
+    "maison": 19,
+    "sexe": "M",
+    "metier": "revendeur",
+    "histoire": "A reseller who moved back in with his father after a setback. An opportunistic rival who knows how quickly reputations disappear.",
+    "semaine": [
+      "brocante",
+      "extérieur",
+      "brocante",
+      "maison",
+      "brocante",
+      "brocante",
+      "maison"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.79,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "383e44",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 53,
+        "lien": "parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_054.tscn"
+  },
+  {
+    "id": 55,
+    "nom": "Carol Wilson",
+    "age": 57,
+    "maison": 20,
+    "sexe": "F",
+    "metier": "administration",
+    "histoire": "Doug's wife works in administration from home. She loves rules and wages a very polite war against Daniel's garden.",
+    "semaine": [
+      "maison",
+      "extérieur",
+      "maison",
+      "extérieur",
+      "maison",
+      "jardin",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.705,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "8d9d81",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 56,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_055.tscn"
+  },
+  {
+    "id": 56,
+    "nom": "Doug Wilson",
+    "age": 60,
+    "maison": 20,
+    "sexe": "M",
+    "metier": "éoliennes",
+    "histoire": "A skilled but distracted technician and Carol's husband. He lends tools, then searches every neighbor's house for them.",
+    "semaine": [
+      "éoliennes",
+      "extérieur",
+      "extérieur",
+      "extérieur",
+      "éoliennes",
+      "jardin",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Worker",
+      "taille": 1.615,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "4776a0",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 55,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_056.tscn"
+  },
+  {
+    "id": 57,
+    "nom": "Marlene Baxter",
+    "age": 58,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Linda's friend is clearing her house before moving. Her stand overflows with linens and memories.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.53,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "ba738c",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 58,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_057.tscn"
+  },
+  {
+    "id": 58,
+    "nom": "Wade Baxter",
+    "age": 60,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Marlene's husband helps her sell while buying tools from neighboring stands.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Adventurer",
+      "taille": 1.685,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "7d6250",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 57,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_058.tscn"
+  },
+  {
+    "id": 59,
+    "nom": "Tasha Bell",
+    "age": 34,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Denise's friend sells her children's clothes and toys. She knows exactly which pieces every game is missing.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Casual",
+      "taille": 1.6,
+      "corpulence": 1.13,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "a3473e",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 60,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_059.tscn"
+  },
+  {
+    "id": 60,
+    "nom": "Colin Bell",
+    "age": 36,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Tasha's husband works in a warehouse. He packs his old games perfectly and forgets their prices.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.755,
+      "corpulence": 1.32,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "74a6bd",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 59,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_060.tscn"
+  },
+  {
+    "id": 61,
+    "nom": "June Whitaker",
+    "age": 81,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Dorothy's former neighbor gives every object an embellished story, but describes its condition honestly.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.67,
+      "corpulence": 1.05,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "9985b5",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 62,
+        "lien": "petit-enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_061.tscn"
+  },
+  {
+    "id": 62,
+    "nom": "Owen Whitaker",
+    "age": 27,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "June's grandson, a librarian, carries her boxes and makes sure she can rest.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Casual_2",
+      "taille": 1.825,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 61,
+        "lien": "grand-parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_062.tscn"
+  },
+  {
+    "id": 63,
+    "nom": "Luis Ortega",
+    "age": 45,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Ryan's acquaintance loves music, sells modest instruments and spots fake expertise.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Beach",
+      "tete": "Worker",
+      "taille": 1.615,
+      "corpulence": 0.98,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "c9c2a7",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 64,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_063.tscn"
+  },
+  {
+    "id": 64,
+    "nom": "Carmen Ortega",
+    "age": 43,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Luis's wife loves sewing. Her half of the stand is perfectly organized, unlike the other half.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.53,
+      "corpulence": 1.13,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "a3473e",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 63,
+        "lien": "conjoints"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_064.tscn"
+  },
+  {
+    "id": 65,
+    "nom": "Paige Turner",
+    "age": 22,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Amber's friend is clearing her room before studying elsewhere. She still hesitates to sell some books and figurines.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Punk",
+      "taille": 1.565,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "76517f",
+      "haut": "707650",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_065.tscn"
+  },
+  {
+    "id": 66,
+    "nom": "Bruce Dalton",
+    "age": 51,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Mike's former colleague is clearing a family garage. He sounds gruffer than he really is.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Casual_2",
+      "taille": 1.72,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "7d6250",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_066.tscn"
+  },
+  {
+    "id": 67,
+    "nom": "Dee Lawson",
+    "age": 62,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Gloria's friend is emptying a room. She always asks her children before selling their keepsakes.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 1.2,
+      "peau": "754c38",
+      "cheveux": "b3b5b1",
+      "haut": "3f8e89",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_067.tscn"
+  },
+  {
+    "id": 68,
+    "nom": "Spencer Holt",
+    "age": 31,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Ben's board-game-loving friend provides far too much explanation for one-dollar items.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.79,
+      "corpulence": 0.98,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "6e7955",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_068.tscn"
+  },
+  {
+    "id": 69,
+    "nom": "Miguel Santos",
+    "age": 39,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "vendeur",
+    "histoire": "Marcus's former colleague and a father wants to drive home with a car empty of toys and sports gear.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Worker",
+      "taille": 1.825,
+      "corpulence": 1.32,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "4776a0",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_069.tscn"
+  },
+  {
+    "id": 70,
+    "nom": "Beth Coleman",
+    "age": 47,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "vendeuse",
+    "histoire": "Karen's friend has downsized. She appreciates considerate buyers without accepting every offer.",
+    "semaine": [
+      "absent",
+      "absent",
+      "stand",
+      "absent",
+      "absent",
+      "stand",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.495,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "b4a27b",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_070.tscn"
+  },
+  {
+    "id": 71,
+    "nom": "Victor Shaw",
+    "age": 46,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "collectionneur",
+    "histoire": "Linh's customer specializes in older editions. He speaks little and respects honest descriptions.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Casual_2",
+      "taille": 1.65,
+      "corpulence": 1.05,
+      "peau": "c4976b",
+      "cheveux": "929189",
+      "haut": "33475f",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_071.tscn"
+  },
+  {
+    "id": 72,
+    "nom": "Penny Brooks",
+    "age": 29,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "collectionneuse",
+    "histoire": "Unrelated to Amanda. She collects specific illustrations and remembers sellers who pay attention to her taste.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.565,
+      "corpulence": 1.2,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "ba738c",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_072.tscn"
+  },
+  {
+    "id": 73,
+    "nom": "Derek Moss",
+    "age": 35,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "revendeur",
+    "histoire": "Trevor's rival inspects quickly and negotiates hard. Rushing sometimes makes him miss a detail.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.72,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "383e44",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_073.tscn"
+  },
+  {
+    "id": 74,
+    "nom": "Allie Chen",
+    "age": 21,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "collectionneuse",
+    "histoire": "Emma's friend is a student on a tight budget. She prefers trades and careful inspections.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 1.13,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "9985b5",
+      "bas": "3f4148",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_074.tscn"
+  },
+  {
+    "id": 75,
+    "nom": "Hank Mercer",
+    "age": 67,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "collectionneur",
+    "histoire": "Gary's former colleague has collected the same monster forever. His binder is very repetitive.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.79,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "7d6250",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_075.tscn"
+  },
+  {
+    "id": 76,
+    "nom": "Olivia Grant",
+    "age": 38,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "collectionneuse",
+    "histoire": "Ruby's mother learns about editions alongside her daughter and refuses to let anyone exploit her inexperience.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Casual",
+      "taille": 1.705,
+      "corpulence": 1.05,
+      "peau": "ae7957",
+      "cheveux": "503929",
+      "haut": "c9c2a7",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 77,
+        "lien": "enfant"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_076.tscn"
+  },
+  {
+    "id": 77,
+    "nom": "Ruby Grant",
+    "age": 9,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "visiteuse",
+    "histoire": "Olivia's daughter is always accompanied. She chooses cute monsters without checking their prices.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.18,
+      "corpulence": 1.05,
+      "peau": "ae7957",
+      "cheveux": "503929",
+      "haut": "a3473e",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 76,
+        "lien": "parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_077.tscn"
+  },
+  {
+    "id": 78,
+    "nom": "Miles Carter",
+    "age": 17,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "collectionneur",
+    "histoire": "Jayden's friend attends high school in another town. He saves for one particular card and sells duplicates.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.63,
+      "corpulence": 0.98,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "6b747c",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_078.tscn"
+  },
+  {
+    "id": 79,
+    "nom": "Colin Pierce",
+    "age": 32,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "collectionneur",
+    "histoire": "Nicknamed Spreadsheet, he loves average prices but sometimes forgets language or condition. Ben corrects him.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.685,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "785794",
+      "bas": "5b645a",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_079.tscn"
+  },
+  {
+    "id": 80,
+    "nom": "Zoe Kim",
+    "age": 27,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "collectionneuse",
+    "histoire": "She buys damaged cards for their illustrations. Cleaning does not make her forget the damage.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.6,
+      "corpulence": 0.9,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "4776a0",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_080.tscn"
+  },
+  {
+    "id": 81,
+    "nom": "Arthur Wells",
+    "age": 73,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "collectionneur",
+    "histoire": "Gloria's friend is building an album for his grandson and appreciates explanations without condescension.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.755,
+      "corpulence": 1.05,
+      "peau": "754c38",
+      "cheveux": "d4d0c1",
+      "haut": "7d6250",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_081.tscn"
+  },
+  {
+    "id": 82,
+    "nom": "Vanessa Cole",
+    "age": 41,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "collectionneuse",
+    "histoire": "Linh's wealthy but demanding customer buys rarely and knows exactly what she wants.",
+    "semaine": [
+      "absent",
+      "boutique",
+      "brocante",
+      "absent",
+      "absent",
+      "brocante",
+      "parc"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.67,
+      "corpulence": 1.2,
+      "peau": "dbad8c",
+      "cheveux": "282729",
+      "haut": "763c51",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_082.tscn"
+  },
+  {
+    "id": 83,
+    "nom": "George Whitman",
+    "age": 58,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "café",
+    "histoire": "The cafe owner lives elsewhere. He lets Marcus cook but returns with questionable menu ideas.",
+    "semaine": [
+      "café",
+      "café",
+      "café",
+      "café",
+      "café",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Beach",
+      "tete": "Suit",
+      "taille": 1.825,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "4776a0",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_083.tscn"
+  },
+  {
+    "id": 84,
+    "nom": "Adrian Bellamy",
+    "age": 37,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "caserne",
+    "histoire": "Chris's colleague loves board games and sometimes visits the flea market after his shift.",
+    "semaine": [
+      "caserne",
+      "caserne",
+      "caserne",
+      "caserne",
+      "caserne",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.615,
+      "corpulence": 1.13,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "33475f",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_084.tscn"
+  },
+  {
+    "id": 85,
+    "nom": "Heather Walsh",
+    "age": 44,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "police",
+    "histoire": "Scott's colleague knows the local disputes and punctures dramatic speeches with dry humor.",
+    "semaine": [
+      "police",
+      "police",
+      "police",
+      "police",
+      "police",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.53,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "a55832",
+      "haut": "33475f",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_085.tscn"
+  },
+  {
+    "id": 86,
+    "nom": "Felix Romero",
+    "age": 30,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "poste",
+    "histoire": "The mail carrier knows addresses better than names. He notices our packages but never shares the neighbors' mail.",
+    "semaine": [
+      "poste",
+      "poste",
+      "poste",
+      "poste",
+      "poste",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.685,
+      "corpulence": 1.05,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "4776a0",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_086.tscn"
+  },
+  {
+    "id": 87,
+    "nom": "Nora Evans",
+    "age": 53,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "bus",
+    "histoire": "A bus driver and Gloria's former colleague. She knows the children's habits and will not wait forever.",
+    "semaine": [
+      "bus",
+      "bus",
+      "bus",
+      "bus",
+      "bus",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.6,
+      "corpulence": 1.2,
+      "peau": "754c38",
+      "cheveux": "929189",
+      "haut": "56784a",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_087.tscn"
+  },
+  {
+    "id": 88,
+    "nom": "Curtis Brown",
+    "age": 48,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "livraison",
+    "histoire": "The grocery delivery driver jokes with Jennifer but needs his access kept clear. He collects miniature trucks.",
+    "semaine": [
+      "livraison",
+      "livraison",
+      "livraison",
+      "livraison",
+      "livraison",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Casual_2",
+      "taille": 1.755,
+      "corpulence": 1.32,
+      "peau": "754c38",
+      "cheveux": "929189",
+      "haut": "33475f",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_088.tscn"
+  },
+  {
+    "id": 89,
+    "nom": "Jamie Park",
+    "age": 26,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "éoliennes",
+    "histoire": "Doug's colleague now labels every tool after spending a week working with him.",
+    "semaine": [
+      "éoliennes",
+      "éoliennes",
+      "éoliennes",
+      "éoliennes",
+      "éoliennes",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Worker",
+      "tete": "Worker",
+      "taille": 1.79,
+      "corpulence": 1.13,
+      "peau": "c4976b",
+      "cheveux": "282729",
+      "haut": "c3a142",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_089.tscn"
+  },
+  {
+    "id": 90,
+    "nom": "Melissa Hart",
+    "age": 33,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "soins",
+    "histoire": "A home-care nurse and Megan's former colleague. Her visits stay private; she never spreads confidences.",
+    "semaine": [
+      "soins",
+      "soins",
+      "soins",
+      "soins",
+      "soins",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Casual",
+      "taille": 1.705,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "6b747c",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_090.tscn"
+  },
+  {
+    "id": 91,
+    "nom": "Peter Novak",
+    "age": 46,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "municipal",
+    "histoire": "Ron's backup criticizes the old landscaping before asking where to get coffee.",
+    "semaine": [
+      "municipal",
+      "municipal",
+      "municipal",
+      "municipal",
+      "municipal",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Worker",
+      "taille": 1.615,
+      "corpulence": 1.32,
+      "peau": "dbad8c",
+      "cheveux": "503929",
+      "haut": "c77a37",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_091.tscn"
+  },
+  {
+    "id": 92,
+    "nom": "Simone Ellis",
+    "age": 40,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "mairie",
+    "histoire": "A regional administrator and colleague of Susan and Isabel. She wants short answers in a talkative village.",
+    "semaine": [
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "mairie",
+      "absent",
+      "absent"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.53,
+      "corpulence": 1.2,
+      "peau": "754c38",
+      "cheveux": "282729",
+      "haut": "b4a27b",
+      "bas": "354555",
+      "lunettes": true
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_092.tscn"
+  },
+  {
+    "id": 93,
+    "nom": "Becky Miller",
+    "age": 43,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "proche",
+    "histoire": "Mike's sister, our aunt. She defends our project, then quietly asks whether we have done the math.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Casual",
+      "tete": "Formal",
+      "taille": 1.565,
+      "corpulence": 0.98,
+      "peau": "dbad8c",
+      "cheveux": "72503b",
+      "haut": "763c51",
+      "bas": "56534b",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 2,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_093.tscn"
+  },
+  {
+    "id": 94,
+    "nom": "Mac Miller",
+    "age": 46,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "proche",
+    "histoire": "Mike's cousin walks with Doug and describes trips he has postponed for years.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Adventurer",
+      "taille": 1.72,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "929189",
+      "haut": "707650",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_094.tscn"
+  },
+  {
+    "id": 95,
+    "nom": "Patricia Foster",
+    "age": 58,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "proche",
+    "histoire": "Bob's sister sometimes helps at the flea market. She can contradict Debbie without triggering a meeting.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Formal",
+      "tete": "Formal",
+      "taille": 1.635,
+      "corpulence": 0.9,
+      "peau": "dbad8c",
+      "cheveux": "bd9854",
+      "haut": "4776a0",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 47,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_095.tscn"
+  },
+  {
+    "id": 96,
+    "nom": "Leo Garcia",
+    "age": 24,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "proche",
+    "histoire": "The Garcias' grandson and Madison's cousin. An apprentice cook who exchanges recipes with Marcus.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Casual_Hoodie",
+      "tete": "Casual_2",
+      "taille": 1.79,
+      "corpulence": 1.05,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "c9c2a7",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 27,
+        "lien": "grand-parent"
+      },
+      {
+        "id": 28,
+        "lien": "grand-parent"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_096.tscn"
+  },
+  {
+    "id": 97,
+    "nom": "Nina Patel",
+    "age": 25,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "visiteuse",
+    "histoire": "Amber's friend studies architecture. She comes to sketch the village and notices absurd design decisions.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Suit",
+      "taille": 1.705,
+      "corpulence": 1.2,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "c77a37",
+      "bas": "56534b",
+      "lunettes": true
+    },
+    "relations": [
+      {
+        "id": 98,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_097.tscn"
+  },
+  {
+    "id": 98,
+    "nom": "Samir Patel",
+    "age": 29,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "visiteur",
+    "histoire": "Nina's brother is a weekend photographer. He often ends up discussing the water tower with Antonio.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Farmer",
+      "tete": "Casual_2",
+      "taille": 1.615,
+      "corpulence": 0.98,
+      "peau": "b98c69",
+      "cheveux": "282729",
+      "haut": "56784a",
+      "bas": "3f4148",
+      "lunettes": false
+    },
+    "relations": [
+      {
+        "id": 97,
+        "lien": "fratrie"
+      }
+    ],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_098.tscn"
+  },
+  {
+    "id": 99,
+    "nom": "Walter Finch",
+    "age": 69,
+    "maison": 0,
+    "sexe": "M",
+    "metier": "visiteur",
+    "histoire": "Ethan's birdwatching acquaintance. One lawn mower is enough to make him move to another part of the park.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Casual_2",
+      "tete": "Suit",
+      "taille": 1.65,
+      "corpulence": 1.13,
+      "peau": "dbad8c",
+      "cheveux": "d4d0c1",
+      "haut": "707650",
+      "bas": "5b645a",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_099.tscn"
+  },
+  {
+    "id": 100,
+    "nom": "Evelyn Ross",
+    "age": 63,
+    "maison": 0,
+    "sexe": "F",
+    "metier": "visiteuse",
+    "histoire": "Dorothy and Gloria's friend is a retired music teacher. She recognizes misidentified instruments at the flea market.",
+    "semaine": [
+      "absent",
+      "absent",
+      "parc",
+      "absent",
+      "absent",
+      "brocante",
+      "visite"
+    ],
+    "apparence": {
+      "modele": "Suit",
+      "tete": "Formal",
+      "taille": 1.565,
+      "corpulence": 0.9,
+      "peau": "754c38",
+      "cheveux": "929189",
+      "haut": "785794",
+      "bas": "354555",
+      "lunettes": false
+    },
+    "relations": [],
+    "dialogue_count": 0,
+    "scene": "res://Contenu/PNJ/Personnages/PNJ_100.tscn"
+  }
+]

@@ -1,0 +1,128 @@
+{
+ "blagueur": {
+  "persona": "blagueur",
+  "rencontres": 98,
+  "part_rencontres_avec_humour": 0.418,
+  "elements_humour_par_rencontre": 0.46,
+  "humour_par_jour": [
+   3,
+   4,
+   6,
+   4,
+   8,
+   10,
+   10
+  ],
+  "scenes_pop": 21,
+  "clins_doeil": 21,
+  "etapes_running_gags": 3,
+  "domaines": {
+   "jeux_video": 11,
+   "scene": 21,
+   "series": 1,
+   "memes": 2,
+   "films": 6,
+   "village": 3,
+   "cartes": 1
+  },
+  "reactions": {
+   "rit": 12,
+   "poli": 4
+  },
+  "redites_entendues": 1,
+  "repliques_pnj": 322,
+  "humour_en_negociation_tendue": 0,
+  "part_rencontres_avec_humour_moy5": 0.402,
+  "elements_humour_par_rencontre_moy5": 0.442,
+  "redites_entendues_moy5": 0.8,
+  "repliques_pnj_moy5": 321.0,
+  "humour_en_negociation_tendue_moy5": 0.0,
+  "scenes_pop_moy5": 19.2,
+  "clins_doeil_moy5": 20.0,
+  "etapes_running_gags_moy5": 4.0,
+  "max_negociation_tendue_sur_5": 0
+ },
+ "neutre": {
+  "persona": "neutre",
+  "rencontres": 98,
+  "part_rencontres_avec_humour": 0.316,
+  "elements_humour_par_rencontre": 0.34,
+  "humour_par_jour": [
+   2,
+   4,
+   4,
+   6,
+   7,
+   4,
+   6
+  ],
+  "scenes_pop": 14,
+  "clins_doeil": 14,
+  "etapes_running_gags": 5,
+  "domaines": {
+   "jeux_video": 9,
+   "scene": 14,
+   "films": 4,
+   "village": 3,
+   "memes": 1,
+   "series": 1,
+   "cartes": 1
+  },
+  "reactions": {
+   "rit": 8,
+   "plat": 1
+  },
+  "redites_entendues": 0,
+  "repliques_pnj": 311,
+  "humour_en_negociation_tendue": 0,
+  "part_rencontres_avec_humour_moy5": 0.341,
+  "elements_humour_par_rencontre_moy5": 0.366,
+  "redites_entendues_moy5": 0.0,
+  "repliques_pnj_moy5": 308.8,
+  "humour_en_negociation_tendue_moy5": 0.0,
+  "scenes_pop_moy5": 13.6,
+  "clins_doeil_moy5": 16.8,
+  "etapes_running_gags_moy5": 5.2,
+  "max_negociation_tendue_sur_5": 0
+ },
+ "serieux": {
+  "persona": "serieux",
+  "rencontres": 98,
+  "part_rencontres_avec_humour": 0.143,
+  "elements_humour_par_rencontre": 0.15,
+  "humour_par_jour": [
+   0,
+   5,
+   0,
+   2,
+   5,
+   2,
+   1
+  ],
+  "scenes_pop": 4,
+  "clins_doeil": 7,
+  "etapes_running_gags": 4,
+  "domaines": {
+   "scene": 4,
+   "village": 2,
+   "films": 3,
+   "jeux_video": 5,
+   "memes": 1
+  },
+  "reactions": {
+   "poli": 1
+  },
+  "redites_entendues": 1,
+  "repliques_pnj": 305,
+  "humour_en_negociation_tendue": 0,
+  "part_rencontres_avec_humour_moy5": 0.147,
+  "elements_humour_par_rencontre_moy5": 0.148,
+  "redites_entendues_moy5": 0.6,
+  "repliques_pnj_moy5": 300.8,
+  "humour_en_negociation_tendue_moy5": 0.0,
+  "scenes_pop_moy5": 3.2,
+  "clins_doeil_moy5": 7.2,
+  "etapes_running_gags_moy5": 4.4,
+  "max_negociation_tendue_sur_5": 0
+ }
+}
