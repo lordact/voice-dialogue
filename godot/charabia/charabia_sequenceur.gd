@@ -209,8 +209,8 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 	var musical := float(p.get("musical", 0.5))
 	var legato := float(p.get("legato", 0.035))
 	var amplitude := 4.0 * etendue
-	var sauts_fin := {"chute": -4.0, "montee": 6.0, "exclamation": -3.5, "suspendue": 0.0,
-		"continuation": 2.0, "chantee": -3.0, "chute_montee": 3.0}
+	var sauts_fin := {"chute": -3.0, "montee": 6.0, "exclamation": -3.5, "suspendue": 0.0,
+		"continuation": 2.0, "chantee": -2.5, "chute_montee": 3.0}
 
 	for si in segs.size():
 		var mots: PackedStringArray = segs[si][0]
@@ -244,7 +244,7 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 			var x := float(j) / maxi(1, n - 1)
 			var phase := am.reel()
 			var micro := am.entre(-1, 1)
-			var st := 1.0 - 2.5 * x + exp(-pow((x - sommet) / 0.3, 2)) * 1.0
+			var st := 1.0 - 1.8 * x + exp(-pow((x - sommet) / 0.3, 2)) * 1.0
 			if accents[j]:
 				st += 0.45
 			if forme_fin == "exclamation":
@@ -268,7 +268,7 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 				var forme: String
 				if j == n - 1:
 					forme = "long"
-					fin_st = debut_st + float(sauts_fin.get(forme_fin, -4.0)) * minf(1.5, etendue)
+					fin_st = debut_st + float(sauts_fin.get(forme_fin, -3.0)) * minf(1.5, etendue)
 					if forme_fin == "chute_montee":
 						debut_st -= 2.0
 				else:
@@ -291,8 +291,8 @@ static func partition(texte: String, loc: CharabiaLocuteur, emotion: String, emo
 				var pitch_fin := base * pow(2.0, fin_st / 12.0)
 				if tremble:
 					pitch *= 1 + tremble * sin(etat.t * 31)
-				pitch = minf(2.2, maxf(0.5, pitch))
-				pitch_fin = minf(2.2, maxf(0.5, pitch_fin))
+				pitch = minf(1.8, maxf(0.75, pitch))
+				pitch_fin = minf(1.8, maxf(0.75, pitch_fin))
 				var debut := maxf(0.0, etat.t - float(da[1]) / pitch * 0.5)
 				evts.append({"t": debut, "grain": "syl:" + nom, "pitch": pitch, "pitch_fin": pitch_fin, "db": vol + gain})
 				etat.t = debut + duree_glissee(float(da[0]), pitch, pitch_fin) - legato

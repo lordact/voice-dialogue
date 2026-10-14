@@ -1,5 +1,5 @@
 {
- "note": "Profils vocaux du charabia. f0 en Hz ; syllabe = durée de voyelle (s) ; etendue multiplie l'amplitude mélodique ; densite = syllabes de charabia par syllabe anglaise ; consonnes/voyelles = inventaire pondéré (l'accent du personnage) ; rire = style de rire ; tics = probabilités d'hésitation. 'origine' reproduit le réglage des 10 voix d'origine. Style mélodieux (v2) : musical = attraction des hauteurs vers une gamme pentatonique (0..1) ; legato = recouvrement entre syllabes (s) ; timbre.chant = vibrato chanté sur les voyelles tenues ; w/y = glissés, ai/oi/ao/ei/ou = diphtongues.",
+ "note": "Profils vocaux du charabia. f0 en Hz ; syllabe = durée de voyelle (s) ; etendue multiplie l'amplitude mélodique ; densite = syllabes de charabia par syllabe anglaise ; consonnes/voyelles = inventaire pondéré (l'accent du personnage) ; rire = style de rire ; tics = probabilités d'hésitation. 'origine' reproduit le réglage des 10 voix d'origine. Style mélodieux (v2) : musical = attraction des hauteurs vers une gamme pentatonique (0..1) ; legato = recouvrement entre syllabes (s) ; timbre.chant = vibrato chanté sur les voyelles tenues ; w/y = glissés, ai/oi/ao/ei/ou = diphtongues. Registre v2.1 : toutes les voix entre ~165 Hz (médium) et ~315 Hz (enfant), plus de voix très graves.",
  "profils": {
   "origine": {
    "label_en": "Original village voice",
@@ -46,9 +46,9 @@
   "commercant_blase": {
    "label_en": "Bored shopkeeper",
    "description_fr": "Grave, lent, mélodie plate, finales qui tombent, soupire volontiers.",
-   "f0": 128,
+   "f0": 170,
    "timbre": {
-    "formant": 0.94,
+    "formant": 0.97,
     "carre": 0.143,
     "souffle": 0.04,
     "vibrato": 0.006,
@@ -103,9 +103,9 @@
   "vieil_habitue": {
    "label_en": "Slow old regular",
    "description_fr": "Voix âgée, rauque et tremblante, très lente, longues pauses.",
-   "f0": 112,
+   "f0": 165,
    "timbre": {
-    "formant": 0.95,
+    "formant": 0.97,
     "raucite": 0.22,
     "vibrato": 0.03,
     "vib_freq": 4.6,
@@ -161,7 +161,7 @@
   "ado_surexcite": {
    "label_en": "Overexcited teen",
    "description_fr": "Aigu, rapide, grands sauts mélodiques, consonnes claquées, gloussements.",
-   "f0": 262,
+   "f0": 275,
    "timbre": {
     "formant": 1.12,
     "carre": 0.195,
@@ -216,7 +216,7 @@
   "voisin_discret": {
    "label_en": "Quiet neighbour",
    "description_fr": "Doux, soufflé, phrases courtes, volume bas, voyelles fermées.",
-   "f0": 172,
+   "f0": 205,
    "timbre": {
     "scie": 0.65,
     "carre": 0.091,
@@ -271,7 +271,7 @@
   "vendeuse_bavarde": {
    "label_en": "Chatty stallholder",
    "description_fr": "Médium-aigu, débit rapide sans respirer, mélodie chantante, rit de ses propres phrases.",
-   "f0": 238,
+   "f0": 255,
    "timbre": {
     "formant": 1.06,
     "carre": 0.182,
@@ -325,7 +325,7 @@
   "collectionneur_methodique": {
    "label_en": "Methodical collector",
    "description_fr": "Débit régulier, consonnes nettes (t, k), mélodie serrée, petits « hmm » d'examen.",
-   "f0": 142,
+   "f0": 182,
    "timbre": {
     "formant": 0.98,
     "carre": 0.156,
@@ -380,7 +380,7 @@
   "pro_presse": {
    "label_en": "Hurried professional",
    "description_fr": "Très rapide, presque sans pause, finales sèches qui tombent.",
-   "f0": 158,
+   "f0": 195,
    "timbre": {
     "carre": 0.176,
     "vibrato": 0.004,
@@ -434,7 +434,7 @@
   "parent_chaleureux": {
    "label_en": "Warm parent",
    "description_fr": "Rond et doux, voyelles ouvertes (o, ou), mélodie qui berce, rire chaleureux.",
-   "f0": 205,
+   "f0": 225,
    "timbre": {
     "scie": 0.75,
     "carre": 0.117,
@@ -489,7 +489,7 @@
   "revendeur_nerveux": {
    "label_en": "Nervous reseller",
    "description_fr": "Rythme irrégulier, hésitations, sifflantes (s, ch), petits rires nerveux.",
-   "f0": 186,
+   "f0": 215,
    "timbre": {
     "carre": 0.169,
     "vibrato": 0.02,
@@ -545,7 +545,7 @@
   "sarcastique": {
    "label_en": "Sarcastic",
    "description_fr": "Traîne sur les syllabes accentuées, montées-descentes ironiques, « pfff » fréquents.",
-   "f0": 168,
+   "f0": 200,
    "timbre": {
     "nasal": 0.3,
     "carre": 0.156,
@@ -600,7 +600,7 @@
   "enfant": {
    "label_en": "Young child",
    "description_fr": "Très aigu, petit conduit vocal, sautillant, rires en cascade.",
-   "f0": 305,
+   "f0": 315,
    "timbre": {
     "formant": 1.24,
     "carre": 0.195,
@@ -655,9 +655,9 @@
   "grand_gaillard": {
    "label_en": "Big gruff guy",
    "description_fr": "Très grave, grand conduit vocal, plus de bourdon, consonnes sonores b/d.",
-   "f0": 96,
+   "f0": 165,
    "timbre": {
-    "formant": 0.86,
+    "formant": 0.97,
     "carre": 0.215,
     "brillance": 0.12,
     "raucite": 0.08,
@@ -711,7 +711,7 @@
   "dame_distinguee": {
    "label_en": "Refined elderly lady",
    "description_fr": "Médium, vibrato marqué, lente et chantée, voyelles claires.",
-   "f0": 212,
+   "f0": 235,
    "timbre": {
     "formant": 1.04,
     "vibrato": 0.035,
@@ -768,9 +768,9 @@
   "revendeur_assure": {
    "label_en": "Confident dealer",
    "description_fr": "Grave et posé, débit ferme, silence avant chaque somme, finales nettes.",
-   "f0": 122,
+   "f0": 172,
    "timbre": {
-    "formant": 0.93,
+    "formant": 0.97,
     "carre": 0.195,
     "vibrato": 0.004,
     "brillance": 0.18,
@@ -825,7 +825,7 @@
   "agent_officiel": {
    "label_en": "Formal official",
    "description_fr": "Neutre et carré, mélodie plate, syllabes égales, pauses régulières.",
-   "f0": 138,
+   "f0": 178,
    "timbre": {
     "carre": 0.182,
     "vibrato": 0.003,
@@ -880,7 +880,7 @@
   "reveuse_artiste": {
    "label_en": "Dreamy artist",
    "description_fr": "Aiguë et soufflée, glissés lents, voyelles longues, s'interrompt pour réfléchir.",
-   "f0": 228,
+   "f0": 250,
    "timbre": {
     "formant": 1.08,
     "scie": 0.7,
@@ -937,9 +937,9 @@
   "cuisinier_jovial": {
    "label_en": "Jovial cook",
    "description_fr": "Grave-médium, fort, rebondissant, rit fort et souvent.",
-   "f0": 132,
+   "f0": 175,
    "timbre": {
-    "formant": 0.92,
+    "formant": 0.97,
     "carre": 0.195,
     "vibrato": 0.012,
     "chant": 0.022,

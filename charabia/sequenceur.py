@@ -238,7 +238,7 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
         for j in range(n):
             x = j / max(1, n - 1)
             phase, micro = am.reel(), am.entre(-1, 1)        # tirés quelle que soit l'émotion
-            st = 1.0 - 2.5 * x + math.exp(-((x - sommet) / .3) ** 2) * 1.0
+            st = 1.0 - 1.8 * x + math.exp(-((x - sommet) / .3) ** 2) * 1.0
             if accents[j]:
                 st += .45
             if forme_fin == 'exclamation':
@@ -260,8 +260,8 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
                 debut_st = cibles[j]
                 if dernier:
                     forme = 'long'
-                    fin_st = debut_st + {'chute': -4.0, 'montee': 6.0, 'exclamation': -3.5, 'suspendue': 0.0,
-                                         'continuation': 2.0, 'chantee': -3.0, 'chute_montee': 3.0}.get(forme_fin, -4.0) * min(1.5, etendue)
+                    fin_st = debut_st + {'chute': -3.0, 'montee': 6.0, 'exclamation': -3.5, 'suspendue': 0.0,
+                                         'continuation': 2.0, 'chantee': -2.5, 'chute_montee': 3.0}.get(forme_fin, -3.0) * min(1.5, etendue)
                     if forme_fin == 'chute_montee':
                         debut_st -= 2.0
                 else:
@@ -284,8 +284,8 @@ def partition(texte, loc: Locuteur, emotion, emotions, durees, intensite=.7, fps
                 pitch_fin = base * 2 ** (fin_st / 12)
                 if tremble:
                     pitch *= 1 + tremble * math.sin(t * 31)
-                pitch = min(2.2, max(.5, pitch))
-                pitch_fin = min(2.2, max(.5, pitch_fin))
+                pitch = min(1.8, max(.75, pitch))
+                pitch_fin = min(1.8, max(.75, pitch_fin))
                 debut = max(0.0, t - attaque / pitch * .5)  # aligne grossièrement l'attaque de voyelle
                 evts.append({'t': debut, 'grain': 'syl:' + nom, 'pitch': pitch, 'pitch_fin': pitch_fin, 'db': vol + gain})
                 t = debut + duree_glissee(dur, pitch, pitch_fin) - legato
