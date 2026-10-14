@@ -25,6 +25,7 @@ var _mots := []
 var _imot := 0
 var lecture := 0.0               # temps de lecture visé pour la réplique en cours (s)
 var _glisses := []                # grains en cours dont la hauteur glisse : [id, p0, p1, longueur, position]
+var gain_db := 0.0               # décalage de volume (bavardage d'ambiance plus discret, baisse pendant un dialogue)
 var cout_usec := 0                # temps passé à calculer la dernière partition
 static var cout_lecture_usec := 0 # temps cumulé de toutes les voix dans _process (mesure)
 static var cout_play_usec := 0    # dont : appels play_stream
@@ -138,7 +139,7 @@ func _avancer(delta: float) -> void:
 		var s := banque.flux(ev.grain)
 		if s and _lecture:
 			var a := Time.get_ticks_usec()
-			var id := _lecture.play_stream(s, 0.0, float(ev.db) - 6.0, float(ev.pitch))
+			var id := _lecture.play_stream(s, 0.0, float(ev.db) - 6.0 + gain_db, float(ev.pitch))
 			cout_play_usec += Time.get_ticks_usec() - a
 			nb_grains += 1
 			var p1 := float(ev.get("pitch_fin", ev.pitch))

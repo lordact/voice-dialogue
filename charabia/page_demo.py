@@ -20,6 +20,15 @@ donnees = {
     'scenes': scenes,
     'godot': {'cle': 'godot', 'titre': 'Godot capture — 12 voices, then Derek', 'description': '', 'duree': 17.6,
               'nouveau': 'godot_reel_12voix_puis_dialogue.mp3', 'ancien': None, 'titres': []},
+    'ambiance': {'cle': 'ambiance', 'titre': 'Village ambience — walking past the market', 'description': '', 'duree': 41.5,
+                 'nouveau': 'godot_ambiance_village.mp3', 'ancien': None, 'titres': [
+                     {'debut': 0.0, 'fin': 6.0, 'qui': '', 'texte': 'Park, far left — a bench group chats 17 m away', 'note': 'ui', 'joueur': False, 'emotion': ''},
+                     {'debut': 8.0, 'fin': 14.0, 'qui': '', 'texte': 'Approaching the flea market stalls', 'note': 'ui', 'joueur': False, 'emotion': ''},
+                     {'debut': 14.0, 'fin': 21.5, 'qui': '', 'texte': 'In the middle of the market', 'note': 'ui', 'joueur': False, 'emotion': ''},
+                     {'debut': 22.0, 'fin': 24.8, 'qui': 'Derek Moss', 'texte': 'I know what the market is. I also know what sells.', 'note': '', 'joueur': False, 'emotion': 'neutral'},
+                     {'debut': 25.0, 'fin': 27.8, 'qui': 'Derek Moss', 'texte': 'Meet me in the middle.', 'note': '', 'joueur': False, 'emotion': 'wary'},
+                     {'debut': 28.0, 'fin': 36.0, 'qui': '', 'texte': 'Dialogue over: ambience comes back up — passing the café terrace', 'note': 'ui', 'joueur': False, 'emotion': ''},
+                     {'debut': 36.0, 'fin': 41.5, 'qui': '', 'texte': 'A far group enters earshot (30 m)', 'note': 'ui', 'joueur': False, 'emotion': ''}]},
     'profils': [[pid, p['description_fr'], '%d Hz' % p['f0'], ', '.join(habitants.get(pid, ['—']))] for pid, p in profils.items()],
     'audit': [
         ['Scènes et arbres profonds', '455 + 850', 'V1 10 · V2 120 · V3 120 · V4 20 · V5 66 · V6 119. Aucun lien cassé.'],
@@ -40,6 +49,7 @@ donnees = {
         ['Préchargement', '0,6 s pour 13 profils', 'En tâche de fond, quand un habitant s’approche.'],
         ['Banque', '18 × ~200 grains', '≈ 60 syllabes par profil × 3 longueurs (réduite, accentuée, finale) ; régénérable à l’identique en 45 s.'],
         ['Voix / temps de lecture', '0,92 (médiane)', '477 répliques V8, toutes émotions : 80 % des répliques entre 0,80 et 1,23 ; débit médian 6,3 syllabes/s.'],
+        ['Bavardage d’ambiance (24 habitants)', '0,05 ms / image', '7 conversations en 40 s de traversée, jamais plus de 3 à la fois ni 2 près du joueur ; 30 % du temps sans bavardage audible.'],
         ['Parité Python / Godot', '23 / 23', 'Mêmes grains, mêmes instants, mêmes hauteurs de début et de fin de glissé (écart < 10⁻⁹).'],
         ['Tests Python', '36 / 36', 'Dont les 10 voix d’origine reproduites (corrélation > 0,999) et 2 096 répliques V8 sans échec.'],
         ['Cas limites Godot', '18 / 18', 'Profil inconnu, banque absente, émotion inconnue, réplique coupée, redite, PNJ retiré de la scène, sauvegarde/reprise, textes vides.'],

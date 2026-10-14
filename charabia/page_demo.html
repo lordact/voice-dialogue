@@ -129,6 +129,9 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
       <h2>Sortie réelle de Godot 4.4.1</h2>
       <p>Enregistrement du bus Master du pilote Godot (lecteur polyphonique + séquenceur porté en GDScript) : 10 s de stress test avec 12 habitants 3D qui parlent sans arrêt, bien au-delà de ce que le jeu fera, puis la négociation de Derek en dialogue.</p>
       <div class="scene" id="scene-godot"></div>
+      <h3>Bavardage des habitants, entendu au loin</h3>
+      <p>Toujours le vrai moteur. Tu traverses le village en 40 s : le parc, la brocante, la terrasse du café, puis un groupe éloigné. Les habitants proches les uns des autres bavardent entre eux, sans sous-titres. Le volume et les aigus baissent avec la distance, et rien au-delà de 30 m. Au plus 3 conversations à la fois (2 près de toi), et souvent personne ne parle. À 22 s, tu parles à Derek : l’ambiance baisse de 9 dB, puis remonte.</p>
+      <div class="scene" id="scene-ambiance"></div>
     </section>
 
     <section id="audit-jeu">
@@ -388,6 +391,7 @@ footer { margin-top: 40px; font-size: .82rem; color: var(--muted); }
   var g = el('a', null, 'Sortie Godot'); g.href = '#godot'; toc.appendChild(g);
   var dl = el('a', null, 'Dialogues V9'); dl.href = '#dialogues'; toc.appendChild(dl);
   buildScene(document.getElementById('scene-godot'), D.godot);
+  if (D.ambiance) buildScene(document.getElementById('scene-ambiance'), D.ambiance);
 
   function rows(id, data, cls) {
     var tb = document.getElementById(id);
